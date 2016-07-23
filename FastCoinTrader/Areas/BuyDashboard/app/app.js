@@ -1,6 +1,6 @@
 ﻿(function () {
     "use strict";
-    var app = angular.module("buydashboard", ["ngRoute", "ngSanitize"]);
+    angular.module("buydashboard", ["ngRoute", "ngSanitize"])
     
     // Directives
     //app.directive('countries', countriesDropdownDirective);
@@ -14,7 +14,7 @@
     //app.service("navigationService", navigationService);
     //app.service("buyDashboardService", buyDashboardService);
 
-    app.config(function ($routeProvider) {
+    .config(function ($routeProvider) {
         $routeProvider.when("/home",
             {
                 çontroller: "buyDashboardHomeController",

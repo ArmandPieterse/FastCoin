@@ -1,0 +1,21 @@
+﻿<div ng-controller="buyDashboardHomeController">
+    <div class="search-table table-responsive">
+        <table st-table="tradeH" st-safe-src="tradeHistory" st-class-ascent="fa fa-sort-asc fa-fw" st-class-descent="fa fa-sort-desc fa-fw" class="table table-striped table-hover selectable">
+            <thead>
+            <tr>
+                <th st-sort="name">Name </th>
+                <th st-sort="tradingAs">Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr st-select-row="searchResult" ng-repeat="searchResult in tradeHistory">
+                <td st-ratio="50">{{searchResult.name}}</td>
+                <td st-ratio="50">{{searchResult.amount}}</td>
+                <td><button class="btn btn-sm btn-danger" ng-click="remove($index)">Remove </button></td>
+            </tr>
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+    </div>
+</div>
