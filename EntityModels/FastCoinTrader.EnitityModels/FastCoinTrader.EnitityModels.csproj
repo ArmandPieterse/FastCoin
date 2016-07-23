@@ -41,6 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -51,17 +52,65 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FastCoinTraderContext.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="FastCoinTraderContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FastCoinTraderContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FastCoinTraderContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FastCoinTraderContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FastCoinTraderContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FastCoinTraderContext.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sysdiagram.cs" />
-    <Compile Include="tbl_Email.cs" />
-    <Compile Include="tbl_Sales.cs" />
-    <Compile Include="tbl_UserAccount.cs" />
-    <Compile Include="tbl_Wallet.cs" />
+    <Compile Include="EmailEntityHelper\EmailEntityHelper.cs" />
+    <Compile Include="tbl_Email.cs">
+      <DependentUpon>FastCoinTraderContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Sales.cs">
+      <DependentUpon>FastCoinTraderContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_UserAccount.cs">
+      <DependentUpon>FastCoinTraderContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Wallet.cs">
+      <DependentUpon>FastCoinTraderContext.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="FastCoinTraderContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FastCoinTraderContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="FastCoinTraderContext.edmx.diagram">
+      <DependentUpon>FastCoinTraderContext.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FastCoinTraderContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FastCoinTraderContext.edmx</DependentUpon>
+      <LastGenOutput>FastCoinTraderContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="FastCoinTraderContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FastCoinTraderContext.edmx</DependentUpon>
+      <LastGenOutput>FastCoinTraderContext.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
