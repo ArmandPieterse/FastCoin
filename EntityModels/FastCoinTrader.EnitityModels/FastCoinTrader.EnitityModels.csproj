@@ -52,6 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmailEntityHelper\SalesEntityHelper.cs" />
+    <Compile Include="EmailEntityHelper\WalletEntityHelper.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="FastCoinTraderContext.Context.cs">
       <AutoGen>True</AutoGen>
@@ -97,9 +99,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entities\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="FastCoinTraderContext.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

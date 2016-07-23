@@ -42,7 +42,8 @@ namespace FastCoinTrader.EnitityModels.tbl_Email_Helpers
                 context.tbl_Email.Single(x => x.pk_tbl_Email == email.pk_tbl_Email).tbl_Email_DateLastModified = dateTimeNow;
                 context.tbl_Email.Single(x => x.pk_tbl_Email == email.pk_tbl_Email).tbl_Email_To = email.tbl_Email_To;
                 context.tbl_Email.Single(x => x.pk_tbl_Email == email.pk_tbl_Email).tbl_Email_Subject = email.tbl_Email_Subject;
-                context.tbl_Email.Single(x => x.pk_tbl_Email == email.pk_tbl_Email).tbl_Email_Type = email.tbl_Email_Type;                
+                context.tbl_Email.Single(x => x.pk_tbl_Email == email.pk_tbl_Email).tbl_Email_Type = email.tbl_Email_Type;
+                context.Entry(context.tbl_Email.Single(x => x.pk_tbl_Email == email.pk_tbl_Email)).State = System.Data.Entity.EntityState.Modified;
                 context.SaveChanges();
             }
         }
@@ -54,7 +55,8 @@ namespace FastCoinTrader.EnitityModels.tbl_Email_Helpers
 
             using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
-                var emailList = (from emails in context.tbl_Email                                 
+                var emailList = (from emails in context.tbl_Email    
+                                 orderby emails.tbl_Email_DateCreated                             
                                  select emails).ToList();
 
                 return emailList; 
@@ -67,6 +69,7 @@ namespace FastCoinTrader.EnitityModels.tbl_Email_Helpers
             using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
                 var emailList = (from emails in context.tbl_Email
+                                 orderby emails.tbl_Email_DateCreated
                                  select emails).AsQueryable();
 
                 return emailList;
@@ -79,6 +82,7 @@ namespace FastCoinTrader.EnitityModels.tbl_Email_Helpers
             {
                 var emailList = (from emails in context.tbl_Email
                                  where emails.tbl_Email_Type == type
+                                 orderby emails.tbl_Email_DateCreated
                                  select emails).ToList();
 
                 return emailList;
@@ -92,6 +96,7 @@ namespace FastCoinTrader.EnitityModels.tbl_Email_Helpers
                 var emailList = (from emails in context.tbl_Email
                                  where emails.tbl_Email_To == emailAddress
                                  && emails.tbl_Email_Type == type
+                                 orderby emails.tbl_Email_DateCreated
                                  select emails).ToList();
 
                 return emailList;
@@ -105,12 +110,43 @@ namespace FastCoinTrader.EnitityModels.tbl_Email_Helpers
                 var emailList = (from emails in context.tbl_Email
                                  where emails.tbl_Email_From == emailAddress
                                  && emails.tbl_Email_Type == type
+                                 orderby emails.tbl_Email_DateCreated
                                  select emails).ToList();
 
                 return emailList;
             }
         }
         #endregion
+
+        #region Delete Email
+        public bool DeleteEmail(Guid PrimaryKey)
+        {
+            try
+            {
+                using (FastCoinTraderContext context = new FastCoinTraderContext())
+                {
+                    var emailToDelete = (from email in context.tbl_Email
+                                         where email.pk_tbl_Email == PrimaryKey
+                                         select email).FirstOrDefault();
+
+                    if (emailToDelete != null)
+                    {                       
+                        context.tbl_Email.Remove(emailToDelete);
+                        context.SaveChanges();
+                        return true;
+                    }
+                    //if there is no matching email to delete.
+                    return false;
+                }
+                    
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
+
 
     }
 }
