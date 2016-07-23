@@ -6,22 +6,26 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <script src="https://use.fontawesome.com/b6c4c3f053.js"></script></head>
+    <script src="https://use.fontawesome.com/b6c4c3f053.js"></script>
+</head>
+
 <body class="bootstrap-admin-with-small-navbar">
-<div class="container">
-    <div class="row">
-        @Html.Partial("_TopBar")
+    @Html.Partial("_TopBar")
+    <div class="container">
+        <div class="row">
 
-        @Html.Partial("_MenuSideBar")
+            @Html.Partial("_MenuSideBar")
 
-        @RenderBody()
+            @RenderBody()
 
+        </div>
     </div>
-</div>
-    
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@RenderSection("scripts", required: false)
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>
 
