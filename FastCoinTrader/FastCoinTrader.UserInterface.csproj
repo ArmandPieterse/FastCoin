@@ -198,6 +198,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\BuyDashboard\BuyDashboardAreaRegistration.cs" />
+    <Compile Include="Areas\BuyDashboard\Controllers\BuyDashboardController.cs" />
+    <Compile Include="Areas\SellDashboard\SellDashboardAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -211,6 +214,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\BuyDashboard\app\app.js" />
+    <Content Include="Areas\BuyDashboard\app\controllers\buyDashboardHomeController.js" />
+    <Content Include="Areas\BuyDashboard\app\templates\buyerDashboardHomeView.html" />
     <Content Include="Content\bootstrap-admin-theme-change-size.css" />
     <Content Include="Content\bootstrap-admin-theme-small.css" />
     <Content Include="Content\bootstrap-admin-theme.css" />
@@ -232,11 +238,30 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
+    <Content Include="Scripts\angular-animate.js" />
+    <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular-sanitize.js" />
+    <Content Include="Scripts\angular-sanitize.min.js" />
+    <Content Include="Scripts\angular-spinners.min.js" />
+    <Content Include="Scripts\angular.easypiechart.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Areas\BuyDashboard\Views\web.config" />
+    <Content Include="Areas\SellDashboard\Views\web.config" />
+    <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Scripts\angular-sanitize.min.js.map" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Areas\BuyDashboard\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\BuyDashboard\Views\BuyDashboard\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\BootstrapScripts\bootstrap-admin-theme-change-size.js" />
     <Content Include="Scripts\BootstrapScripts\bootstrap.js" />
@@ -254,8 +279,11 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\smart-table.min.js" />
+    <Content Include="Scripts\underscore.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -292,9 +320,16 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_TopBar.cshtml" />
+    <Content Include="Views\Shared\_MenuSideBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\BuyDashboard\app\models\" />
+    <Folder Include="Areas\BuyDashboard\app\services\" />
+    <Folder Include="Areas\BuyDashboard\Models\" />
+    <Folder Include="Areas\SellDashboard\Controllers\" />
+    <Folder Include="Areas\SellDashboard\Models\" />
+    <Folder Include="Areas\SellDashboard\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
