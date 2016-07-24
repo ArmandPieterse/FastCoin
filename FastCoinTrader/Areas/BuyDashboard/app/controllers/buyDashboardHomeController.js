@@ -66,6 +66,16 @@
             }
         }
 
+        $scope.submitBuyBitCoin = function () {
+            var request = {
+                price: $scope.buyOffer.pricePerBTC,
+                amount: $scope.buyOffer.amount,
+                total: $scope.buyOffer.total,
+                fee: $scope.buyOffer.fee
+            };
+            buyDashboardService.submitBuyBitCoin(request, buyBitCoinSuccess, buyBitCoinError);
+        }
+
         //TODO: Link to production data
         ///Trade history table
         $scope.sellOffers = [{ 'total': 1, 'pricePerBTC': 5, 'btc': 1.2 },
@@ -77,6 +87,14 @@
          */
         function getAvailableOffersSuccess() {
             
+        }
+
+        function buyBitCoinSuccess() {
+            
+        }
+
+        function buyBitCoinError() {
+
         }
 
         function getAvailableOffersError() {
