@@ -50,7 +50,7 @@ namespace FastCoinTrader.EnitityModels.EmailEntityHelper
         }
         #endregion
 
-        #region GetSales
+        #region Get Sales
         public List<tbl_Sales> GetAllSalesList()
         {
             using (FastCoinTraderContext context = new FastCoinTraderContext())
@@ -96,5 +96,33 @@ namespace FastCoinTrader.EnitityModels.EmailEntityHelper
         }
         #endregion
 
+        #region Delete Sale
+        public bool DeleteSale(Guid PrimaryKey)
+        {
+            try
+            {
+                using (FastCoinTraderContext context = new FastCoinTraderContext())
+                {
+                    var saleToDelete = (from sale in context.tbl_Sales
+                                         where sale.pk_tbl_Sales == PrimaryKey
+                                         select sale).FirstOrDefault();
+
+                    if (saleToDelete != null)
+                    {
+                        context.tbl_Sales.Remove(saleToDelete);
+                        context.SaveChanges();
+                        return true;
+                    }
+                    //if there is no matching sale to delete.
+                    return false;
+                }
+
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
     }
 }
