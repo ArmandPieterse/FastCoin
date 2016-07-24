@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Web.Mvc;
+using FastCoinTrader.Areas.BuyDashboard.Models;
 
 namespace FastCoinTrader.Areas.BuyDashboard.Controllers
 {
@@ -15,8 +16,9 @@ namespace FastCoinTrader.Areas.BuyDashboard.Controllers
         }
 
         [System.Web.Http.HttpPost]
-        public ActionResult BuyBitCoin()
+        public ActionResult BuyBitCoin(BuyBitCoinRequest request)
         {
+
             throw new NotImplementedException();
         }
 
