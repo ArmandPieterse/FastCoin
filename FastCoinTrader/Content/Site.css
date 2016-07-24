@@ -23,3 +23,7 @@ textarea {
     max-width: 280px;
 }
 
+.remove-left-padding {
+    padding-left: 0px;
+}
+

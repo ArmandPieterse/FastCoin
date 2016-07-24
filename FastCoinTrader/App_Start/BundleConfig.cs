@@ -110,6 +110,8 @@ namespace FastCoinTrader
                 //.IncludeDirectory("~/Areas/BuyDashboard/app/services", "*.js")
                 //.IncludeDirectory("~/Areas/BuyDashboard/app/models", "*.js")
                 .IncludeDirectory("~/Areas/BuyDashboard/app/controllers", "*.js")
+                .IncludeDirectory("~/Areas/BuyDashboard/app/services", "*.js")
+                .IncludeDirectory("~/Areas/BuyDashboard/app/models", "*.js")
                 );
         }
     }

@@ -4,29 +4,88 @@
     var app = angular.module('buydashboard');
 
     app.controller('buyDashboardHomeController', [
-        '$scope', buyService, buyDashboardHomeController
+        '$scope',
+        'buyDashboardService',
+        buyDashboardHomeController
     ]);
 
     function buyDashboardHomeController(
-        $scope) {
+        $scope,
+        buyDashboardService) {
+
+        $scope.buyOffer = {
+            amount: null,
+            pricePerBTC: null,
+            fee: null,
+            feePercentage: null,
+            total: null,
+
+            init: function() {
+                this.feePercentage = 0.005;
+            },
+
+            configureTotal: function() {
+                this.total = this.amount * this.pricePerBTC;
+                this.configureFee();
+            },
+
+            configurePrice: function() {
+                this.price = this.total / this.amount;
+            },
+
+            configureAmount: function() {
+                this.amount = this.total / this.pricePerBTC;
+            },
+
+            configureFee: function() {
+                this.fee = this.total * this.feePercentage;
+            },
+
+            detailsIncomplete: function() {
+                var incomplete = false;
+
+                if (this.total === undefined || this.total === null || this.total === 0)
+                    incomplete = true;
+
+                return incomplete;
+            }
+        }
+
+        $scope.amountChanged = function() {
+            $scope.buyOffer.configureTotal();
+        }
+
+        $scope.priceChanged = function () {
+            $scope.buyOffer.configureTotal();
+        }
+
+        $scope.totalChanged = function () {
+            if ($scope.buyOffer.total > 0) {
+                $scope.buyOffer.configureAmount();
+                $scope.buyOffer.configureFee();
+            }
+        }
 
         //TODO: Link to production data
         ///Trade history table
-        $scope.tradeHistory = [{ 'id': 1,'name': 'tommy', 'amount': 1.2 },
-            { 'id': 2, 'name': 'jimmy', 'amount': 1.2 },
-            { 'id': 3, 'name': 'jacky', 'amount': 1.2 }];
-
-
-        //TODO: Link to production data
-        ///Current Buy offers table
-        $scope.currentSellOffers = [{ 'id': 1, 'name': 'tommy', 'amount': 1.2 },
-            { 'id': 2, 'name': 'jimmy', 'amount': 1.2 },
-            { 'id': 3, 'name': 'jacky', 'amount': 1.2 }];
+        $scope.sellOffers = [{ 'total': 1, 'pricePerBTC': 5, 'btc': 1.2 },
+            { 'total': 2, 'pricePerBTC': 5, 'btc': 1.2 },
+            { 'total': 3, 'pricePerBTC': 5, 'btc': 1.2 }];
 
         /**
          * Initializes controller-specific data 
          */
+        function getAvailableOffersSuccess() {
+            
+        }
+
+        function getAvailableOffersError() {
+
+        }
+
         function init() {
+            $scope.buyOffer.init();
+            buyDashboardService.getAvaliableOffers(getAvailableOffersSuccess, getAvailableOffersError);
         }
 
         init();
