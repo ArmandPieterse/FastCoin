@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FastCoinTrader.EnitityModels.EmailEntityHelper
 {
-    class WalletEntityHelper
+    public class WalletEntityHelper
     {
         #region Create Wallet
         public void CreateWalletEntry(Guid fkUserAccount,decimal ZARBalance,decimal ZARPending,decimal BTCBalance,string BTCAddress,
@@ -83,18 +83,7 @@ namespace FastCoinTrader.EnitityModels.EmailEntityHelper
                 return walletList;
             }
         }
-
-        public List<tbl_Wallet> GetAllWalletList()
-        {
-            using (FastCoinTraderContext context = new FastCoinTraderContext())
-            {
-                var walletList = (from wallet in context.tbl_Wallet
-                                  orderby wallet.tbl_Wallet_DateLastModified
-                                  select wallet).ToList();
-
-                return walletList;
-            }
-        }
+               
         #endregion
 
         #region Delete Wallet        
@@ -124,9 +113,7 @@ namespace FastCoinTrader.EnitityModels.EmailEntityHelper
                 return false;
             }
         }       
-        #endregion
-
-        
+        #endregion        
 
     }
 }

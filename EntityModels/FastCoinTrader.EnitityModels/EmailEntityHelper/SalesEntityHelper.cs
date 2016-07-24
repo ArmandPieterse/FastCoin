@@ -9,7 +9,7 @@ namespace FastCoinTrader.EnitityModels.EmailEntityHelper
     public class SalesEntityHelper
     {
         #region Create Sale
-        public void CreateSaleEntry(decimal BTCTargetAmount,decimal ZARPrice, decimal BTCSoldAmount,string status,Guid fkWallet)
+        public void CreateSaleEntry(decimal BTCTargetAmount,decimal ZARPrice, decimal ZARTotal, decimal BTCSoldAmount,string status,Guid fkWallet)
         {
             using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
@@ -23,7 +23,8 @@ namespace FastCoinTrader.EnitityModels.EmailEntityHelper
                             tbl_Sales_Status = status,
                             tbl_Sales_ZARPrice = ZARPrice,
                             tbl_Sales_DateCreated = dateTimeNow,
-                            tbl_Sales_DateLastModified = dateTimeNow
+                            tbl_Sales_DateLastModified = dateTimeNow,
+                            tbl_Sales_ZARTotal = ZARTotal
                         }
                     );
                 context.SaveChanges();
@@ -43,7 +44,7 @@ namespace FastCoinTrader.EnitityModels.EmailEntityHelper
                 context.tbl_Sales.Single(x => x.pk_tbl_Sales == sale.pk_tbl_Sales).tbl_Sales_Status = sale.tbl_Sales_Status;
                 context.tbl_Sales.Single(x => x.pk_tbl_Sales == sale.pk_tbl_Sales).tbl_Sales_ZARPrice = sale.tbl_Sales_ZARPrice;                
                 context.tbl_Sales.Single(x => x.pk_tbl_Sales == sale.pk_tbl_Sales).tbl_Sales_DateLastModified = dateTimeNow;
-
+                context.tbl_Sales.Single(x => x.pk_tbl_Sales == sale.pk_tbl_Sales).tbl_Sales_ZARTotal = sale.tbl_Sales_ZARTotal;
                 context.Entry(context.tbl_Sales.Single(x => x.pk_tbl_Sales == sale.pk_tbl_Sales)).State = System.Data.Entity.EntityState.Modified;
                 context.SaveChanges();
             }
