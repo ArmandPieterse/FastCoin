@@ -12,17 +12,17 @@ namespace FastCoinTrader.EnitityModels
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_Sales
+    public partial class tbl_Buys
     {
-        public System.Guid pk_tbl_Sales { get; set; }
+        public System.Guid pk_tbl_Buys { get; set; }
         public System.Guid fk_tbl_Wallet { get; set; }
-        public decimal tbl_BTCTargetAmount { get; set; }
-        public decimal tbl_Sales_ZARPrice { get; set; }
-        public decimal tbl_Sales_BTCSold { get; set; }
-        public string tbl_Sales_Status { get; set; }
-        public System.DateTime tbl_Sales_DateCreated { get; set; }
-        public System.DateTime tbl_Sales_DateLastModified { get; set; }
-        public decimal tbl_Sales_ZARTotal { get; set; }
+        public decimal tbl_Buys_BTCTargetAmount { get; set; }
+        public decimal tbl_Buys_ZARPrice { get; set; }
+        public decimal tbl_Buys_BTCBought { get; set; }
+        public string tbl_Buys_Status { get; set; }
+        public System.DateTime tbl_Buys_DateCreated { get; set; }
+        public System.DateTime tbl_Buys_DateLastModified { get; set; }
+        public decimal tbl_Buys_ZARTotal { get; set; }
     
         public virtual tbl_Wallet tbl_Wallet { get; set; }
     }

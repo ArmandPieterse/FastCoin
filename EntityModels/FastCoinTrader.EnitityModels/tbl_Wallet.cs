@@ -18,6 +18,7 @@ namespace FastCoinTrader.EnitityModels
         public tbl_Wallet()
         {
             this.tbl_Sales = new HashSet<tbl_Sales>();
+            this.tbl_Buys = new HashSet<tbl_Buys>();
         }
     
         public System.Guid pk_tbl_Wallet { get; set; }
@@ -36,5 +37,7 @@ namespace FastCoinTrader.EnitityModels
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Sales> tbl_Sales { get; set; }
         public virtual tbl_UserAccount tbl_UserAccount { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_Buys> tbl_Buys { get; set; }
     }
 }
