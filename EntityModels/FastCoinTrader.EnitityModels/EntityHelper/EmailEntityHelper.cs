@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FastCoinTrader.EnitityModels.tbl_Email_Helpers
+namespace FastCoinTrader.EnitityModels.EntityHelper
 {
     public class EmailEntityHelper
     {

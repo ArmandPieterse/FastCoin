@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FastCoinTrader.EnitityModels.EmailEntityHelper
+namespace FastCoinTrader.EnitityModels.EntityHelper
 {
     public class BuysEntityHelper
     {
         #region Create Buy Entry
-        public void CreateSaleEntry(decimal BTCTargetAmount, decimal ZARPrice, decimal ZARTotal, decimal BTCBoughtAmount, string status, Guid fkWallet)
+        public static void CreateBuyEntry(decimal BTCTargetAmount, decimal ZARPrice, decimal ZARTotal, decimal BTCBoughtAmount, string status, Guid fkWallet)
         {
             using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
-
                 DateTime dateTimeNow = DateTime.Now;
                 context.tbl_Buys.Add(
                     new tbl_Buys
