@@ -162,3 +162,5 @@ C:\Users\Hakujin\Source\Repos\FastCoin\FastCoinTrader\bin\Microsoft.Owin.Securit
 C:\Users\Hakujin\Source\Repos\FastCoin\FastCoinTrader\obj\Debug\FastCoinTrader.UserInterface.csprojResolveAssemblyReference.cache
 C:\Users\Hakujin\Source\Repos\FastCoin\FastCoinTrader\obj\Debug\FastCoinTrader.dll
 C:\Users\Hakujin\Source\Repos\FastCoin\FastCoinTrader\obj\Debug\FastCoinTrader.pdb
+C:\Users\Hakujin\Source\Repos\FastCoin\FastCoinTrader\obj\Debug\FastCoinTrader.Migrations.Initial.resources
+C:\Users\Hakujin\Source\Repos\FastCoin\FastCoinTrader\obj\Debug\FastCoinTrader.UserInterface.csproj.GenerateResource.Cache

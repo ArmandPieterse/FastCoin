@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Web;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Security;
+
 
 namespace FastCoinTrader.EnitityModels.EmailEntityHelper
 {
@@ -89,7 +92,7 @@ namespace FastCoinTrader.EnitityModels.EmailEntityHelper
             }
         }
         #endregion
-
+        
         #region Delete Buy        
         public bool DeleteBuy(Guid PrimaryKey)
         {
