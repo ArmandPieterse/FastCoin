@@ -10,6 +10,7 @@
 
         //URLs
         service.getAvaliableOffersUrl = '/api/BuyDashboardApi/GetAvaliableOffers';
+        service.submitBuyBitCoinUrl = '/api/BuyDashboardApi/BuyBitCoin';
         
         service.methods = {
             post: 'POST',
@@ -77,7 +78,17 @@
                 });
         };
 
-        // Business partner GET calls
+        service.submitBuyBitCoin = function (request, success, error) {
+            var url = service.submitBuyBitCoinUrl;
+            var data = {
+                price: request.pricePerBTC,
+                amount: request.amount,
+                total: request.total,
+                fee: request.fee
+            }
+            post(data, url, success, error);
+        };
+
         service.getAvaliableOffers = function (success, error) {
             var url = service.getAvaliableOffersUrl;
 
