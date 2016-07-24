@@ -168,3 +168,5 @@ C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\FastCoinTra
 C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\FastCoinTrader\bin\System.Net.Http.Formatting.xml
 C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\FastCoinTrader\bin\System.Web.Http.xml
 C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\FastCoinTrader\bin\System.Web.Http.WebHost.xml
+C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\FastCoinTrader\bin\FastCoinTrader.EnitityModels.dll
+C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\FastCoinTrader\bin\FastCoinTrader.EnitityModels.pdb
