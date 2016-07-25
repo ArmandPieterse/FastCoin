@@ -1,6 +1,6 @@
 ﻿(function () {
     "use strict";
-    angular.module("buydashboard", ["ngRoute", "ngSanitize"])
+    angular.module("buydashboard", ["ngRoute", "ngSanitize", "ngiUI", "ui.bootstrap"])
     
     // Directives
     //app.directive('countries', countriesDropdownDirective);

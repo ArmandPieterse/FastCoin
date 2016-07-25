@@ -46,6 +46,7 @@ namespace FastCoinTrader
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap")
                 .Include("~/Scripts/bootstrap.js", "~/Scripts/respond.js")
+                .Include("~/Scripts/toastr.min.js")
                 .IncludeDirectory("~/Scripts/BootstrapScripts", "*.js"));
         }
 
@@ -70,41 +71,9 @@ namespace FastCoinTrader
                 .Include("~/Scripts/smart-table.min.js")
                 .Include("~/Scripts/moment.js")
                 .Include("~/Scripts/underscore.js")
-
-                // Directives folder must fall away when UI components are completely implemented system wide
-                //.IncludeDirectory("~/Scripts/Directives", "*.js")
-
-                // Load modules for injection into main app
-                // Custom modules
-                //.IncludeDirectory("~/Scripts/angular-infrastructure/custom/auth", "*.js")
-                //.IncludeDirectory("~/Scripts/angular-infrastructure/custom/header", "*.js")
-                //.IncludeDirectory("~/Scripts/angular-infrastructure/custom/buyerIdentificationService", "*.js")
-                //.IncludeDirectory("~/Scripts/angular-infrastructure/custom/terminalStatusService", "*.js")
-                //.IncludeDirectory("~/Scripts/angular-infrastructure/custom/configurationService", "*.js")
-                //.IncludeDirectory("~/Scripts/angular-infrastructure/custom/contentService", "*.js")
-                //.IncludeDirectory("~/Scripts/angular-infrastructure/custom/keybinding", "*.js")
-                //.IncludeDirectory("~/Scripts/angular-infrastructure/custom/money", "*.js")
-                //.IncludeDirectory("~/Scripts/angular-infrastructure/custom/table-navigation", "*.js")
-                //.IncludeDirectory("~/Scripts/angular-infrastructure/custom/helpers", "*.js")
-
-                // Custom UI modules
-                //.IncludeDirectory("~/Scripts/angular-infrastructure/custom/ui", "*.js")
-                //.IncludeDirectory("~/Scripts/angular-infrastructure/custom/ui/buttons", "*.js")
-                //.IncludeDirectory("~/Scripts/angular-infrastructure/custom/ui/formControls", "*.js")
-                //.IncludeDirectory("~/Scripts/angular-infrastructure/custom/ui/modal-ext", "*.js")
-                //.IncludeDirectory("~/Scripts/angular-infrastructure/custom/ui/st-table-ext", "*.js")
-                //.IncludeDirectory("~/Scripts/angular-infrastructure/custom/ui/templates", "*.js")
-                //.IncludeDirectory("~/Scripts/angular-infrastructure/custom/ui/validation", "*.js")
-                //.IncludeDirectory("~/Scripts/angular-infrastructure/custom/ui/structural", "*.js")
-                //.IncludeDirectory("~/Scripts/angular-infrastructure/custom/ui/notifications", "*.js")
-                //.IncludeDirectory("~/Scripts/angular-infrastructure/custom/ui/filters", "*.js")
-
-                // Locale specific scripts
-                //.Include("~/Scripts/angular-infrastructure/third-party/libphonenumber/angular-libphonenumber.js")
-
-                // Third party angular modules
-                //.Include("~/Scripts/angular-infrastructure/third-party/angular-ui-tree/angular-ui-tree.js")
-
+                .IncludeDirectory("~/Scripts/Custom", "*.js")
+                .IncludeDirectory("~/Scripts/Custom/angular-ui", "*.js")
+                .IncludeDirectory("~/Scripts/Custom/notificationService", "*.js")
                 //Start local custodian scripts
                 .IncludeDirectory("~/Areas/BuyDashboard/app", "*.js")
                 //.IncludeDirectory("~/Areas/BuyDashboard/app/services", "*.js")

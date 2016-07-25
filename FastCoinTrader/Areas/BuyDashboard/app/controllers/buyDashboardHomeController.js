@@ -6,12 +6,14 @@
     app.controller('buyDashboardHomeController', [
         '$scope',
         'buyDashboardService',
+        'notificationService',
         buyDashboardHomeController
     ]);
 
     function buyDashboardHomeController(
         $scope,
-        buyDashboardService) {
+        buyDashboardService,
+        notificationService) {
 
         $scope.buyOffer = {
             amount: null,
@@ -102,8 +104,9 @@
         }
 
         function init() {
+            notificationService.addNotification("Helloo", true);
             $scope.buyOffer.init();
-            buyDashboardService.getAvaliableOffers(getAvailableOffersSuccess, getAvailableOffersError);
+            //buyDashboardService.getAvaliableOffers(getAvailableOffersSuccess, getAvailableOffersError);
         }
 
         init();
