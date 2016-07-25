@@ -75,6 +75,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EntityHelper\EmailEntityHelper.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>FastCoinTraderContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbl_Buys.cs">
       <DependentUpon>FastCoinTraderContext.tt</DependentUpon>
     </Compile>

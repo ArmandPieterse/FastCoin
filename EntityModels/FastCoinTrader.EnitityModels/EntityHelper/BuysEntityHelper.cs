@@ -18,6 +18,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
                 context.tbl_Buys.Add(
                     new tbl_Buys
                     {
+                        pk_tbl_Buys = Guid.NewGuid(),
                         fk_tbl_Wallet = fkWallet,
                         tbl_Buys_BTCTargetAmount = BTCTargetAmount,
                         tbl_Buys_BTCBought = BTCBoughtAmount,

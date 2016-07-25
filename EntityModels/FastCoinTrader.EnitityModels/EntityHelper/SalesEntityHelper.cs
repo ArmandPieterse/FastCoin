@@ -18,7 +18,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
                 context.tbl_Sales.Add(
                     new tbl_Sales {
                             fk_tbl_Wallet = fkWallet,
-                            tbl_BTCTargetAmount = BTCTargetAmount,
+                            tbl_Sales_BTCTargetAmount = BTCTargetAmount,
                             tbl_Sales_BTCSold = BTCSoldAmount,
                             tbl_Sales_Status = status,
                             tbl_Sales_ZARPrice = ZARPrice,
@@ -39,7 +39,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
             {
                 DateTime dateTimeNow = DateTime.Now;                
                 context.tbl_Sales.Single(x => x.pk_tbl_Sales == sale.pk_tbl_Sales).fk_tbl_Wallet = sale.fk_tbl_Wallet;
-                context.tbl_Sales.Single(x => x.pk_tbl_Sales == sale.pk_tbl_Sales).tbl_BTCTargetAmount = sale.tbl_BTCTargetAmount;
+                context.tbl_Sales.Single(x => x.pk_tbl_Sales == sale.pk_tbl_Sales).tbl_Sales_BTCTargetAmount = sale.tbl_Sales_BTCTargetAmount;
                 context.tbl_Sales.Single(x => x.pk_tbl_Sales == sale.pk_tbl_Sales).tbl_Sales_BTCSold = sale.tbl_Sales_BTCSold;
                 context.tbl_Sales.Single(x => x.pk_tbl_Sales == sale.pk_tbl_Sales).tbl_Sales_Status = sale.tbl_Sales_Status;
                 context.tbl_Sales.Single(x => x.pk_tbl_Sales == sale.pk_tbl_Sales).tbl_Sales_ZARPrice = sale.tbl_Sales_ZARPrice;                
