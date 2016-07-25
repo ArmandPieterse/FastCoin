@@ -12,7 +12,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         public void CreateWalletEntry(Guid fkUserAccount,decimal ZARBalance,decimal ZARPending,decimal BTCBalance,string BTCAddress,
             string bankAccountNumber,string bankName,string branchName,string branchNumber)
         {
-            using (FastCoinTraderContext context = new FastCoinTraderContext())
+            using (FastTraderDBEntities context = new FastTraderDBEntities())
             {
                 DateTime dateTimeNow = DateTime.Now;
                 context.tbl_Wallet.Add(
@@ -39,7 +39,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         #region Modify Wallet
         public void UpdateEmailEntry(tbl_Wallet Wallet)
         {
-            using (FastCoinTraderContext context = new FastCoinTraderContext())
+            using (FastTraderDBEntities context = new FastTraderDBEntities())
             {
                 DateTime dateTimeNow = DateTime.Now;
                 context.tbl_Wallet.Single(x => x.pk_tbl_Wallet == Wallet.pk_tbl_Wallet).fk_tbl_UserAccount = Wallet.fk_tbl_UserAccount;
@@ -61,7 +61,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         #region Get Wallet
         public List<tbl_Wallet> GetAllWalletList()
         {
-            using (FastCoinTraderContext context = new FastCoinTraderContext())
+            using (FastTraderDBEntities context = new FastTraderDBEntities())
             {
                 var walletList = (from wallet in context.tbl_Wallet
                                   orderby wallet.tbl_Wallet_DateLastModified
@@ -73,7 +73,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
 
         public List<tbl_Wallet> GetWalletByUserAccount(Guid fk_UserAccount)
         {
-            using (FastCoinTraderContext context = new FastCoinTraderContext())
+            using (FastTraderDBEntities context = new FastTraderDBEntities())
             {
                 var walletList = (from wallet in context.tbl_Wallet
                                   where wallet.fk_tbl_UserAccount == fk_UserAccount
@@ -91,7 +91,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         {
             try
             {
-                using (FastCoinTraderContext context = new FastCoinTraderContext())
+                using (FastTraderDBEntities context = new FastTraderDBEntities())
                 {
                     var walletToDelete = (from wallet in context.tbl_Wallet
                                          where wallet.pk_tbl_Wallet == PrimaryKey

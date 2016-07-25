@@ -9,14 +9,15 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
     public class BuysEntityHelper
     {
         #region Create Buy Entry
-        public static void CreateBuyEntry(decimal BTCTargetAmount, decimal ZARPrice, decimal ZARTotal, decimal BTCBoughtAmount, string status, Guid fkWallet)
+        public static bool CreateBuyEntry(decimal BTCTargetAmount, decimal ZARPrice, decimal ZARTotal, decimal BTCBoughtAmount, string status, Guid fkWallet)
         {
-            using (FastCoinTraderContext context = new FastCoinTraderContext())
+            using (FastTraderDBEntities context = new FastTraderDBEntities())
             {
                 DateTime dateTimeNow = DateTime.Now;
                 context.tbl_Buys.Add(
                     new tbl_Buys
                     {
+                        pk_tbl_Buys = Guid.NewGuid(),
                         fk_tbl_Wallet = fkWallet,
                         tbl_Buys_BTCTargetAmount = BTCTargetAmount,
                         tbl_Buys_BTCBought = BTCBoughtAmount,
@@ -27,14 +28,18 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
                         tbl_Buys_ZARTotal = ZARTotal
                     });
                 context.SaveChanges();
+                return true;
             }
+
+               
+                      
         }
         #endregion
 
         #region Modify Buy      
         public void UpdateBuyEntry(tbl_Buys Buy)
         {
-            using (FastCoinTraderContext context = new FastCoinTraderContext())
+            using (FastTraderDBEntities context = new FastTraderDBEntities())
             {
                 DateTime dateTimeNow = DateTime.Now;
                 context.tbl_Buys.Single(x => x.pk_tbl_Buys == Buy.pk_tbl_Buys).fk_tbl_Wallet = Buy.fk_tbl_Wallet;
@@ -51,9 +56,9 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         #endregion
 
         #region Get Buys
-        public List<tbl_Buys> GetAllBuysList()
+        public static List<tbl_Buys> GetAllBuysList()
         {
-            using (FastCoinTraderContext context = new FastCoinTraderContext())
+            using (FastTraderDBEntities context = new FastTraderDBEntities())
             {
                 var buysList = (from buy in context.tbl_Buys
                                 orderby buy.tbl_Buys_DateLastModified
@@ -65,7 +70,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
 
         public IQueryable<tbl_Buys> GetAllBuysQueryable()
         {
-            using (FastCoinTraderContext context = new FastCoinTraderContext())
+            using (FastTraderDBEntities context = new FastTraderDBEntities())
             {
                 var buysList = (from buy in context.tbl_Buys
                                 orderby buy.tbl_Buys_DateLastModified
@@ -77,7 +82,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
 
         public List<tbl_Buys> GetBuysListByWallet(Guid fkWallet)
         {
-            using (FastCoinTraderContext context = new FastCoinTraderContext())
+            using (FastTraderDBEntities context = new FastTraderDBEntities())
             {
                 var buysList = (from buy in context.tbl_Buys
                                 where buy.fk_tbl_Wallet == fkWallet
@@ -94,7 +99,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         {
             try
             {
-                using (FastCoinTraderContext context = new FastCoinTraderContext())
+                using (FastTraderDBEntities context = new FastTraderDBEntities())
                 {
                     var buyToDelete = (from buy in context.tbl_Buys
                                           where buy.pk_tbl_Buys == PrimaryKey

@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using FastCoinTrader.Areas.BuyDashboard.Models;
 using FastCoinTrader.EnitityModels;
 
+
+
 namespace FastCoinTrader.Areas.BuyDashboard.Controllers
 {
     public class BuyDashboardApiController : ApiController
@@ -16,18 +18,25 @@ namespace FastCoinTrader.Areas.BuyDashboard.Controllers
             
         }
 
-        [System.Web.Http.HttpPost]
-        public ActionResult BuyBitCoin(BuyBitCoinRequest request)
+        public class randomresponse
         {
-            FastCoinTrader.EnitityModels.EntityHelper.BuysEntityHelper.CreateBuyEntry(request.Amount, request.Price, request.Total, request.Amount, EnitityModels.Enums.BuyStatus.Pending.ToString(), Guid.Parse("E6C95FF2-C6FB-492D-BECA-4479BDCFD2E9"));
-            throw new NotImplementedException();
+            public bool success;
+        }
+
+        [System.Web.Http.HttpPost]
+        public randomresponse BuyBitCoin(CreateBuyRequest request)
+        {
+            EnitityModels.EntityHelper.BuysEntityHelper.CreateBuyEntry(request.Amount, request.Price, request.Total, request.Amount, EnitityModels.Enums.BuyStatus.Pending.ToString(), Guid.Parse("D258CC9B-9BC8-4E3A-B980-1FDA7DDD577E"));
+
+            return new randomresponse { success = true };
+            //throw new NotImplementedException();
         }
 
         [System.Web.Http.HttpGet]
-        public ActionResult GetAvailableOffers()
+        public List<EnitityModels.tbl_Buys> GetAvailableOffers()
         {
-           
-            throw new NotImplementedException();
+            return EnitityModels.EntityHelper.BuysEntityHelper.GetAllBuysList();
+            //throw new NotImplementedException();
         }
 
     }
