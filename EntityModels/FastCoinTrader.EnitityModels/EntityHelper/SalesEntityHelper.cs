@@ -11,14 +11,14 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         #region Create Sale
         public void CreateSaleEntry(decimal BTCTargetAmount,decimal ZARPrice, decimal ZARTotal, decimal BTCSoldAmount,string status,Guid fkWallet)
         {
-            using (FastTraderDBEntities context = new FastTraderDBEntities())
+            using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
 
                 DateTime dateTimeNow = DateTime.Now;
                 context.tbl_Sales.Add(
                     new tbl_Sales {
                             fk_tbl_Wallet = fkWallet,
-                            tbl_Sales_BTCTargetAmount = BTCTargetAmount,
+                            tbl_BTCTargetAmount = BTCTargetAmount,
                             tbl_Sales_BTCSold = BTCSoldAmount,
                             tbl_Sales_Status = status,
                             tbl_Sales_ZARPrice = ZARPrice,
@@ -35,11 +35,11 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         #region Modify Sale
         public void UpdateSaleEntry(tbl_Sales sale)
         {
-            using (FastTraderDBEntities context = new FastTraderDBEntities())
+            using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
                 DateTime dateTimeNow = DateTime.Now;                
                 context.tbl_Sales.Single(x => x.pk_tbl_Sales == sale.pk_tbl_Sales).fk_tbl_Wallet = sale.fk_tbl_Wallet;
-                context.tbl_Sales.Single(x => x.pk_tbl_Sales == sale.pk_tbl_Sales).tbl_Sales_BTCTargetAmount = sale.tbl_Sales_BTCTargetAmount;
+                context.tbl_Sales.Single(x => x.pk_tbl_Sales == sale.pk_tbl_Sales).tbl_BTCTargetAmount = sale.tbl_BTCTargetAmount;
                 context.tbl_Sales.Single(x => x.pk_tbl_Sales == sale.pk_tbl_Sales).tbl_Sales_BTCSold = sale.tbl_Sales_BTCSold;
                 context.tbl_Sales.Single(x => x.pk_tbl_Sales == sale.pk_tbl_Sales).tbl_Sales_Status = sale.tbl_Sales_Status;
                 context.tbl_Sales.Single(x => x.pk_tbl_Sales == sale.pk_tbl_Sales).tbl_Sales_ZARPrice = sale.tbl_Sales_ZARPrice;                
@@ -54,7 +54,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         #region Get Sales
         public List<tbl_Sales> GetAllSalesList()
         {
-            using (FastTraderDBEntities context = new FastTraderDBEntities())
+            using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
                 var salesList = (from sales in context.tbl_Sales
                                  select sales).ToList();
@@ -63,7 +63,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         }
         public IQueryable<tbl_Sales> GetAllSalesQueryable()
         {
-            using (FastTraderDBEntities context = new FastTraderDBEntities())
+            using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
                 var salesList = (from sales in context.tbl_Sales
                                  orderby sales.tbl_Sales_DateCreated
@@ -74,7 +74,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
 
         public List<tbl_Sales> GetSalesByWalletId(Guid fkWallet)
         {
-            using (FastTraderDBEntities context = new FastTraderDBEntities())
+            using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
                 var salesList = (from sales in context.tbl_Sales
                                  where sales.fk_tbl_Wallet == fkWallet
@@ -86,7 +86,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
 
         public List<tbl_Sales> GetSalesByStatus(Guid fkWallet)
         {
-            using (FastTraderDBEntities context = new FastTraderDBEntities())
+            using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
                 var salesList = (from sales in context.tbl_Sales
                                  where sales.fk_tbl_Wallet == fkWallet
@@ -102,7 +102,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         {
             try
             {
-                using (FastTraderDBEntities context = new FastTraderDBEntities())
+                using (FastCoinTraderContext context = new FastCoinTraderContext())
                 {
                     var saleToDelete = (from sale in context.tbl_Sales
                                          where sale.pk_tbl_Sales == PrimaryKey

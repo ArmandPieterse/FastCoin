@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FastTraderDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Buys">
+          <Key>
+            <PropertyRef Name="pk_tbl_Buys" />
+          </Key>
+          <Property Name="pk_tbl_Buys" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="fk_tbl_Wallet" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="tbl_Buys_BTCTargetAmount" Type="decimal" Precision="14" Scale="8" Nullable="false" />
+          <Property Name="tbl_Buys_ZARPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="tbl_Buys_BTCBought" Type="decimal" Precision="14" Scale="2" Nullable="false" />
+          <Property Name="tbl_Buys_Status" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="tbl_Buys_DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="tbl_Buys_DateLastModified" Type="datetime" Nullable="false" />
+          <Property Name="tbl_Buys_ZARTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Email">
+          <Key>
+            <PropertyRef Name="pk_tbl_Email" />
+          </Key>
+          <Property Name="pk_tbl_Email" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="tbl_Email_Subject" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="tbl_Email_Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tbl_Email_Body" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="tbl_Email_From" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="tbl_Email_To" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="tbl_Email_DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="tbl_Email_DateLastModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Sales">
+          <Key>
+            <PropertyRef Name="pk_tbl_Sales" />
+          </Key>
+          <Property Name="pk_tbl_Sales" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="fk_tbl_Wallet" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="tbl_BTCTargetAmount" Type="decimal" Precision="14" Scale="8" Nullable="false" />
+          <Property Name="tbl_Sales_ZARPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="tbl_Sales_ZARTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="tbl_Sales_BTCSold" Type="decimal" Precision="14" Scale="8" Nullable="false" />
+          <Property Name="tbl_Sales_Status" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="tbl_Sales_DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="tbl_Sales_DateLastModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_UserAccount">
+          <Key>
+            <PropertyRef Name="pk_tbl_UserAccount" />
+          </Key>
+          <Property Name="pk_tbl_UserAccount" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="tbl_UserAccount_EmailAddress" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="tbl_UserAccount_Firstname" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="tbl_UserAccount_Surname" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="tbl_UserAccount_PhysicalAddressLine1" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="tbl_UserAccount_PhysicalAddressLine2" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="tbl_UserAccount_PhysicalAddressLine3" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="tbl_UserAccount_PostalCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="tbl_UserAccount_CellphoneNumber" Type="nvarchar" MaxLength="13" />
+          <Property Name="tbl_UserAccount_UserRole" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Wallet">
+          <Key>
+            <PropertyRef Name="pk_tbl_Wallet" />
+          </Key>
+          <Property Name="pk_tbl_Wallet" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="fk_tbl_UserAccount" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="tbl_Wallet_ZARBalance" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="tbl_Wallet_BTCBalance" Type="decimal" Precision="14" Scale="8" Nullable="false" />
+          <Property Name="tbl_Wallet_BTCAddress" Type="nchar" MaxLength="64" Nullable="false" />
+          <Property Name="tbl_Wallet_BankAccNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="tbl_Wallet_BankName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="tbl_Wallet_BankBranchName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="tbl_Wallet_BankBranchNumber" Type="nvarchar" MaxLength="26" Nullable="false" />
+          <Property Name="tbl_Wallet_DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="tbl_Wallet_DateLastModified" Type="datetime" Nullable="false" />
+          <Property Name="tbl_Wallet_ZARPending" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tbl_Buys_tbl_Wallet">
+          <End Role="tbl_Wallet" Type="Self.tbl_Wallet" Multiplicity="1" />
+          <End Role="tbl_Buys" Type="Self.tbl_Buys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Wallet">
+              <PropertyRef Name="pk_tbl_Wallet" />
+            </Principal>
+            <Dependent Role="tbl_Buys">
+              <PropertyRef Name="fk_tbl_Wallet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Sales_tbl_Wallet">
+          <End Role="tbl_Wallet" Type="Self.tbl_Wallet" Multiplicity="1" />
+          <End Role="tbl_Sales" Type="Self.tbl_Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Wallet">
+              <PropertyRef Name="pk_tbl_Wallet" />
+            </Principal>
+            <Dependent Role="tbl_Sales">
+              <PropertyRef Name="fk_tbl_Wallet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Wallet_tbl_UserAccount">
+          <End Role="tbl_UserAccount" Type="Self.tbl_UserAccount" Multiplicity="1" />
+          <End Role="tbl_Wallet" Type="Self.tbl_Wallet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserAccount">
+              <PropertyRef Name="pk_tbl_UserAccount" />
+            </Principal>
+            <Dependent Role="tbl_Wallet">
+              <PropertyRef Name="fk_tbl_UserAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FastTraderDBModelStoreContainer">
+          <EntitySet Name="tbl_Buys" EntityType="Self.tbl_Buys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Email" EntityType="Self.tbl_Email" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Sales" EntityType="Self.tbl_Sales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_UserAccount" EntityType="Self.tbl_UserAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Wallet" EntityType="Self.tbl_Wallet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbl_Buys_tbl_Wallet" Association="Self.FK_tbl_Buys_tbl_Wallet">
+            <End Role="tbl_Wallet" EntitySet="tbl_Wallet" />
+            <End Role="tbl_Buys" EntitySet="tbl_Buys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Sales_tbl_Wallet" Association="Self.FK_tbl_Sales_tbl_Wallet">
+            <End Role="tbl_Wallet" EntitySet="tbl_Wallet" />
+            <End Role="tbl_Sales" EntitySet="tbl_Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Wallet_tbl_UserAccount" Association="Self.FK_tbl_Wallet_tbl_UserAccount">
+            <End Role="tbl_UserAccount" EntitySet="tbl_UserAccount" />
+            <End Role="tbl_Wallet" EntitySet="tbl_Wallet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FastTraderDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Email">
+          <Key>
+            <PropertyRef Name="pk_tbl_Email" />
+          </Key>
+          <Property Name="pk_tbl_Email" Type="Guid" Nullable="false" />
+          <Property Name="tbl_Email_Subject" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tbl_Email_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tbl_Email_Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tbl_Email_From" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tbl_Email_To" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tbl_Email_DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tbl_Email_DateLastModified" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_Sales">
+          <Key>
+            <PropertyRef Name="pk_tbl_Sales" />
+          </Key>
+          <Property Name="pk_tbl_Sales" Type="Guid" Nullable="false" />
+          <Property Name="fk_tbl_Wallet" Type="Guid" Nullable="false" />
+          <Property Name="tbl_BTCTargetAmount" Type="Decimal" Precision="14" Scale="8" Nullable="false" />
+          <Property Name="tbl_Sales_ZARPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="tbl_Sales_BTCSold" Type="Decimal" Precision="14" Scale="8" Nullable="false" />
+          <Property Name="tbl_Sales_Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tbl_Sales_DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tbl_Sales_DateLastModified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tbl_Wallet" Relationship="Self.FK_tbl_Sales_tbl_Wallet" FromRole="tbl_Sales" ToRole="tbl_Wallet" />
+          <Property Name="tbl_Sales_ZARTotal" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="tbl_UserAccount">
+          <Key>
+            <PropertyRef Name="pk_tbl_UserAccount" />
+          </Key>
+          <Property Name="pk_tbl_UserAccount" Type="Guid" Nullable="false" />
+          <Property Name="tbl_UserAccount_EmailAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tbl_UserAccount_Firstname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tbl_UserAccount_Surname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tbl_UserAccount_PhysicalAddressLine1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tbl_UserAccount_PhysicalAddressLine2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tbl_UserAccount_PhysicalAddressLine3" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tbl_UserAccount_PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tbl_UserAccount_CellphoneNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="tbl_UserAccount_UserRole" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbl_Wallet" Relationship="Self.FK_tbl_Wallet_tbl_UserAccount" FromRole="tbl_UserAccount" ToRole="tbl_Wallet" />
+        </EntityType>
+        <EntityType Name="tbl_Wallet">
+          <Key>
+            <PropertyRef Name="pk_tbl_Wallet" />
+          </Key>
+          <Property Name="pk_tbl_Wallet" Type="Guid" Nullable="false" />
+          <Property Name="fk_tbl_UserAccount" Type="Guid" Nullable="false" />
+          <Property Name="tbl_Wallet_ZARBalance" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="tbl_Wallet_BTCBalance" Type="Decimal" Precision="14" Scale="8" Nullable="false" />
+          <Property Name="tbl_Wallet_BTCAddress" Type="String" MaxLength="64" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="tbl_Wallet_BankAccNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tbl_Wallet_BankName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tbl_Wallet_BankBranchName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tbl_Wallet_BankBranchNumber" Type="String" MaxLength="26" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tbl_Wallet_DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tbl_Wallet_DateLastModified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tbl_Wallet_ZARPending" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="tbl_Sales" Relationship="Self.FK_tbl_Sales_tbl_Wallet" FromRole="tbl_Wallet" ToRole="tbl_Sales" />
+          <NavigationProperty Name="tbl_UserAccount" Relationship="Self.FK_tbl_Wallet_tbl_UserAccount" FromRole="tbl_Wallet" ToRole="tbl_UserAccount" />
+          <NavigationProperty Name="tbl_Buys" Relationship="FastTraderDBModel.FK_tbl_Buys_tbl_Wallet" FromRole="tbl_Wallet" ToRole="tbl_Buys" />
+        </EntityType>
+        <Association Name="FK_tbl_Sales_tbl_Wallet">
+          <End Role="tbl_Wallet" Type="Self.tbl_Wallet" Multiplicity="1" />
+          <End Role="tbl_Sales" Type="Self.tbl_Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Wallet">
+              <PropertyRef Name="pk_tbl_Wallet" />
+            </Principal>
+            <Dependent Role="tbl_Sales">
+              <PropertyRef Name="fk_tbl_Wallet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Wallet_tbl_UserAccount">
+          <End Role="tbl_UserAccount" Type="Self.tbl_UserAccount" Multiplicity="1" />
+          <End Role="tbl_Wallet" Type="Self.tbl_Wallet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserAccount">
+              <PropertyRef Name="pk_tbl_UserAccount" />
+            </Principal>
+            <Dependent Role="tbl_Wallet">
+              <PropertyRef Name="fk_tbl_UserAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FastCoinTraderContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Email" EntityType="Self.tbl_Email" />
+          <EntitySet Name="tbl_Sales" EntityType="Self.tbl_Sales" />
+          <EntitySet Name="tbl_UserAccount" EntityType="Self.tbl_UserAccount" />
+          <EntitySet Name="tbl_Wallet" EntityType="Self.tbl_Wallet" />
+          <AssociationSet Name="FK_tbl_Sales_tbl_Wallet" Association="Self.FK_tbl_Sales_tbl_Wallet">
+            <End Role="tbl_Wallet" EntitySet="tbl_Wallet" />
+            <End Role="tbl_Sales" EntitySet="tbl_Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Wallet_tbl_UserAccount" Association="Self.FK_tbl_Wallet_tbl_UserAccount">
+            <End Role="tbl_UserAccount" EntitySet="tbl_UserAccount" />
+            <End Role="tbl_Wallet" EntitySet="tbl_Wallet" />
+          </AssociationSet>
+          <EntitySet Name="tbl_Buys" EntityType="FastTraderDBModel.tbl_Buys" />
+          <AssociationSet Name="FK_tbl_Buys_tbl_Wallet" Association="FastTraderDBModel.FK_tbl_Buys_tbl_Wallet">
+            <End Role="tbl_Wallet" EntitySet="tbl_Wallet" />
+            <End Role="tbl_Buys" EntitySet="tbl_Buys" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_Buys">
+          <Key>
+            <PropertyRef Name="pk_tbl_Buys" />
+          </Key>
+          <Property Name="pk_tbl_Buys" Type="Guid" Nullable="false" />
+          <Property Name="fk_tbl_Wallet" Type="Guid" Nullable="false" />
+          <Property Name="tbl_Buys_BTCTargetAmount" Type="Decimal" Nullable="false" Precision="14" Scale="8" />
+          <Property Name="tbl_Buys_ZARPrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="tbl_Buys_BTCBought" Type="Decimal" Nullable="false" Precision="14" Scale="2" />
+          <Property Name="tbl_Buys_Status" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="tbl_Buys_DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tbl_Buys_DateLastModified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tbl_Buys_ZARTotal" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="tbl_Wallet" Relationship="FastTraderDBModel.FK_tbl_Buys_tbl_Wallet" FromRole="tbl_Buys" ToRole="tbl_Wallet" />
+        </EntityType>
+        <Association Name="FK_tbl_Buys_tbl_Wallet">
+          <End Type="FastTraderDBModel.tbl_Wallet" Role="tbl_Wallet" Multiplicity="1" />
+          <End Type="FastTraderDBModel.tbl_Buys" Role="tbl_Buys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Wallet">
+              <PropertyRef Name="pk_tbl_Wallet" />
+            </Principal>
+            <Dependent Role="tbl_Buys">
+              <PropertyRef Name="fk_tbl_Wallet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FastTraderDBModelStoreContainer" CdmEntityContainer="FastCoinTraderContext">
+          <EntitySetMapping Name="tbl_Email">
+            <EntityTypeMapping TypeName="FastTraderDBModel.tbl_Email">
+              <MappingFragment StoreEntitySet="tbl_Email">
+                <ScalarProperty Name="pk_tbl_Email" ColumnName="pk_tbl_Email" />
+                <ScalarProperty Name="tbl_Email_Subject" ColumnName="tbl_Email_Subject" />
+                <ScalarProperty Name="tbl_Email_Type" ColumnName="tbl_Email_Type" />
+                <ScalarProperty Name="tbl_Email_Body" ColumnName="tbl_Email_Body" />
+                <ScalarProperty Name="tbl_Email_From" ColumnName="tbl_Email_From" />
+                <ScalarProperty Name="tbl_Email_To" ColumnName="tbl_Email_To" />
+                <ScalarProperty Name="tbl_Email_DateCreated" ColumnName="tbl_Email_DateCreated" />
+                <ScalarProperty Name="tbl_Email_DateLastModified" ColumnName="tbl_Email_DateLastModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Sales">
+            <EntityTypeMapping TypeName="FastTraderDBModel.tbl_Sales">
+              <MappingFragment StoreEntitySet="tbl_Sales">
+                <ScalarProperty Name="tbl_Sales_ZARTotal" ColumnName="tbl_Sales_ZARTotal" />
+                <ScalarProperty Name="pk_tbl_Sales" ColumnName="pk_tbl_Sales" />
+                <ScalarProperty Name="fk_tbl_Wallet" ColumnName="fk_tbl_Wallet" />
+                <ScalarProperty Name="tbl_BTCTargetAmount" ColumnName="tbl_BTCTargetAmount" />
+                <ScalarProperty Name="tbl_Sales_ZARPrice" ColumnName="tbl_Sales_ZARPrice" />
+                <ScalarProperty Name="tbl_Sales_BTCSold" ColumnName="tbl_Sales_BTCSold" />
+                <ScalarProperty Name="tbl_Sales_Status" ColumnName="tbl_Sales_Status" />
+                <ScalarProperty Name="tbl_Sales_DateCreated" ColumnName="tbl_Sales_DateCreated" />
+                <ScalarProperty Name="tbl_Sales_DateLastModified" ColumnName="tbl_Sales_DateLastModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UserAccount">
+            <EntityTypeMapping TypeName="FastTraderDBModel.tbl_UserAccount">
+              <MappingFragment StoreEntitySet="tbl_UserAccount">
+                <ScalarProperty Name="pk_tbl_UserAccount" ColumnName="pk_tbl_UserAccount" />
+                <ScalarProperty Name="tbl_UserAccount_EmailAddress" ColumnName="tbl_UserAccount_EmailAddress" />
+                <ScalarProperty Name="tbl_UserAccount_Firstname" ColumnName="tbl_UserAccount_Firstname" />
+                <ScalarProperty Name="tbl_UserAccount_Surname" ColumnName="tbl_UserAccount_Surname" />
+                <ScalarProperty Name="tbl_UserAccount_PhysicalAddressLine1" ColumnName="tbl_UserAccount_PhysicalAddressLine1" />
+                <ScalarProperty Name="tbl_UserAccount_PhysicalAddressLine2" ColumnName="tbl_UserAccount_PhysicalAddressLine2" />
+                <ScalarProperty Name="tbl_UserAccount_PhysicalAddressLine3" ColumnName="tbl_UserAccount_PhysicalAddressLine3" />
+                <ScalarProperty Name="tbl_UserAccount_PostalCode" ColumnName="tbl_UserAccount_PostalCode" />
+                <ScalarProperty Name="tbl_UserAccount_CellphoneNumber" ColumnName="tbl_UserAccount_CellphoneNumber" />
+                <ScalarProperty Name="tbl_UserAccount_UserRole" ColumnName="tbl_UserAccount_UserRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Wallet">
+            <EntityTypeMapping TypeName="FastTraderDBModel.tbl_Wallet">
+              <MappingFragment StoreEntitySet="tbl_Wallet">
+                <ScalarProperty Name="pk_tbl_Wallet" ColumnName="pk_tbl_Wallet" />
+                <ScalarProperty Name="fk_tbl_UserAccount" ColumnName="fk_tbl_UserAccount" />
+                <ScalarProperty Name="tbl_Wallet_ZARBalance" ColumnName="tbl_Wallet_ZARBalance" />
+                <ScalarProperty Name="tbl_Wallet_BTCBalance" ColumnName="tbl_Wallet_BTCBalance" />
+                <ScalarProperty Name="tbl_Wallet_BTCAddress" ColumnName="tbl_Wallet_BTCAddress" />
+                <ScalarProperty Name="tbl_Wallet_BankAccNumber" ColumnName="tbl_Wallet_BankAccNumber" />
+                <ScalarProperty Name="tbl_Wallet_BankName" ColumnName="tbl_Wallet_BankName" />
+                <ScalarProperty Name="tbl_Wallet_BankBranchName" ColumnName="tbl_Wallet_BankBranchName" />
+                <ScalarProperty Name="tbl_Wallet_BankBranchNumber" ColumnName="tbl_Wallet_BankBranchNumber" />
+                <ScalarProperty Name="tbl_Wallet_DateCreated" ColumnName="tbl_Wallet_DateCreated" />
+                <ScalarProperty Name="tbl_Wallet_DateLastModified" ColumnName="tbl_Wallet_DateLastModified" />
+                <ScalarProperty Name="tbl_Wallet_ZARPending" ColumnName="tbl_Wallet_ZARPending" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Buys">
+            <EntityTypeMapping TypeName="FastTraderDBModel.tbl_Buys">
+              <MappingFragment StoreEntitySet="tbl_Buys">
+                <ScalarProperty Name="tbl_Buys_ZARTotal" ColumnName="tbl_Buys_ZARTotal" />
+                <ScalarProperty Name="tbl_Buys_DateLastModified" ColumnName="tbl_Buys_DateLastModified" />
+                <ScalarProperty Name="tbl_Buys_DateCreated" ColumnName="tbl_Buys_DateCreated" />
+                <ScalarProperty Name="tbl_Buys_Status" ColumnName="tbl_Buys_Status" />
+                <ScalarProperty Name="tbl_Buys_BTCBought" ColumnName="tbl_Buys_BTCBought" />
+                <ScalarProperty Name="tbl_Buys_ZARPrice" ColumnName="tbl_Buys_ZARPrice" />
+                <ScalarProperty Name="tbl_Buys_BTCTargetAmount" ColumnName="tbl_Buys_BTCTargetAmount" />
+                <ScalarProperty Name="fk_tbl_Wallet" ColumnName="fk_tbl_Wallet" />
+                <ScalarProperty Name="pk_tbl_Buys" ColumnName="pk_tbl_Buys" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

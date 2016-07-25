@@ -52,69 +52,68 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="API\Models\CreateBuyRequest.cs" />
-    <Compile Include="API\Models\CreateBuyResponse.cs" />
     <Compile Include="EntityHelper\BuysEntityHelper.cs" />
     <Compile Include="EntityHelper\SalesEntityHelper.cs" />
     <Compile Include="EntityHelper\WalletEntityHelper.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="FastCoinTraderModel.Context.cs">
+    <Compile Include="FastCoinTraderContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FastCoinTraderModel.Context.tt</DependentUpon>
+      <DependentUpon>FastCoinTraderContext.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="FastCoinTraderModel.cs">
+    <Compile Include="FastCoinTraderContext.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FastCoinTraderModel.tt</DependentUpon>
+      <DependentUpon>FastCoinTraderContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="FastCoinTraderModel.Designer.cs">
+    <Compile Include="FastCoinTraderContext.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FastCoinTraderModel.edmx</DependentUpon>
+      <DependentUpon>FastCoinTraderContext.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EntityHelper\EmailEntityHelper.cs" />
     <Compile Include="tbl_Buys.cs">
-      <DependentUpon>FastCoinTraderModel.tt</DependentUpon>
+      <DependentUpon>FastCoinTraderContext.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_Email.cs">
-      <DependentUpon>FastCoinTraderModel.tt</DependentUpon>
+      <DependentUpon>FastCoinTraderContext.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_Sales.cs">
-      <DependentUpon>FastCoinTraderModel.tt</DependentUpon>
+      <DependentUpon>FastCoinTraderContext.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_UserAccount.cs">
-      <DependentUpon>FastCoinTraderModel.tt</DependentUpon>
+      <DependentUpon>FastCoinTraderContext.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_Wallet.cs">
-      <DependentUpon>FastCoinTraderModel.tt</DependentUpon>
+      <DependentUpon>FastCoinTraderContext.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
-    <EntityDeploy Include="FastCoinTraderModel.edmx">
+    <None Include="App.config" />
+    <EntityDeploy Include="FastCoinTraderContext.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FastCoinTraderModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>FastCoinTraderContext.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="FastCoinTraderModel.edmx.diagram">
-      <DependentUpon>FastCoinTraderModel.edmx</DependentUpon>
+    <None Include="FastCoinTraderContext.edmx.diagram">
+      <DependentUpon>FastCoinTraderContext.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Content Include="FastCoinTraderModel.Context.tt">
+    <Content Include="FastCoinTraderContext.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FastCoinTraderModel.edmx</DependentUpon>
-      <LastGenOutput>FastCoinTraderModel.Context.cs</LastGenOutput>
+      <DependentUpon>FastCoinTraderContext.edmx</DependentUpon>
+      <LastGenOutput>FastCoinTraderContext.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="FastCoinTraderModel.tt">
+    <Content Include="FastCoinTraderContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FastCoinTraderModel.edmx</DependentUpon>
-      <LastGenOutput>FastCoinTraderModel.cs</LastGenOutput>
+      <DependentUpon>FastCoinTraderContext.edmx</DependentUpon>
+      <LastGenOutput>FastCoinTraderContext.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -11,7 +11,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         #region CreateEmail
         public void CreateEmailEntry(string subject, string body, string emailType,string from,string to)
         {
-            using (FastTraderDBEntities context = new FastTraderDBEntities())
+            using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
                 DateTime dateTimeNow = DateTime.Now;
                 context.tbl_Email.Add(
@@ -34,7 +34,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         #region Modify Emails
         public void UpdateEmailEntry(tbl_Email email)
         {
-            using (FastTraderDBEntities context = new FastTraderDBEntities())
+            using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
                 DateTime dateTimeNow = DateTime.Now;
                 context.tbl_Email.Single(x => x.pk_tbl_Email == email.pk_tbl_Email).tbl_Email_Body = email.tbl_Email_Body;
@@ -53,7 +53,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         public static List<tbl_Email> GetAllEmailList()
         {
 
-            using (FastTraderDBEntities context = new FastTraderDBEntities())
+            using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
                 var emailList = (from emails in context.tbl_Email    
                                  orderby emails.tbl_Email_DateCreated                             
@@ -66,7 +66,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         public static IQueryable<tbl_Email> GetAllEmailQueryable()
         {
 
-            using (FastTraderDBEntities context = new FastTraderDBEntities())
+            using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
                 var emailList = (from emails in context.tbl_Email
                                  orderby emails.tbl_Email_DateCreated
@@ -78,7 +78,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
 
         public static List<tbl_Email> GetEmailsByType(string type)
         {
-            using (FastTraderDBEntities context = new FastTraderDBEntities())
+            using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
                 var emailList = (from emails in context.tbl_Email
                                  where emails.tbl_Email_Type == type
@@ -91,7 +91,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
 
         public static List<tbl_Email> GetEmailsToEmailAddressByType(string emailAddress,string type)
         {
-            using (FastTraderDBEntities context = new FastTraderDBEntities())
+            using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
                 var emailList = (from emails in context.tbl_Email
                                  where emails.tbl_Email_To == emailAddress
@@ -105,7 +105,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
 
         public static List<tbl_Email> GetEmailsFromEmailAddressByType(string emailAddress, string type)
         {
-            using (FastTraderDBEntities context = new FastTraderDBEntities())
+            using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
                 var emailList = (from emails in context.tbl_Email
                                  where emails.tbl_Email_From == emailAddress
@@ -123,7 +123,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         {
             try
             {
-                using (FastTraderDBEntities context = new FastTraderDBEntities())
+                using (FastCoinTraderContext context = new FastCoinTraderContext())
                 {
                     var emailToDelete = (from email in context.tbl_Email
                                          where email.pk_tbl_Email == PrimaryKey

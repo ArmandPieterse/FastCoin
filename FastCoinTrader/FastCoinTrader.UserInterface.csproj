@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FastCoinTrader</RootNamespace>
     <AssemblyName>FastCoinTrader</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -25,7 +25,6 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -215,6 +214,7 @@
     <Compile Include="Areas\BuyDashboard\BuyDashboardAreaRegistration.cs" />
     <Compile Include="Areas\BuyDashboard\Controllers\BuyDashboardApiController.cs" />
     <Compile Include="Areas\BuyDashboard\Controllers\BuyDashboardController.cs" />
+    <Compile Include="Areas\BuyDashboard\Models\BuyBitCoinRequest.cs" />
     <Compile Include="Areas\SellDashboard\SellDashboardAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -344,7 +344,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\BuyDashboard\Models\" />
     <Folder Include="Areas\BuyDashboard\Views\BuyDashboardApi\" />
     <Folder Include="Areas\SellDashboard\Controllers\" />
     <Folder Include="Areas\SellDashboard\Models\" />
