@@ -81,7 +81,7 @@
         service.submitBuyBitCoin = function (request, success, error) {
             var url = service.submitBuyBitCoinUrl;
             var data = {
-                price: request.pricePerBTC,
+                price: request.price,
                 amount: request.amount,
                 total: request.total,
                 fee: request.fee
