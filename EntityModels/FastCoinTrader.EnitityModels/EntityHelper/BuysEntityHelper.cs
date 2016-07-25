@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FastCoinTrader.EnitityModels.API.Models;
 
 namespace FastCoinTrader.EnitityModels.EntityHelper
 {
     public class BuysEntityHelper
     {
         #region Create Buy Entry
-        public static void CreateBuyEntry(decimal BTCTargetAmount, decimal ZARPrice, decimal ZARTotal, decimal BTCBoughtAmount, string status, Guid fkWallet)
+        public static CreateBuyResponse CreateBuyEntry(decimal BTCTargetAmount, decimal ZARPrice, decimal ZARTotal, decimal BTCBoughtAmount, string status, Guid fkWallet)
         {
             using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
@@ -27,6 +28,8 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
                         tbl_Buys_ZARTotal = ZARTotal
                     });
                 context.SaveChanges();
+
+                return new CreateBuyResponse { Data = 0, Success = true, Error = new List<string>(),Warnings = new List<string>() };
             }
         }
         #endregion

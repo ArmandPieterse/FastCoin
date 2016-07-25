@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using FastCoinTrader.Areas.BuyDashboard.Models;
 using FastCoinTrader.EnitityModels;
+using FastCoinTrader.EnitityModels.API.Models;
 
 namespace FastCoinTrader.Areas.BuyDashboard.Controllers
 {
@@ -17,18 +18,14 @@ namespace FastCoinTrader.Areas.BuyDashboard.Controllers
         }
 
         [System.Web.Http.HttpPost]
-        public ActionResult BuyBitCoin(BuyBitCoinRequest request)
+        public CreateBuyResponse BuyBitCoin(CreateBuyRequest request)
         {
-            FastCoinTrader.EnitityModels.EntityHelper.BuysEntityHelper.CreateBuyEntry(request.Amount, request.Price, request.Total, request.Amount, EnitityModels.Enums.BuyStatus.Pending.ToString(), Guid.Parse("E6C95FF2-C6FB-492D-BECA-4479BDCFD2E9"));
-            throw new NotImplementedException();
+            return FastCoinTrader.EnitityModels.EntityHelper.BuysEntityHelper.CreateBuyEntry(request.Amount, request.Price, request.Total, request.Amount, EnitityModels.Enums.BuyStatus.Pending.ToString(), Guid.Parse("D258CC9B-9BC8-4E3A-B980-1FDA7DDD577E"));
+            //throw new NotImplementedException();
+
         }
 
-        [System.Web.Http.HttpGet]
-        public ActionResult GetAvailableOffers()
-        {
-           
-            throw new NotImplementedException();
-        }
+    
 
     }
 }
