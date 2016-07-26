@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<div class="col-md-9">
+    <div ng-app="selldashboard">
+        @*<div ng-controller="headerController">
+                <div ng-include src="'/Scripts/angular-infrastructure/custom/header/headerView.html'"></div>
+                <script type="text/ng-template" id="headerView.html">
+                </script>
+            </div>*@
+
+        <div ng-View>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/angular/selldashboard/scripts")
+}
+
+@*@section pageStyles
+{
+    @Styles.Render("~/angular/buydashboard/styles")
+}*@

@@ -216,6 +216,7 @@
     <Compile Include="Areas\BuyDashboard\Controllers\BuyDashboardApiController.cs" />
     <Compile Include="Areas\BuyDashboard\Controllers\BuyDashboardController.cs" />
     <Compile Include="Areas\BuyDashboard\Models\BuyBitCoinRequest.cs" />
+    <Compile Include="Areas\SellDashboard\Controllers\SellDashboardController.cs" />
     <Compile Include="Areas\SellDashboard\SellDashboardAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -231,11 +232,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\BuyDashboard\app\app.js" />
+    <Content Include="Areas\SellDashboard\app\app.js" />
+    <Content Include="Areas\SellDashboard\app\controllers\sellDashboardHomeController .js" />
     <Content Include="Areas\BuyDashboard\app\controllers\buyDashboardHomeController.js" />
     <Content Include="Areas\BuyDashboard\app\models\buyDashboardModel.js" />
     <Content Include="Areas\BuyDashboard\app\services\apiService.js" />
     <Content Include="Areas\BuyDashboard\app\services\buyDashboardService.js" />
     <Content Include="Areas\BuyDashboard\app\templates\buyDashboardHomeView.html" />
+    <Content Include="Areas\SellDashboard\app\services\apiService.js" />
+    <Content Include="Areas\SellDashboard\app\services\sellDashboardService.js" />
+    <Content Include="Areas\SellDashboard\app\templates\sellDashboardHomeView.html" />
     <Content Include="Content\bootstrap-admin-theme-change-size.css" />
     <Content Include="Content\bootstrap-admin-theme-small.css" />
     <Content Include="Content\bootstrap-admin-theme.css" />
@@ -284,6 +290,8 @@
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Areas\BuyDashboard\Views\_ViewStart.cshtml" />
     <Content Include="Areas\BuyDashboard\Views\BuyDashboard\Index.cshtml" />
+    <Content Include="Areas\SellDashboard\Views\SellDashboard\Index.cshtml" />
+    <Content Include="Areas\SellDashboard\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\BootstrapScripts\bootstrap-admin-theme-change-size.js" />
     <Content Include="Scripts\BootstrapScripts\bootstrap.js" />
@@ -356,7 +364,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\BuyDashboard\Views\BuyDashboardApi\" />
-    <Folder Include="Areas\SellDashboard\Controllers\" />
+    <Folder Include="Areas\SellDashboard\app\models\" />
     <Folder Include="Areas\SellDashboard\Models\" />
     <Folder Include="Areas\SellDashboard\Views\Shared\" />
   </ItemGroup>
