@@ -30,6 +30,8 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
                     });
                 context.SaveChanges();
 
+                //TODO: call buy btc api through blockchain and update tbl_buys accordingly.
+
                 return new CreateBuyResponse { Data = 0, Success = true, Error = new List<string>(),Warnings = new List<string>() };
             }
         }
