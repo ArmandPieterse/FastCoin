@@ -15,7 +15,7 @@
 
         service.submitBuyBitCoin = function(request, success, error) {
             apiService.submitBuyBitCoin(request, function(result) {
-                notificationService.addNotification("Helloo", true);
+                notificationService.addNotification("Bit Coin successfully purchased.", true);
 
                 if (success) {
                     success(result);

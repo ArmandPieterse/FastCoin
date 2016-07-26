@@ -1,9 +1,9 @@
-﻿<div ng-controller="buyDashboardHomeController">
-    <form role="form" id="buyDashboardHomeForm" name="buyDashboardHomeForm" novalidate class="form-horizontal">
+﻿<div ng-controller="sellDashboardHomeController">
+    <form role="form" id="sellDashboardHomeForm" name="sellDashboardHomeForm" novalidate class="form-horizontal">
         <div class="row">
             <div class="col-md-12">
                 <h1>
-                    <i class="fa fa-shopping-cart fa-fw" style="color: green;"></i> Buy Bitcoin
+                    <i class="fa fa-dollar fa-fw" style="color: green;"></i> Sell Bitcoin
                 </h1>
                 <hr />
             </div>
@@ -22,14 +22,14 @@
                 <div class="form-group col-md-6">
                     <div class="col-md-8">
                         <input type="text" class="form-control" placeholder="Amount of BTC"
-                               ng-model="buyOffer.amount" ng-change="amountChanged()" ng-required="true" />
+                               ng-model="sellOffer.amount" ng-change="amountChanged()" ng-required="true" />
                     </div>
                     <label class="col-md-4 remove-left-padding">BTC</label>
                 </div>
                 <div class="form-group col-md-6">
                     <div class="col-md-8">
                         <input type="text" class="form-control" placeholder="Price per BTC"
-                               ng-model="buyOffer.pricePerBTC" ng-change="priceChanged()" />
+                               ng-model="sellOffer.pricePerBTC" ng-change="priceChanged()" />
                     </div>
                     <label class="col-md-4 remove-left-padding">ZAR</label>
                 </div>
@@ -37,22 +37,22 @@
                 <div class="form-group col-md-6">
                     <div class="col-md-8">
                         <input type="text" class="form-control" placeholder="Fee"
-                               ng-model="buyOffer.fee" ng-readonly="true" />
+                               ng-model="sellOffer.fee" ng-readonly="true" />
                     </div>
                     <label class="col-md-4 remove-left-padding">BTC</label>
                 </div>
                 <div class="form-group col-md-6">
                     <div class="col-md-8">
                         <input type="text" class="form-control" placeholder="Total Price"
-                               ng-model="buyOffer.total" ng-change="totalChanged()">
+                               ng-model="sellOffer.total" ng-change="totalChanged()">
                     </div>
                     <label class="col-md-4 remove-left-padding">ZAR</label>
                 </div>
             </div>
         </div>
-        <button ng-disabled="buyOffer.detailsIncomplete()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-            <i class="fa fa-shopping-cart fa-fw"></i>
-            Buy
+        <button ng-disabled="sellOffer.detailsIncomplete()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            <i class="fa fa-dollar fa-fw"></i>
+            Sell
         </button>
         <hr />
 
@@ -64,7 +64,6 @@
                 </h3>
                 <hr />
             </div>
-
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -92,8 +91,8 @@
                                     <td colspan="2">{{offer.total}}</td>
                                     <td colspan="2">
                                         <button ng-click="populateOffer(offer)" type="button" class="btn btn-primary">
-                                            <i class="fa fa-shopping-cart fa-fw"></i>
-                                            Buy
+                                            <i class="fa fa-dollar fa-fw"></i>
+                                            sell
                                         </button>
                                     </td>
                                 </tr>
@@ -126,13 +125,13 @@
                                 <div class="form-group col-md-6 text-muted">
                                     <label class="control-label col-md-6">Amount</label>
                                     <div class="col-md-6">
-                                        <p class="form-control-static remove-margin">{{buyOffer.amount | number: 4}}</p>
+                                        <p class="form-control-static remove-margin">{{sellOffer.amount | number: 4}}</p>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-6 text-muted">
                                     <label class="control-label col-md-6">Price per BTC</label>
                                     <div class="col-md-6">
-                                        <p class="form-control-static remove-margin">{{buyOffer.pricePerBTC | number: 4}}</p>
+                                        <p class="form-control-static remove-margin">{{sellOffer.pricePerBTC | number: 4}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -140,13 +139,13 @@
                                 <div class="form-group col-md-6 text-muted">
                                     <label class="control-label col-md-6">Fee</label>
                                     <div class="col-md-6">
-                                        <p class="form-control-static remove-margin">{{buyOffer.fee | number: 4}}</p>
+                                        <p class="form-control-static remove-margin">{{sellOffer.fee | number: 4}}</p>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-6 text-muted">
                                     <label class="control-label col-md-6">Total</label>
                                     <div class="col-md-6">
-                                        <p class="form-control-static remove-margin">{{buyOffer.total | number: 4}}</p>
+                                        <p class="form-control-static remove-margin">{{sellOffer.total | number: 4}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -154,7 +153,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" ng-click="submitBuyBitCoin()" data-dismiss="modal">Confirm</button>
+                        <button type="button" class="btn btn-primary" ng-click="submitsellBitCoin()" data-dismiss="modal">Confirm</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
