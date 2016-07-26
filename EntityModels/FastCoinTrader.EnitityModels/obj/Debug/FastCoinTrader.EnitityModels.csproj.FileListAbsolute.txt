@@ -15,6 +15,5 @@ C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\EntityModel
 C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\EntityFramework.xml
 C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.csprojResolveAssemblyReference.cache
 C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.dll
 C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.pdb

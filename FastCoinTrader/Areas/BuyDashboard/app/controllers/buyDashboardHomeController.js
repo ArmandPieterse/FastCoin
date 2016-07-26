@@ -68,6 +68,13 @@
             }
         }
 
+        $scope.populateOffer = function (offer) {
+            $scope.buyOffer.total = offer.total;
+            $scope.buyOffer.pricePerBTC = offer.pricePerBTC;
+            $scope.buyOffer.configureFee();
+            $scope.buyOffer.configureAmount();
+        }
+
         $scope.submitBuyBitCoin = function () {
             var request = {
                 price: $scope.buyOffer.pricePerBTC,
@@ -81,7 +88,7 @@
         //TODO: Link to production data
         ///Trade history table
         $scope.sellOffers = [{ 'total': 1, 'pricePerBTC': 5, 'btc': 1.2 },
-            { 'total': 2, 'pricePerBTC': 5, 'btc': 1.2 },
+            { 'total': 2, 'pricePerBTC': 6, 'btc': 1.2 },
             { 'total': 3, 'pricePerBTC': 5, 'btc': 1.2 }];
 
         /**
@@ -104,7 +111,6 @@
         }
 
         function init() {
-            notificationService.addNotification("Helloo", true);
             $scope.buyOffer.init();
             //buyDashboardService.getAvaliableOffers(getAvailableOffersSuccess, getAvailableOffersError);
         }
