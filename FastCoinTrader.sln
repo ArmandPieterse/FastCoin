@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastCoinTrader.BlockChainAP
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlockChainAPI", "BlockChainAPI", "{48CC5589-3D72-4F49-AF98-E20C57C3423A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastCoinTrader.EmailService", "EmailService\FastCoinTrader.EmailService\FastCoinTrader.EmailService.csproj", "{5CDE0088-1DDA-47AA-B6D6-9F378114515B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EmailService", "EmailService", "{F4E159E7-96FF-45E1-A92F-53F8D7A1510D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,10 @@ Global
 		{79977545-6681-4212-B547-E42084926F52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79977545-6681-4212-B547-E42084926F52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79977545-6681-4212-B547-E42084926F52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CDE0088-1DDA-47AA-B6D6-9F378114515B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CDE0088-1DDA-47AA-B6D6-9F378114515B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CDE0088-1DDA-47AA-B6D6-9F378114515B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CDE0088-1DDA-47AA-B6D6-9F378114515B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,5 +49,6 @@ Global
 		{F8545994-C956-4C66-83C6-95A216656F00} = {8AF2B7A2-4B0D-4EA0-8FE4-1DE5091F606F}
 		{5F10D469-C296-43AB-969C-66FC5CD2A03B} = {5AFA62E7-FEED-4586-BF24-F01FA6056878}
 		{79977545-6681-4212-B547-E42084926F52} = {48CC5589-3D72-4F49-AF98-E20C57C3423A}
+		{5CDE0088-1DDA-47AA-B6D6-9F378114515B} = {F4E159E7-96FF-45E1-A92F-53F8D7A1510D}
 	EndGlobalSection
 EndGlobal
