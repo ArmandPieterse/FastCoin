@@ -9,7 +9,7 @@
         var service = {};
 
         //URLs
-        service.getAvaliableOffersUrl = '/api/BuyDashboardApi/GetAvaliableOffers';
+        service.getAvaliableOffersUrl = '/api/BuyDashboardApi/GetAvailableSaleOffers';
         service.submitBuyBitCoinUrl = '/api/BuyDashboardApi/BuyBitCoin';
         
         service.methods = {
@@ -48,9 +48,9 @@
             //    return;
             //}
 
-            //if (success) {
-            //    success(result.data, result.warnings);
-            //}
+            if (success) {
+                success(result.data, result.warnings);
+            }
         };
 
         var post = function (data, url, success, error) {

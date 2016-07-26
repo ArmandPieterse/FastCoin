@@ -33,9 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Mail, Version=3.0.16198.844, Culture=neutral, PublicKeyToken=6dc438ab78a525b3, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Program Files\Limilabs\Mail\Examples\Lib\Mail.dll</HintPath>
+    <Reference Include="Mail">
+      <HintPath>3rdPartyLibraries\Mail.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

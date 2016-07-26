@@ -85,7 +85,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
             }
         }
 
-        public List<tbl_Sales> GetSalesByStatus(string status)
+        public static List<tbl_Sales> GetSalesByStatus(string status)
         {
             using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
@@ -98,7 +98,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         }
 
 
-        public GetAvailableSaleOffersResponse GetAvailableSaleOffers()
+        public static GetAvailableSaleOffersResponse GetPendingSaleOffers()
         {
 
             GetAvailableSaleOffersResponse offersResponse = new GetAvailableSaleOffersResponse();

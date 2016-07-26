@@ -28,7 +28,7 @@ namespace FastCoinTrader.Areas.BuyDashboard.Controllers
         [System.Web.Http.HttpGet]
         public GetAvailableSaleOffersResponse GetAvailableSaleOffers()
         {
-            return GetAvailableSaleOffers();
+            return FastCoinTrader.EnitityModels.EntityHelper.SalesEntityHelper.GetPendingSaleOffers();
         }
 
 

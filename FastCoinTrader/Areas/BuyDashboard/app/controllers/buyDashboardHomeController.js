@@ -94,8 +94,8 @@
         /**
          * Initializes controller-specific data 
          */
-        function getAvailableOffersSuccess() {
-            
+        function getAvailableOffersSuccess(result) {
+            $scope.sellOffers = result;
         }
 
         function buyBitCoinSuccess() {
@@ -112,7 +112,7 @@
 
         function init() {
             $scope.buyOffer.init();
-            //buyDashboardService.getAvaliableOffers(getAvailableOffersSuccess, getAvailableOffersError);
+            buyDashboardService.getAvaliableOffers(getAvailableOffersSuccess, getAvailableOffersError);
         }
 
         init();

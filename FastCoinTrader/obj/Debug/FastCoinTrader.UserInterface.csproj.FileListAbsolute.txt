@@ -178,3 +178,4 @@ C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\FastCoinTra
 C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\FastCoinTrader\obj\Debug\FastCoinTrader.UserInterface.csprojResolveAssemblyReference.cache
 C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\FastCoinTrader\obj\Debug\FastCoinTrader.dll
 C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\FastCoinTrader\obj\Debug\FastCoinTrader.pdb
+C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\FastCoinTrader\bin\Mail.dll
