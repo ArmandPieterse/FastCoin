@@ -52,8 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\Models\CreateSaleRequest.cs" />
     <Compile Include="API\Models\CreateBuyRequest.cs" />
+    <Compile Include="API\Models\CreateSaleResponse.cs" />
     <Compile Include="API\Models\CreateBuyResponse.cs" />
+    <Compile Include="API\Models\GetAvailableSaleOffersResponse.cs" />
+    <Compile Include="API\Models\GetAvailableBuyOffersResponse.cs" />
     <Compile Include="EntityHelper\BuysEntityHelper.cs" />
     <Compile Include="EntityHelper\SalesEntityHelper.cs" />
     <Compile Include="EntityHelper\WalletEntityHelper.cs" />

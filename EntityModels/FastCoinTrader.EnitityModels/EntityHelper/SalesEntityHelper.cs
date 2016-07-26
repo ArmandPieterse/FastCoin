@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FastCoinTrader.EnitityModels.API.Models;
 
 namespace FastCoinTrader.EnitityModels.EntityHelper
 {
@@ -16,7 +17,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
 
                 DateTime dateTimeNow = DateTime.Now;
                 context.tbl_Sales.Add(
-                    new tbl_Sales {
+                    new tbl_Sales {                        
                             fk_tbl_Wallet = fkWallet,
                             tbl_Sales_BTCTargetAmount = BTCTargetAmount,
                             tbl_Sales_BTCSold = BTCSoldAmount,
@@ -84,16 +85,51 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
             }
         }
 
-        public List<tbl_Sales> GetSalesByStatus(Guid fkWallet)
+        public List<tbl_Sales> GetSalesByStatus(string status)
         {
             using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
                 var salesList = (from sales in context.tbl_Sales
-                                 where sales.fk_tbl_Wallet == fkWallet
-                                 orderby sales.tbl_Sales_DateCreated
+                                 where sales.tbl_Sales_Status == status
+                                 orderby sales.tbl_Sales_ZARPrice, sales.tbl_Sales_DateCreated
                                  select sales).ToList();
                 return salesList;
             }
+        }
+
+
+        public GetAvailableSaleOffersResponse GetAvailableSaleOffers()
+        {
+
+            GetAvailableSaleOffersResponse offersResponse = new GetAvailableSaleOffersResponse();
+            offersResponse.Data = new List<SaleOffer>();
+            try
+            {
+                List<tbl_Sales> availableSaleOffers = GetSalesByStatus(Enums.SaleStatus.Pending.ToString());
+
+                foreach (tbl_Sales sale in availableSaleOffers)
+                {
+                    SaleOffer offer = new SaleOffer
+                    {
+                        BTCAmount = (sale.tbl_Sales_BTCTargetAmount - sale.tbl_Sales_BTCSold), // this is because you can sell only part of what you have offered.
+                        Price = sale.tbl_Sales_ZARPrice,
+                        Total = sale.tbl_Sales_ZARTotal
+                    };
+                    offersResponse.Data.Add(offer);
+                }
+
+                offersResponse.Success = true;
+                return offersResponse;
+            }
+            catch(Exception ex)
+            {
+                offersResponse.Error.Add(ex.Message);
+                offersResponse.Success = false;                
+                return offersResponse;
+            }       
+
+            
+
         }
         #endregion
 
