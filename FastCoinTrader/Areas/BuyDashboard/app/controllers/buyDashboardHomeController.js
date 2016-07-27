@@ -40,7 +40,7 @@
             },
 
             configureFee: function() {
-                this.fee = this.total * this.feePercentage;
+                this.fee = this.amount * this.feePercentage;
             },
 
             detailsIncomplete: function() {
@@ -69,8 +69,8 @@
         }
 
         $scope.populateOffer = function (offer) {
-            $scope.buyOffer.total = offer.total;
-            $scope.buyOffer.pricePerBTC = offer.pricePerBTC;
+            $scope.buyOffer.total = offer.Total;
+            $scope.buyOffer.pricePerBTC = offer.Price;
             $scope.buyOffer.configureFee();
             $scope.buyOffer.configureAmount();
         }
@@ -87,15 +87,13 @@
 
         //TODO: Link to production data
         ///Trade history table
-        $scope.sellOffers = [{ 'total': 1, 'pricePerBTC': 5, 'btc': 1.2 },
-            { 'total': 2, 'pricePerBTC': 6, 'btc': 1.2 },
-            { 'total': 3, 'pricePerBTC': 5, 'btc': 1.2 }];
-
+        $scope.sellOffers = [];
         /**
          * Initializes controller-specific data 
          */
         function getAvailableOffersSuccess(result) {
-            $scope.sellOffers = result;
+            angular.extend($scope.sellOffers, result);
+            console.log(result);
         }
 
         function buyBitCoinSuccess() {
