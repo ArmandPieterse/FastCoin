@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using FastCoinTrader.Models;
+using FastCoinTrader.EnitityModels.EntityHelper;
 
 namespace FastCoinTrader.Controllers
 {
@@ -152,9 +153,17 @@ namespace FastCoinTrader.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    bool userCreatedSuccessfully = UserAccountEntityHelper.CreateUserAccount(model.Email, model.Firstname, model.Surname, model.AddressLine1,
+                        model.AddressLine2, model.AddressLine3, model.PostalCode, model.CellphoneNumber, "NormalUser");
+                    if (!userCreatedSuccessfully)
+                    {
+                        AddErrors(new IdentityResult("Registration was unsuccessful."));
+                    }                    
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
