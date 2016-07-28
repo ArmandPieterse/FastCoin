@@ -60,6 +60,7 @@
     <Compile Include="API\Models\GetAvailableBuyOffersResponse.cs" />
     <Compile Include="EntityHelper\BuysEntityHelper.cs" />
     <Compile Include="EntityHelper\SalesEntityHelper.cs" />
+    <Compile Include="EntityHelper\UserAccountEntityHelper.cs" />
     <Compile Include="EntityHelper\WalletEntityHelper.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="FastCoinTraderContext.Context.cs">

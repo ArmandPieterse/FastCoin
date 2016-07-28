@@ -21,7 +21,7 @@ namespace FastCoinTrader.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("FastCoinTraderContext", throwIfV1Schema: false)
         {
         }
 

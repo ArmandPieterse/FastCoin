@@ -62,13 +62,21 @@ namespace FastCoinTrader.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterViewModel
+    public class RegisterViewModel 
     {
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
+        [DataType(DataType.Text)]
+        [Display(Name = "Firstname")]       
+        public string Firstname { get; set; }
+
+        [DataType(DataType.Text)]
+        [Display(Name = "Surname")]        
+        public string Surname { get; set; }
+        
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
@@ -79,6 +87,26 @@ namespace FastCoinTrader.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [DataType(DataType.Text)]
+        [Display(Name = "Street Address")]       
+        public string AddressLine1 { get; set; }
+
+        [DataType(DataType.Text)]
+        [Display(Name = "Suburb")]        
+        public string AddressLine2 { get; set; }
+
+        [DataType(DataType.Text)]
+        [Display(Name = "City")]        
+        public string AddressLine3 { get; set; }
+
+        [DataType(DataType.PostalCode)]
+        [Display(Name = "Postal Code")]        
+        public string PostalCode { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Cellphone Number")]        
+        public string CellphoneNumber { get; set; }
     }
 
     public class ResetPasswordViewModel
