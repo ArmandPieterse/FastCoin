@@ -15,6 +15,5 @@ C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\EntityFramework.xml
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.csprojResolveAssemblyReference.cache
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.dll
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.pdb

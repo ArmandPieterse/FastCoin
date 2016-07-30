@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Security;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -151,34 +152,66 @@ namespace FastCoinTrader.Controllers
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
-            {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+            {              
+                try
                 {
-                    bool userCreatedSuccessfully = UserAccountEntityHelper.CreateUserAccount(model.Email, model.Firstname, model.Surname, model.AddressLine1,
-                        model.AddressLine2, model.AddressLine3, model.PostalCode, model.CellphoneNumber, "NormalUser");
-                    if (!userCreatedSuccessfully)
+                    MembershipCreateStatus membershipStatus;
+                    if (Membership.RequiresQuestionAndAnswer)
                     {
-                        AddErrors(new IdentityResult("Registration was unsuccessful."));
-                    }                    
+                        MembershipUser newUser = Membership.CreateUser(
+                          model.Email,
+                          model.Password,
+                          model.Email,
+                          "Something",
+                          "Something",
+                          false,
+                          out membershipStatus);
+                    }
+                    else
+                    {
+                        MembershipUser newUser = Membership.CreateUser(
+                          model.Email,
+                          model.Password,
+                          model.Email);
+                    }
+                    //if (membershipStatus == 0)
+                    //{
+                        bool userCreatedSuccessfully = UserAccountEntityHelper.CreateUserAccount(model.Email, model.Firstname, model.Surname, model.AddressLine1,
+                            model.AddressLine2, model.AddressLine3, model.PostalCode, model.CellphoneNumber, "NormalUser");
+                        if (!userCreatedSuccessfully)
+                        {
+                            AddErrors(new IdentityResult("Registration was unsuccessful."));
+                        }
 
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                        if (Membership.ValidateUser(model.Email, model.Password))
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
 
-                    return RedirectToAction("Index", "Home");
+                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                        // Send an email with this link
+                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+
+                    //}
+                    //ViewBag.Error = Enum.GetName(typeof(MembershipCreateStatus), membershipStatus);
+
                 }
-                AddErrors(result);
-            }
+                catch (MembershipCreateUserException e)
+                {
+                    ViewBag.Error = e.StatusCode;
+                }
+                catch (HttpException e)
+                {
+                    ViewBag.Error = e.Message;
+                }
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            }
+                // If we got this far, something failed, redisplay form
+                return View(model);
+            
         }
 
         //
