@@ -13,8 +13,11 @@
     @Html.Partial("_TopBar")
     <div class="container">
         <div class="row">
-
-            @Html.Partial("_MenuSideBar")
+            @if (!HttpContext.Current.Request.Path.Contains("Login") &&
+                 !HttpContext.Current.Request.Path.Contains("Register"))
+            {
+                @Html.Partial("_MenuSideBar")
+            }
 
             @RenderBody()
 
@@ -27,6 +30,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
+
 </html>
 
 
