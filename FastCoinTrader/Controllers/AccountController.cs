@@ -75,22 +75,33 @@ namespace FastCoinTrader.Controllers
                 return View(model);
             }
 
+            if (UserAccountEntityHelper.AuthenticateUser(model.Email,model.Password))
+            {
+                FormsAuthentication.SetAuthCookie(model.Email,true);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("Password","Login credentials were incorrect.");
+                return View(model);
+            }
+
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
-            {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
-            }
+            //var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            //switch (result)
+            //{
+            //    case SignInStatus.Success:
+            //        return RedirectToLocal(returnUrl);
+            //    case SignInStatus.LockedOut:
+            //        return View("Lockout");
+            //    case SignInStatus.RequiresVerification:
+            //        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+            //    case SignInStatus.Failure:
+            //    default:
+            //        ModelState.AddModelError("", "Invalid login attempt.");
+            //        return View(model);
+            //}
         }
 
         //
@@ -155,38 +166,27 @@ namespace FastCoinTrader.Controllers
             {              
                 try
                 {
-                    MembershipCreateStatus membershipStatus;
-                    if (Membership.RequiresQuestionAndAnswer)
+                    //Create hashed password using sha512
+                    System.String HashedPassword = System.BitConverter.ToString(((System.Security.Cryptography.SHA512)new System.Security.Cryptography.SHA512Managed()).ComputeHash(System.Text.Encoding.ASCII.GetBytes(model.Password))).Replace("-", ""); ;
+                    bool userCreatedSuccessfully = UserAccountEntityHelper.CreateUserAccount(model.Email, HashedPassword,model.Firstname, model.Surname, model.AddressLine1,
+                        model.AddressLine2, model.AddressLine3, model.PostalCode, model.CellphoneNumber, "NormalUser");
+                    if (!userCreatedSuccessfully)
                     {
-                        MembershipUser newUser = Membership.CreateUser(
-                          model.Email,
-                          model.Password,
-                          model.Email,
-                          "Something",
-                          "Something",
-                          false,
-                          out membershipStatus);
+                        AddErrors(new IdentityResult("Registration was unsuccessful."));
                     }
-                    else
+                    else if (userCreatedSuccessfully)
                     {
-                        MembershipUser newUser = Membership.CreateUser(
-                          model.Email,
-                          model.Password,
-                          model.Email);
+                        FormsAuthentication.SetAuthCookie(model.Email,true);
+                                                                                              
+                        Session["IdentityName"] = model.Email;
+                            
+                        return RedirectToAction("Index", "Home");
                     }
-                    //if (membershipStatus == 0)
-                    //{
-                        bool userCreatedSuccessfully = UserAccountEntityHelper.CreateUserAccount(model.Email, model.Firstname, model.Surname, model.AddressLine1,
-                            model.AddressLine2, model.AddressLine3, model.PostalCode, model.CellphoneNumber, "NormalUser");
-                        if (!userCreatedSuccessfully)
-                        {
-                            AddErrors(new IdentityResult("Registration was unsuccessful."));
-                        }
-
-                        if (Membership.ValidateUser(model.Email, model.Password))
-                        {
-                            return RedirectToAction("Index", "Home");
-                        }
+                       
+                    if (userCreatedSuccessfully)
+                    {
+                            
+                    }
 
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                         // Send an email with this link
@@ -433,7 +433,20 @@ namespace FastCoinTrader.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+
+            // clear authentication cookie
+            HttpCookie cookie1 = new HttpCookie(FormsAuthentication.FormsCookieName, "");
+            cookie1.Expires = DateTime.Now.AddYears(-1);
+            Response.Cookies.Add(cookie1);
+
+            // clear session cookie (not necessary for your current problem but i would recommend you do it anyway)
+            HttpCookie cookie2 = new HttpCookie("ASP.NET_SessionId", "");
+            cookie2.Expires = DateTime.Now.AddYears(-1);
+            Response.Cookies.Add(cookie2);
+
+            //AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
 

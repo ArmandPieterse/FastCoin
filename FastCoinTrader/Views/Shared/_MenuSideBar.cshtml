@@ -1,11 +1,11 @@
 ﻿<div class="col-md-3 bootstrap-admin-col-left">
-    <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
+    <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side leftMenu">
         <li class="active">
             <a href="/"><i class="fa fa-home fa-fw"></i>Home</a>
         </li>
-        <li>
+        @*<li>
             <a href="#"><i class="fa fa-angle-double-right fa-fw"></i>Get Started</a>
-        </li>
+        </li>*@
         <li>
             <a href="/BuyDashboard/BuyDashboard"><i class="fa fa-shopping-cart fa-fw"></i> Buy</a>
         </li>
@@ -17,3 +17,14 @@
         </li>
     </ul>
 </div>
+
+
+<script>
+    //script that sets the li active when clicked but since page it reloading it undo's this.
+    (function () {
+        $(".leftMenu li").click(function () {
+            $($($(this).parent()).find("li")).removeClass("active");         
+            $(this).addClass("active");
+        });
+    })()
+</script>

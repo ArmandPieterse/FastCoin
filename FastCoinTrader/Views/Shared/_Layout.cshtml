@@ -10,6 +10,10 @@
 </head>
 
 <body class="bootstrap-admin-with-small-navbar">
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
     @Html.Partial("_TopBar")
     <div class="container">
         <div class="row">
@@ -26,9 +30,7 @@
 
 
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+ 
 </body>
 
 </html>

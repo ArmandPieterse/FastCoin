@@ -70,6 +70,7 @@
           <Property Name="tbl_UserAccount_PostalCode" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="tbl_UserAccount_CellphoneNumber" Type="nvarchar" MaxLength="13" />
           <Property Name="tbl_UserAccount_UserRole" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="tbl_UserAccount_Password" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="tbl_Wallet">
           <Key>
@@ -191,6 +192,7 @@
           <Property Name="tbl_UserAccount_CellphoneNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
           <Property Name="tbl_UserAccount_UserRole" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="tbl_Wallet" Relationship="Self.FK_tbl_Wallet_tbl_UserAccount" FromRole="tbl_UserAccount" ToRole="tbl_Wallet" />
+          <Property Name="tbl_UserAccount_Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tbl_Wallet">
           <Key>
@@ -331,6 +333,7 @@
           <EntitySetMapping Name="tbl_UserAccount">
             <EntityTypeMapping TypeName="FastTraderDBModel.tbl_UserAccount">
               <MappingFragment StoreEntitySet="tbl_UserAccount">
+                <ScalarProperty Name="tbl_UserAccount_Password" ColumnName="tbl_UserAccount_Password" />
                 <ScalarProperty Name="pk_tbl_UserAccount" ColumnName="pk_tbl_UserAccount" />
                 <ScalarProperty Name="tbl_UserAccount_EmailAddress" ColumnName="tbl_UserAccount_EmailAddress" />
                 <ScalarProperty Name="tbl_UserAccount_Firstname" ColumnName="tbl_UserAccount_Firstname" />

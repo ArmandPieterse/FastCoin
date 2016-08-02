@@ -30,6 +30,7 @@ namespace FastCoinTrader.EnitityModels
         public string tbl_UserAccount_PostalCode { get; set; }
         public string tbl_UserAccount_CellphoneNumber { get; set; }
         public string tbl_UserAccount_UserRole { get; set; }
+        public string tbl_UserAccount_Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Wallet> tbl_Wallet { get; set; }
