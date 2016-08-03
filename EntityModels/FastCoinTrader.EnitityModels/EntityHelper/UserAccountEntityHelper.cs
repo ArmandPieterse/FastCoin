@@ -61,5 +61,18 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         }
         #endregion
 
+        #region Get UserAccount
+        public static Guid GetUserAccountKeyByEmail(string Email)
+        {
+            using (FastCoinTraderContext context = new FastCoinTraderContext())
+            {
+                Guid UserForeignKey = (from user in context.tbl_UserAccount
+                                       where user.tbl_UserAccount_EmailAddress == Email
+                                       select user).FirstOrDefault().pk_tbl_UserAccount;
+                return UserForeignKey;
+            }
+        }
+        #endregion
+
     }
 }

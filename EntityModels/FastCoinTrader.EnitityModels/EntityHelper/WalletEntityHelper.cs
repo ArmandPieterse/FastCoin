@@ -71,14 +71,14 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
             }
         }
 
-        public List<tbl_Wallet> GetWalletByUserAccount(Guid fk_UserAccount)
+        public static tbl_Wallet GetWalletByUserAccount(Guid fk_UserAccount)
         {
             using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
                 var walletList = (from wallet in context.tbl_Wallet
                                   where wallet.fk_tbl_UserAccount == fk_UserAccount
                                   orderby wallet.tbl_Wallet_DateLastModified
-                                  select wallet).ToList();
+                                  select wallet).FirstOrDefault();
 
                 return walletList;
             }
