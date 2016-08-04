@@ -1,23 +1,69 @@
-﻿<div class="col-md-3 bootstrap-admin-col-left">
-    <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side leftMenu">
-        <li class="active">
+﻿@using FastCoinTrader.EnitityModels.EntityHelper
+<style>
+    .control-head {
+        padding-top: 5px;
+    }
+    .controls.readonly {
+        padding-top: 0px;
+    }
+</style>
+<div class="col-md-3 bootstrap-admin-col-left">
+    <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side leftMenu">       
+         <li class="active">
+            @if (!string.IsNullOrEmpty(User.Identity.Name))
+            {
+                var account = @WalletEntityHelper.GetWalletByUserAccount(UserAccountEntityHelper.GetUserAccountKeyByEmail(User.Identity.Name));
+                <div class="panel panel-default">
+                    <div class="panel-heading">My Balance</div>
+                    <div class="bootstrap-admin-panel-content">
+                        <div>
+                            <div class="control-group control-head">
+                                <label class="control-label">BTC:</label>
+                                <div class="controls readonly">
+                                   <i class="fa fa-btc"></i> @account.tbl_Wallet_BTCBalance
+                                </div>
+                            </div>
+                            <div class="control-group control-head">
+                                <label class="control-label">ZAR:</label>
+                                <div class="controls readonly">
+                                    <strong>R</strong> @account.tbl_Wallet_ZARBalance
+                                </div>
+                            </div>
+                            <div class="control-group control-head">
+                                <label class="control-label">Pending:</label>
+                                <div class="controls readonly">
+                                    <strong>R</strong> @account.tbl_Wallet_ZARPending
+                                </div>
+                            </div>                           
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+            }
             <a href="/"><i class="fa fa-home fa-fw"></i>Home</a>
         </li>
-        @*<li>
-            <a href="#"><i class="fa fa-angle-double-right fa-fw"></i>Get Started</a>
-        </li>*@
+            @*<li>
+                <a href="#"><i class="fa fa-angle-double-right fa-fw"></i>Get Started</a>
+            </li>*@
         <li>
-            <a href="/BuyDashboard/BuyDashboard"><i class="fa fa-shopping-cart fa-fw"></i> Buy</a>
+            <a href="/BuyDashboard/BuyDashboard"><i class="fa fa-shopping-cart fa-fw"></i>Buy</a>
         </li>
         <li>
             <a href="/SellDashboard/SellDashboard"><i class="fa fa-dollar fa-fw"></i>Sell</a>
         </li>
         <li>
-            <a href="#"><i class="glyphicon glyphicon-chevron-right"></i>Forms</a>
+            @if (!string.IsNullOrEmpty(User.Identity.Name))
+            {               
+                <a href="/MyWalletDashboard/MyWalletDashboard">
+                    <i class="fa fa-btc fa-fw"></i>My Wallet
+                </a>                   
+            }                        
+        </li>
+        <li>
+            <a href="#"><i class="fa fa-newspaper-o fa-fw"></i>News</a>
         </li>
     </ul>
 </div>
-
 
 <script>
     //script that sets the li active when clicked but since page it reloading it undo's this.

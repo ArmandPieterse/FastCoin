@@ -17,21 +17,7 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">                      
-                        @if (!string.IsNullOrEmpty(User.Identity.Name))
-                        {
-                            var account = @WalletEntityHelper.GetWalletByUserAccount(UserAccountEntityHelper.GetUserAccountKeyByEmail(User.Identity.Name));
-                            <li> 
-                                <div>                             
-                                    BTC: @account.tbl_Wallet_BTCBalance 
-                              
-                                    ZAR: R @account.tbl_Wallet_ZARBalance
-                          
-                                    ZAR Pending: R @account.tbl_Wallet_ZARPending  
-                                </div>                                                           
-                            </li>
-                            <li><a href="#"><i class="fa fa-bank"></i> Wallet</a></li>
-                            
-                        }
+                   
                         <li class="dropdown">
                             <a href="#" role="button" class="dropdown-toggle" data-hover="dropdown"> <i class="glyphicon glyphicon-user"></i> @if(String.IsNullOrEmpty(User.Identity.Name)) { Html.ViewContext.Writer.Write("Account"); } else { Html.ViewContext.Writer.Write(User.Identity.Name); } <i class="caret"></i></a>
                             <ul class="dropdown-menu">
