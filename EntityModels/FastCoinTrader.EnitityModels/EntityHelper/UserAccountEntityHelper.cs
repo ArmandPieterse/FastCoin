@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FastCoinTrader.BlockChainAPI;
 
 namespace FastCoinTrader.EnitityModels.EntityHelper
 {
@@ -34,6 +35,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
                         }
                      );
                     context.SaveChanges();
+                    BlockChainAPI.BlockChainAPI.CreateWalletForUser(emailAddress,password);
                     return true;
                 }
                 catch (Exception ex)

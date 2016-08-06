@@ -4,10 +4,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastCoinTrader.UserInterface", "FastCoinTrader\FastCoinTrader.UserInterface.csproj", "{F8545994-C956-4C66-83C6-95A216656F00}"
+	ProjectSection(ProjectDependencies) = postProject
+		{79977545-6681-4212-B547-E42084926F52} = {79977545-6681-4212-B547-E42084926F52}
+		{5F10D469-C296-43AB-969C-66FC5CD2A03B} = {5F10D469-C296-43AB-969C-66FC5CD2A03B}
+		{5CDE0088-1DDA-47AA-B6D6-9F378114515B} = {5CDE0088-1DDA-47AA-B6D6-9F378114515B}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{8AF2B7A2-4B0D-4EA0-8FE4-1DE5091F606F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastCoinTrader.EnitityModels", "EntityModels\FastCoinTrader.EnitityModels\FastCoinTrader.EnitityModels.csproj", "{5F10D469-C296-43AB-969C-66FC5CD2A03B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{79977545-6681-4212-B547-E42084926F52} = {79977545-6681-4212-B547-E42084926F52}
+		{5CDE0088-1DDA-47AA-B6D6-9F378114515B} = {5CDE0088-1DDA-47AA-B6D6-9F378114515B}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EntityModels", "EntityModels", "{5AFA62E7-FEED-4586-BF24-F01FA6056878}"
 EndProject

@@ -167,7 +167,7 @@ namespace FastCoinTrader.Controllers
                 try
                 {
                     //Create hashed password using sha512
-                    System.String HashedPassword = System.BitConverter.ToString(((System.Security.Cryptography.SHA512)new System.Security.Cryptography.SHA512Managed()).ComputeHash(System.Text.Encoding.ASCII.GetBytes(model.Password))).Replace("-", ""); ;
+                    System.String HashedPassword = System.BitConverter.ToString(((System.Security.Cryptography.SHA512)new System.Security.Cryptography.SHA512Managed()).ComputeHash(System.Text.Encoding.ASCII.GetBytes(model.Password))).Replace("-", "");
                     bool userCreatedSuccessfully = UserAccountEntityHelper.CreateUserAccount(model.Email, HashedPassword,model.Firstname, model.Surname, model.AddressLine1,
                         model.AddressLine2, model.AddressLine3, model.PostalCode, model.CellphoneNumber, "NormalUser");
                     if (!userCreatedSuccessfully)
@@ -175,18 +175,14 @@ namespace FastCoinTrader.Controllers
                         AddErrors(new IdentityResult("Registration was unsuccessful."));
                     }
                     else if (userCreatedSuccessfully)
-                    {
+                    {                        
                         FormsAuthentication.SetAuthCookie(model.Email,true);
                                                                                               
                         Session["IdentityName"] = model.Email;
                             
                         return RedirectToAction("Index", "Home");
-                    }
-                       
-                    if (userCreatedSuccessfully)
-                    {
-                            
-                    }
+                    }                       
+               
 
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                         // Send an email with this link
