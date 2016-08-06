@@ -245,6 +245,9 @@
     <Content Include="Areas\SellDashboard\app\services\apiService.js" />
     <Content Include="Areas\SellDashboard\app\services\sellDashboardService.js" />
     <Content Include="Areas\SellDashboard\app\templates\sellDashboardHomeView.html" />
+    <Content Include="Areas\TradeHistory\app\app.js" />
+    <Content Include="Areas\TradeHistory\app\controllers\tradeHistoryController.js" />
+    <Content Include="Areas\TradeHistory\app\templates\tradeHistoryView.html" />
     <Content Include="Content\bootstrap-admin-theme-change-size.css" />
     <Content Include="Content\bootstrap-admin-theme-small.css" />
     <Content Include="Content\bootstrap-admin-theme.css" />
@@ -374,6 +377,8 @@
     <Folder Include="Areas\SellDashboard\app\models\" />
     <Folder Include="Areas\SellDashboard\Models\" />
     <Folder Include="Areas\SellDashboard\Views\Shared\" />
+    <Folder Include="Areas\TradeHistory\app\models\" />
+    <Folder Include="Areas\TradeHistory\app\services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
