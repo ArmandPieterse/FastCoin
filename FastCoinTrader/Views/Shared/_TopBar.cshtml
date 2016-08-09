@@ -1,50 +1,10 @@
 ﻿@using FastCoinTrader.EnitityModels.EntityHelper
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="navbar-header">
-                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon icon-bar"></span>
-                        <span class="icon icon-bar"></span>
-                        <span class="icon icon-bar"></span>
-                    </button>
-                    <div class="navbar-brand">
-                        <a href="/">
-                            <img src="~/Resources/LogoMakr.png" style="width: 100px; height: 50px; position: relative; top: -16px;"/>
-                        </a>
-                    </div>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">                      
-                   
-                        <li class="dropdown">
-                            <a href="#" role="button" class="dropdown-toggle" data-hover="dropdown"> <i class="glyphicon glyphicon-user"></i> @if(String.IsNullOrEmpty(User.Identity.Name)) { Html.ViewContext.Writer.Write("Account"); } else { Html.ViewContext.Writer.Write(User.Identity.Name); } <i class="caret"></i></a>
-                            <ul class="dropdown-menu">
-                                @if (String.IsNullOrEmpty(User.Identity.Name))
-                                {
-                                    <li><a href="/Account/Login" class="fa fa-unlock"> Login</a></li>
-                                    <li><a href="/Account/Register" class="fa fa-user-plus"> Register</a></li>
-                                }
-                                else
-                                {
-                                    <li><a href="~/Account/LogOff" class="fa fa-lock"> Logout</a></li>
-                                }                                
-                                @*<li><a href="#"></a></li>
-                                <li role="presentation" class="divider"></li>*@
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
+
 
 <div id="footer" class="container">
     <nav class="navbar navbar-default navbar-fixed-bottom" style="padding-top: 10px;">
         <div class="navbar-inner navbar-content-center bootstrap-admin-light-padding-top">
-            <img src="~/Resources/LogoMakr.png" style="width: 100px; height: 50px; position: relative; bottom: 13px; left: 10px;" class="img-thumbnail"/>
+            <img src="~/Resources/LogoMakr.png" style="width: 100px; height: 50px; position: relative; bottom: 13px; left: 10px;" class="img-thumbnail" />
         </div>
     </nav>
 </div>
