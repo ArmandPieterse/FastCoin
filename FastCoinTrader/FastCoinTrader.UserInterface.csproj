@@ -265,8 +265,6 @@
     <Content Include="Resources\Logo.png" />
     <Content Include="Resources\LogoMakr.png" />
     <Content Include="Resources\LogoSmall.png" />
-    <Content Include="root.js" />
-    <Content Include="router.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\angular-animate.js" />
