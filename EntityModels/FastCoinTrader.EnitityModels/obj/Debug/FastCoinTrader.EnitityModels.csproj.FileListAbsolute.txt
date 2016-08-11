@@ -13,8 +13,15 @@ C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.EnitityModels.pdb
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\EntityFramework.dll
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.BlockChainAPI.dll
+C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\NBitcoin.dll
+C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\EntityFramework.xml
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.BlockChainAPI.pdb
+C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\NBitcoin.pdb
+C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\NBitcoin.xml
+C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.csprojResolveAssemblyReference.cache
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.dll
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.pdb
-C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.csprojResolveAssemblyReference.cache

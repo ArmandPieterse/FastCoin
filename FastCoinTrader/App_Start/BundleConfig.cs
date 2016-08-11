@@ -12,6 +12,7 @@ namespace FastCoinTrader
             RegisterGlobalStyles(bundles);
             RegisterBuyDashboardBundles(bundles);
             RegisterSellDashboardBundles(bundles);
+            RegisterTradeHistoryBundles(bundles);
         }
 
         private static void RegisterGlobalScripts(BundleCollection bundles)
@@ -93,6 +94,31 @@ namespace FastCoinTrader
                 //.IncludeDirectory("~/Areas/BuyDashboard/app/models", "*.js")
                 .IncludeDirectory("~/Areas/SellDashboard/app/controllers", "*.js")
                 );
+        }
+
+        public static void RegisterTradeHistoryBundles(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle("~/angular/selldashboard/scripts")
+                .Include("~/Scripts/angular.js")
+                .Include("~/Scripts/angular-route.js")
+                .Include("~/Scripts/angular-sanitize.js")
+                .Include("~/Scripts/angular-animate.js")
+
+                // 3rd party plugins
+                .Include("~/Scripts/angular-spinners.min.js")
+                //.Include("~/Scripts/confirm/angular-acknowledge.js")
+                //.Include("~/Scripts/confirm/angular-confirm.js")
+                .Include("~/Scripts/smart-table.min.js")
+                .Include("~/Scripts/moment.js")
+                .Include("~/Scripts/underscore.js")
+                .IncludeDirectory("~/Scripts/Custom", "*.js")
+                .IncludeDirectory("~/Scripts/Custom/angular-ui", "*.js")
+                .IncludeDirectory("~/Scripts/Custom/notificationService", "*.js")
+                //Start local custodian scripts
+                .IncludeDirectory("~/Areas/SellDashboard/app", "*.js")
+                //.IncludeDirectory("~/Areas/SellDashboard/app/services", "*.js")
+                //.IncludeDirectory("~/Areas/BuyDashboard/app/models", "*.js")
+                .IncludeDirectory("~/Areas/SellDashboard/app/controllers", "*.js"));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using FastCoinTrader.EnitityModels.EntityHelper
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -6,32 +7,85 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <script src="https://use.fontawesome.com/b6c4c3f053.js"></script>
-</head>
-
-<body class="bootstrap-admin-with-small-navbar">
+        
+    <!--Template links-->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/sb-admin.css" rel="stylesheet">   
+    <link href="~/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 
-    @Html.Partial("_TopBar")
-    <div class="container">
-        <div class="row">
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/BootstrapScripts/bootstrap.js"></script>
+    <!-- Morris Charts JavaScript -->
+    <script src="~/Scripts/BootstrapScripts/plugins/morris/raphael.min.js"></script>
+    <script src="~/Scripts/BootstrapScripts/plugins/morris/morris.min.js"></script>
+    <script src="~/Scripts/BootstrapScripts/plugins/morris/morris-data.js"></script>
+</head>
+
+<body>
+    
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/">
+                    <img src="~/Resources/LogoMakr.png" style="width: 100px; height: 50px; position: relative; left:18px;" />
+                </a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> @if (String.IsNullOrEmpty(User.Identity.Name)) { Html.ViewContext.Writer.Write("Account"); } else { Html.ViewContext.Writer.Write(User.Identity.Name); }   <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        @if (String.IsNullOrEmpty(User.Identity.Name))
+                        {
+                            <li><a href="/Account/Login" class="glyphicon glyphicon-log-in"> Login</a></li>
+                            <li><a href="/Account/Register" class="fa fa-users"> Register</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="~/Account/LogOff" class="glyphicon glyphicon-log-out"> Logout</a></li>
+                        }
+                    </ul>
+                </li>
+            </ul>
+            
             @if (!HttpContext.Current.Request.Path.Contains("Login") &&
-                 !HttpContext.Current.Request.Path.Contains("Register"))
+            !HttpContext.Current.Request.Path.Contains("Register"))
             {
                 @Html.Partial("_MenuSideBar")
             }
+        </nav>
 
-            @RenderBody()
-
+        <!--Body Area-->
+        <div id="page-wrapper">
+           
+            <div class="container-fluid">                            
+                @RenderBody()
+            </div>
+           
         </div>
-    </div>
+     
+</div>
+    <!-- /#wrapper -->
 
 
 
- 
 </body>
+
+
+
+
+
+
 
 </html>
 
