@@ -235,6 +235,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\BuyDashboard\app\app.js" />
+    <Content Include="Areas\BuyDashboard\app\templates\test.html" />
     <Content Include="Areas\SellDashboard\app\app.js" />
     <Content Include="Areas\SellDashboard\app\controllers\sellDashboardHomeController .js" />
     <Content Include="Areas\BuyDashboard\app\controllers\buyDashboardHomeController.js" />
@@ -269,6 +270,8 @@
     <Content Include="Resources\Logo.png" />
     <Content Include="Resources\LogoMakr.png" />
     <Content Include="Resources\LogoSmall.png" />
+    <Content Include="root.js" />
+    <Content Include="router.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\angular-animate.js" />
