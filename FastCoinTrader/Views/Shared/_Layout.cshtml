@@ -58,8 +58,8 @@
                 </li>
             </ul>
             
-            @if (!HttpContext.Current.Request.Path.Contains("Login") &&
-            !HttpContext.Current.Request.Path.Contains("Register"))
+            @if (!HttpContext.Current.Request.Path.ToLower().Contains("login") &&
+            !HttpContext.Current.Request.Path.ToLower().Contains("register"))
             {
                 @Html.Partial("_MenuSideBar")
             }

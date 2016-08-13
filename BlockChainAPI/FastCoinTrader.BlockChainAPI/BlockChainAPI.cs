@@ -12,41 +12,36 @@ namespace FastCoinTrader.BlockChainAPI
 {
     public class BlockChainAPI
     {
-        public static bool CreateWalletForUser(string username,string password)
+        public static string CreateWalletForUser(string username,string password)
         {
-            //Info.Blockchain.API.CreateWallet.WalletCreator creator = new WalletCreator(string.Empty);
-            Key privateKey = new Key(); //generate a private key for this user...
-            string label = "Main address";
-            BitcoinSecret testNetPrivateKey = privateKey.GetBitcoinSecret(Network.TestNet);
-            //Create request and get response.
-            WebRequest request =  WebRequest.Create(String.Format("http://localhost:3000/api/v2/create?password={0}&api_code={1}&priv={2}&label={3}&email{4}", password,string.Empty,testNetPrivateKey.ToString(),label,username));
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.Credentials = CredentialCache.DefaultCredentials;
-            ((HttpWebRequest)request).UserAgent = ".NET Framework Example Client";
-            WebResponse response = request.GetResponse();
+            Key privateKey = new Key();
+            PubKey pubKey = privateKey.PubKey;
+            Network networkToUse = Network.TestNet; //change to main network when system goes live...
 
-            //Create stream and reader to parse response
-            Stream dataStream = response.GetResponseStream();            
-            StreamReader reader = new StreamReader(dataStream);
-            string responseFromServer = reader.ReadToEnd();          
-            Console.WriteLine(responseFromServer);    
-            reader.Close();
-            response.Close();
+            var pubKeyHash = pubKey.Hash;
+            BitcoinAddress userBitcoinAddress = GetTestNetDetails(pubKey);
+            //BitcoinSecret secret = privateKey.GetBitcoinSecret(networkToUse);
+            BitcoinSecret privateWifKey = privateKey.GetWif(networkToUse);
+            //BitcoinSecret testing = new BitcoinSecret(privateWifKey.ToWif());   //privateWifKey.ToWif() save dit in die table as die user se secret key om als te generate.
 
-            //TODO: create wallet entry with required details...
-            return true;
+            return privateWifKey.ToWif();
+        }      
+
+
+        private static BitcoinAddress GetTestNetDetails(PubKey pubKey)
+        {
+            //TODO: Get required details and return that which is necessary.           
+            var publicKeyHash = pubKey.Hash;
+            return publicKeyHash.GetAddress(Network.TestNet); //For now use only the test network.
         }
 
-        private static void GetNetDetails(Key privateKey)
+        private static BitcoinAddress GetMainNetDetails(PubKey pubKey)
         {
-            //TODO: Get required details and return that which is necessary.
-            PubKey publicKey = privateKey.PubKey; //get public key for this privateKey
-            var publicKeyHash = publicKey.Hash;
-
-            //var mainNetAddress = publicKeyHash.GetAddress(Network.Main); //TODO: make use of this network once we are live
-
-            var testNetAddress = publicKeyHash.GetAddress(Network.TestNet); //For now use only the test network.
+            //TODO: make use of this network once we are live
+            var publicKeyHash = pubKey.Hash;
+            return publicKeyHash.GetAddress(Network.Main);
         }
+      
 
         private static BitcoinPubKeyAddress GetPublicScriptKey(Key privateKey,Network netw)
         {

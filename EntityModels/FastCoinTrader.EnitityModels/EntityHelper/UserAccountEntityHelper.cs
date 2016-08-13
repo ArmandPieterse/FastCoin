@@ -34,9 +34,25 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
                             tbl_UserAccount_UserRole = userRole
                         }
                      );
-                    context.SaveChanges();
-                    BlockChainAPI.BlockChainAPI.CreateWalletForUser(emailAddress,password);
-                    return true;
+                    context.SaveChanges();                    
+                    string secretWif = BlockChainAPI.BlockChainAPI.CreateWalletForUser(emailAddress, password);
+                    if (!string.IsNullOrEmpty(secretWif))
+                    {
+                        EntityHelper.WalletEntityHelper.CreateWalletEntry(emailAddress, 0, 0, 0, secretWif, "Default", "Default", "Default", "Default");
+                        return true;
+                    }
+                    else
+                    {
+                        var userAccount = (from ua in context.tbl_UserAccount
+                                           where ua.tbl_UserAccount_EmailAddress == emailAddress
+                                           select ua).FirstOrDefault();
+                        if (userAccount != null)
+                        {
+                            context.tbl_UserAccount.Remove(userAccount);
+                            context.SaveChanges();
+                        }
+                        return false;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -58,6 +74,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
                                      where user.tbl_UserAccount_EmailAddress == username 
                                      && user.tbl_UserAccount_Password == HashedPassword
                                      select user).FirstOrDefault();
+               
                 return (validatedUser != null); //if there exists a user with this username and password combo.
             }
         }

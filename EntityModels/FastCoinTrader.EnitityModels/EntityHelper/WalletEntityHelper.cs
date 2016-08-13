@@ -9,15 +9,17 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
     public class WalletEntityHelper
     {
         #region Create Wallet
-        public void CreateWalletEntry(Guid fkUserAccount,decimal ZARBalance,decimal ZARPending,decimal BTCBalance,string BTCAddress,
+        public static void CreateWalletEntry(string username,decimal ZARBalance,decimal ZARPending,decimal BTCBalance,string BTCAddress,
             string bankAccountNumber,string bankName,string branchName,string branchNumber)
-        {
+        {            
             using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
+                Guid fkUserAccount = context.tbl_UserAccount.Single(x => x.tbl_UserAccount_EmailAddress == username).pk_tbl_UserAccount;
                 DateTime dateTimeNow = DateTime.Now;
                 context.tbl_Wallet.Add(
                     new tbl_Wallet
                     {
+                        pk_tbl_Wallet = Guid.NewGuid(),
                         fk_tbl_UserAccount = fkUserAccount,
                         tbl_Wallet_ZARBalance = ZARBalance,
                         tbl_Wallet_ZARPending = ZARPending,
