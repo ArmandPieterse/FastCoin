@@ -9,7 +9,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
     public class WalletEntityHelper
     {
         #region Create Wallet
-        public static void CreateWalletEntry(string username,decimal ZARBalance,decimal ZARPending,decimal BTCBalance,string BTCAddress,
+        public static void CreateWalletEntry(string username,decimal ZARBalance,decimal ZARPending,decimal BTCBalance,string BTCAddress, byte[] code,
             string bankAccountNumber,string bankName,string branchName,string branchNumber)
         {            
             using (FastCoinTraderContext context = new FastCoinTraderContext())
@@ -30,7 +30,8 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
                         tbl_Wallet_BankBranchNumber = branchNumber,
                         tbl_Wallet_BankName = bankName,
                         tbl_Wallet_DateCreated = dateTimeNow,
-                        tbl_Wallet_DateLastModified = dateTimeNow
+                        tbl_Wallet_DateLastModified = dateTimeNow,
+                        tbl_Wallet_CodeFactory = code
                     }
                 );
                 context.SaveChanges();
@@ -77,12 +78,14 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         {
             using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
-                var walletList = (from wallet in context.tbl_Wallet
+                var userWallet = (from wallet in context.tbl_Wallet
                                   where wallet.fk_tbl_UserAccount == fk_UserAccount
                                   orderby wallet.tbl_Wallet_DateLastModified
                                   select wallet).FirstOrDefault();
+                
+                string st = BlockChainAPI.BlockChainAPI.DoTransaction(userWallet.tbl_Wallet_BTCAddress, userWallet.tbl_Wallet_CodeFactory,userWallet.tbl_Wallet_BTCAddress,context.tbl_UserAccount.Single(x => x.pk_tbl_UserAccount == fk_UserAccount).tbl_UserAccount_Password);
 
-                return walletList;
+                return userWallet;
             }
         }
                

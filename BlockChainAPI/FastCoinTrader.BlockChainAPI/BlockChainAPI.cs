@@ -12,20 +12,48 @@ namespace FastCoinTrader.BlockChainAPI
 {
     public class BlockChainAPI
     {
-        public static string CreateWalletForUser(string username,string password)
+        private static Network networkToUse = Network.TestNet;
+        public static ExtKey CreateWalletForUser()
         {
-            Key privateKey = new Key();
-            PubKey pubKey = privateKey.PubKey;
-            Network networkToUse = Network.TestNet; //change to main network when system goes live...
+            ExtKey extKey = new ExtKey();
+            return extKey;
+        }  
+        
 
-            var pubKeyHash = pubKey.Hash;
+        private static BitcoinAddress GetUserAddress(PubKey pubKey)
+        {
             BitcoinAddress userBitcoinAddress = GetTestNetDetails(pubKey);
-            //BitcoinSecret secret = privateKey.GetBitcoinSecret(networkToUse);
-            BitcoinSecret privateWifKey = privateKey.GetWif(networkToUse);
-            //BitcoinSecret testing = new BitcoinSecret(privateWifKey.ToWif());   //privateWifKey.ToWif() save dit in die table as die user se secret key om als te generate.
+            return userBitcoinAddress;
+        }
 
-            return privateWifKey.ToWif();
-        }      
+        //use this to get the receiving address.
+        private static BitcoinAddress GetLinkedAddressByOrder(uint order, ExtPubKey pubkey, Network networkToUse)
+        {
+            BitcoinAddress tempAddress = pubkey.Derive(order).PubKey.GetAddress(networkToUse);
+            return tempAddress;
+        }
+
+        public static string DoTransaction(string wifSecretFrom,byte[] fromCode,string wifSecretTo,string password)
+        {            
+            NBitcoin.TransactionBuilder tb = new TransactionBuilder();
+            Transaction trans = tb.BuildTransaction(true);
+
+
+            ExtKey myWallet = GetWallet(wifSecretFrom,fromCode);
+
+            return "";
+        }
+
+        private static ExtKey GetWallet(string wif,byte[] code)
+        {
+            return new ExtKey(new BitcoinSecret(wif).PrivateKey, code);
+        }
+
+        private static ExtKey GetExtKey(byte[] seed)
+        {
+            ExtKey myWallet = new ExtKey(seed);            
+            return myWallet;
+        }
 
 
         private static BitcoinAddress GetTestNetDetails(PubKey pubKey)
