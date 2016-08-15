@@ -235,7 +235,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\BuyDashboard\app\app.js" />
-    <Content Include="Areas\BuyDashboard\app\templates\test.html" />
+    <Content Include="Areas\BuyDashboard\app\templates\myTest.html" />
+    <Content Include="Areas\Routing\root.js" />
     <Content Include="Areas\SellDashboard\app\app.js" />
     <Content Include="Areas\SellDashboard\app\controllers\sellDashboardHomeController .js" />
     <Content Include="Areas\BuyDashboard\app\controllers\buyDashboardHomeController.js" />

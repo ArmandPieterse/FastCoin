@@ -1,6 +1,6 @@
 ﻿@using FastCoinTrader.EnitityModels.EntityHelper
 <!DOCTYPE html>
-<html>
+<html ng-app="root" ng-controller="myApp">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +17,14 @@
 
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/BootstrapScripts/bootstrap.js"></script>
+
+    <!--Angular Routing Scripts-->
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    <script src="~/Areas/Routing/root.js"></script>
+    <script src="~/Areas/BuyDashboard/app/app.js"></script>
+    <script src="~/Areas/SellDashboard/app/app.js"></script>
+
     <!-- Morris Charts JavaScript -->
     <script src="~/Scripts/BootstrapScripts/plugins/morris/raphael.min.js"></script>
     <script src="~/Scripts/BootstrapScripts/plugins/morris/morris.min.js"></script>
@@ -58,8 +66,8 @@
                 </li>
             </ul>
             
-            @if (!HttpContext.Current.Request.Path.Contains("Login") &&
-            !HttpContext.Current.Request.Path.Contains("Register"))
+            @if (!HttpContext.Current.Request.Path.ToLower().Contains("login") &&
+            !HttpContext.Current.Request.Path.ToLower().Contains("register"))
             {
                 @Html.Partial("_MenuSideBar")
             }
