@@ -2,14 +2,11 @@
 /// <reference path="C:\Users\Arno\Documents\Visual Studio 2015\Projects\Personal\FastCoinTest\FastCoinTrader\Views/Home/Index.cshtml" />
 (function () {
     "use strict";
-    angular.module("root", ["ngRoute", "ngSanitize", "ngiUI", "ui.bootstrap", "smart-table", "buydashboard", "selldashboard", "tradeHistory"])
+    angular.module("root", ['ngRoute'])
+    //angular.module("root", ["ngRoute", "ngSanitize", "ngiUI", "ui.bootstrap", "smart-table", "buydashboard", "selldashboard", "tradeHistory"])
 
-    .controller("myApp",[function() {
-            go = function() {
-                alert("Success");
-            }
-
-            go();
+    .controller("myApp", [function () {
+        alert("We're going to fix routing!");
         }])
 
     .config(function ($routeProvider) {
@@ -33,8 +30,8 @@
             .when("trade",
                 {
                     templateUrl: "/Areas/SellDashboard/app/templates/sellDashBoardHomeView.html"
-                });
+                })
 
-            //.otherwise({ redirectTo: "/home" });
+            .otherwise({ redirectTo: "/home" });
         });
 })();
