@@ -33,6 +33,7 @@ namespace FastCoinTrader.EnitityModels
         public System.DateTime tbl_Wallet_DateCreated { get; set; }
         public System.DateTime tbl_Wallet_DateLastModified { get; set; }
         public decimal tbl_Wallet_ZARPending { get; set; }
+        public byte[] tbl_Wallet_CodeFactory { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Sales> tbl_Sales { get; set; }
