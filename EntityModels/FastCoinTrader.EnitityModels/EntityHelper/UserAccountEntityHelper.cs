@@ -36,7 +36,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
                         }
                      );
                     context.SaveChanges();                    
-                    ExtKey extKey = BlockChainAPI.BlockChainAPI.CreateWalletForUser();
+                    ExtKey extKey = BlockChainAPI.BlockChainAPI.CreateWalletForUser(emailAddress);
                     if (extKey != null)
                     {
                         string secretWif = extKey.PrivateKey.GetBitcoinSecret(Network.TestNet).ToWif();

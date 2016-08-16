@@ -5,19 +5,32 @@ using System.Text;
 using System.Threading.Tasks;
 using Info.Blockchain.API.CreateWallet;
 using NBitcoin;
+using BitcoinLib;
 using System.Net;
 using System.IO;
+using BitcoinLib.Auxiliary;
+using BitcoinLib.ExceptionHandling.Rpc;
+using BitcoinLib.Responses;
+using BitcoinLib.Services.Coins.Base;
+using BitcoinLib.Services.Coins.Bitcoin;
 
 namespace FastCoinTrader.BlockChainAPI
 {
     
     public class BlockChainAPI
     {
-        private static Network networkToUse = Network.TestNet;
-        IBitcoinService BitcoinService = new BitcoinService();
-        public static ExtKey CreateWalletForUser()
+        //private static readonly ICoinService CoinService = new BitcoinService(useTestnet: true);
+        private static NBitcoin.Network networkToUse = NBitcoin.Network.TestNet;
+        private static IBitcoinService bitcoinService = new BitcoinService(useTestnet: true);
+
+        public static ExtKey CreateWalletForUser(string username)
         {
+
+            // need to get bitcoinliib working and install bitcoind on pc commandline interface...
             ExtKey extKey = new ExtKey();
+            //string result = CoinService.SetAccount(extKey.PrivateKey.GetBitcoinSecret(networkToUse).GetAddress().ToString(), username);
+            
+            //Decimal myBalance = CoinService.GetBalance();           
             return extKey;
         }  
         
@@ -29,7 +42,7 @@ namespace FastCoinTrader.BlockChainAPI
         }
 
         //use this to get the receiving address.
-        private static BitcoinAddress GetLinkedAddressByOrder(uint order, ExtPubKey pubkey, Network networkToUse)
+        private static BitcoinAddress GetLinkedAddressByOrder(uint order, ExtPubKey pubkey, NBitcoin.Network networkToUse)
         {
             BitcoinAddress tempAddress = pubkey.Derive(order).PubKey.GetAddress(networkToUse);
             return tempAddress;
@@ -62,18 +75,18 @@ namespace FastCoinTrader.BlockChainAPI
         {
             //TODO: Get required details and return that which is necessary.           
             var publicKeyHash = pubKey.Hash;
-            return publicKeyHash.GetAddress(Network.TestNet); //For now use only the test network.
+            return publicKeyHash.GetAddress(NBitcoin.Network.TestNet); //For now use only the test network.
         }
 
         private static BitcoinAddress GetMainNetDetails(PubKey pubKey)
         {
             //TODO: make use of this network once we are live
             var publicKeyHash = pubKey.Hash;
-            return publicKeyHash.GetAddress(Network.Main);
+            return publicKeyHash.GetAddress(NBitcoin.Network.Main);
         }
       
 
-        private static BitcoinPubKeyAddress GetPublicScriptKey(Key privateKey,Network netw)
+        private static BitcoinPubKeyAddress GetPublicScriptKey(Key privateKey, NBitcoin.Network netw)
         {
             return privateKey.PubKey.GetAddress(netw);
         }  
