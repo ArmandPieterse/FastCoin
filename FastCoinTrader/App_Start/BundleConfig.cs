@@ -8,8 +8,8 @@ namespace FastCoinTrader
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            RegisterGlobalScripts(bundles);
             RegisterGlobalStyles(bundles);
+            RegisterGlobalScripts(bundles);
             RegisterBuyDashboardBundles(bundles);
             RegisterSellDashboardBundles(bundles);
             RegisterTradeHistoryBundles(bundles);
@@ -32,12 +32,15 @@ namespace FastCoinTrader
             bundles.Add(new ScriptBundle("~/bundles/bootstrap")
                 .Include("~/Scripts/bootstrap.js", "~/Scripts/respond.js")
                 .Include("~/Scripts/toastr.min.js")
-                .IncludeDirectory("~/Scripts/BootstrapScripts", "*.js"));
+                .IncludeDirectory("~/Scripts/BootstrapScripts", "*.js")
+                .IncludeDirectory("~/Scripts/BootstrapScripts/plugins/flot", "*.js")
+                .IncludeDirectory("~/Scripts/BootstrapScripts/plugins/morris", "*.js"));
         }
 
         private static void RegisterGlobalStyles(BundleCollection bundles)
         {
-            bundles.Add(new StyleBundle("~/Content/css").IncludeDirectory("~/Content", "*.css"));
+            bundles.Add(new StyleBundle("~/Content/css").IncludeDirectory("~/Content", "*.css")
+                .IncludeDirectory("~/Content/plugins", "*.css"));
         }
 
         private static void RegisterBuyDashboardBundles(BundleCollection bundles)
@@ -115,10 +118,10 @@ namespace FastCoinTrader
                 .IncludeDirectory("~/Scripts/Custom/angular-ui", "*.js")
                 .IncludeDirectory("~/Scripts/Custom/notificationService", "*.js")
                 //Start local custodian scripts
-                .IncludeDirectory("~/Areas/SellDashboard/app", "*.js")
+                .IncludeDirectory("~/Areas/TradeHistory/app", "*.js")
                 //.IncludeDirectory("~/Areas/SellDashboard/app/services", "*.js")
                 //.IncludeDirectory("~/Areas/BuyDashboard/app/models", "*.js")
-                .IncludeDirectory("~/Areas/SellDashboard/app/controllers", "*.js"));
+                .IncludeDirectory("~/Areas/TradeHistory/app/controllers", "*.js"));
         }
     }
 }

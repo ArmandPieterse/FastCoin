@@ -25,3 +25,10 @@ C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.csprojResolveAssemblyReference.cache
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.dll
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.pdb
+C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.BlockChainAPI.dll
+C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\NBitcoin.dll
+C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.BlockChainAPI.pdb
+C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\NBitcoin.pdb
+C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\NBitcoin.xml
+C:\Users\Aashiq\Documents\Pipe\GitProjects\Bitcoin\FastCoin\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\Newtonsoft.Json.xml
