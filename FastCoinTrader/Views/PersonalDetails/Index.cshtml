@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -10,8 +10,59 @@
     <title></title>
 </head>
 <body>
-    <div>
-    
+<div class="container-fluid">
+    <div class="jumbotron">
+        <h1 class="text-center text-capitalize">Welcome, Guest</h1>
     </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <img class="img-responsive" src="https://freeiconshop.com/files/edd/person-flat.png"/>
+        </div>
+        <div class="col-md-8">
+            <h2 class="text-center">Profile Info</h2>
+            <div class="panel-group">
+                <div class=" panel panel-primary">
+                    <div class="panel-heading">Name</div>
+                    <div class="panel-body">Mr Default Test</div>
+                </div>
+                <div class=" panel panel-primary">
+                    <div class="panel-heading">Region</div>
+                    <div class="panel-body">Pret</div>
+                </div>
+                <div class=" panel panel-primary">
+                    <div class="panel-heading">Wallet Contents</div>
+                    <div class="panel-body">8 500 Bitcoins</div>
+                </div>
+                <div class=" panel panel-primary">
+                    <div class="panel-heading">ZAR Value</div>
+                    <div class="panel-body">450 900</div>
+                </div>
+                <button class="btn-default">Edit Info</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <i class="fa fa-dollar fa-5x"></i>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="pull-right">Total Balance</h3>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
