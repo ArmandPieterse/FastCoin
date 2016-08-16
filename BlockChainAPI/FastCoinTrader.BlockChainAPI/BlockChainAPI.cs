@@ -10,9 +10,11 @@ using System.IO;
 
 namespace FastCoinTrader.BlockChainAPI
 {
+    
     public class BlockChainAPI
     {
         private static Network networkToUse = Network.TestNet;
+        IBitcoinService BitcoinService = new BitcoinService();
         public static ExtKey CreateWalletForUser()
         {
             ExtKey extKey = new ExtKey();
