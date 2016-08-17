@@ -25,23 +25,6 @@ C:\Users\Arno\Documents\Visual Studio 2015\Projects\Personal\FastCoinTest\Entity
 C:\Users\Arno\Documents\Visual Studio 2015\Projects\Personal\FastCoinTest\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.csprojResolveAssemblyReference.cache
 C:\Users\Arno\Documents\Visual Studio 2015\Projects\Personal\FastCoinTest\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.dll
 C:\Users\Arno\Documents\Visual Studio 2015\Projects\Personal\FastCoinTest\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.pdb
-C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.EnitityModels.dll.config
-C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.EnitityModels.dll
-C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.EnitityModels.pdb
-C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\EntityFramework.dll
-C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.BlockChainAPI.dll
-C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\NBitcoin.dll
-C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\EntityFramework.xml
-C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.BlockChainAPI.pdb
-C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\NBitcoin.pdb
-C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\NBitcoin.xml
-C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.csprojResolveAssemblyReference.cache
-C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.dll
-C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.pdb
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.EnitityModels.dll.config
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.EnitityModels.dll
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.EnitityModels.pdb
@@ -60,3 +43,21 @@ C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.dll
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.pdb
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\Info.Blockchain.API.dll
+C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.EnitityModels.dll.config
+C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.EnitityModels.dll
+C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.EnitityModels.pdb
+C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\EntityFramework.dll
+C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.BlockChainAPI.dll
+C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\NBitcoin.dll
+C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\BitcoinLib.dll
+C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\EntityFramework.xml
+C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.BlockChainAPI.pdb
+C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\NBitcoin.pdb
+C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\NBitcoin.xml
+C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.csprojResolveAssemblyReference.cache
+C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.dll
+C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.pdb
