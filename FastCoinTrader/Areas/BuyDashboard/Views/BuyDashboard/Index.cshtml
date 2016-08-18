@@ -2,16 +2,15 @@
 @{
     ViewBag.Title = "Index";
 }
-<div class="col-md-9">
-    <div ng-app="buydashboard" ng-view>
-        @*<div ng-controller="headerController">
-                <div ng-include src="'/Scripts/angular-infrastructure/custom/header/headerView.html'"></div>
-                <script type="text/ng-template" id="headerView.html">
-                </script>
-            </div>*@
 
-        
-    </div>
+<div ng-app="buydashboard" ng-view>
+    @*<div ng-controller="headerController">
+            <div ng-include src="'/Scripts/angular-infrastructure/custom/header/headerView.html'"></div>
+            <script type="text/ng-template" id="headerView.html">
+            </script>
+        </div>*@
+
+
 </div>
 
 @section scripts
@@ -20,6 +19,6 @@
 }
 
 @*@section pageStyles
-{
-    @Styles.Render("~/angular/buydashboard/styles")
-}*@
+    {
+        @Styles.Render("~/angular/buydashboard/styles")
+    }*@

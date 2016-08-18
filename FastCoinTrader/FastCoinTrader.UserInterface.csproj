@@ -222,6 +222,7 @@
     <Compile Include="Areas\SellDashboard\Controllers\SellDashboardController.cs" />
     <Compile Include="Areas\SellDashboard\SellDashboardAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FAQController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
@@ -409,6 +410,7 @@
     <Content Include="Views\Shared\_LoggedOutLayout.cshtml" />
     <Content Include="Views\PersonalDetails\Index.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\FAQ\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
