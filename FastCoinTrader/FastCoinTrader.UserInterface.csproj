@@ -224,6 +224,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\PersonalDetailsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -235,6 +237,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\BuyDashboard\app\app.js" />
+    <Content Include="Areas\BuyDashboard\app\templates\myTest.html" />
+    <Content Include="Areas\Routing\root.js" />
     <Content Include="Areas\SellDashboard\app\app.js" />
     <Content Include="Areas\SellDashboard\app\controllers\sellDashboardHomeController .js" />
     <Content Include="Areas\BuyDashboard\app\controllers\buyDashboardHomeController.js" />
@@ -401,6 +405,8 @@
     <Content Include="Views\Shared\_TopBar.cshtml" />
     <Content Include="Views\Shared\_MenuSideBar.cshtml" />
     <Content Include="Views\Shared\_LoggedOutLayout.cshtml" />
+    <Content Include="Views\PersonalDetails\Index.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

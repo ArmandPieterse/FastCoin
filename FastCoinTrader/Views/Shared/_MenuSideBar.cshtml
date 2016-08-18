@@ -7,13 +7,16 @@
             <a href="/"><i class="fa fa-home fa-fw"></i>Home</a>
         </li>
         <li>
-            <a href="#"><i class="fa fa-child fa-fw"></i>Personal Details</a>
+            <a href="../PersonalDetails/"><i class="fa fa-child fa-fw"></i>Personal Details</a>
         </li>
         <li>
-            <a href="/BuyDashboard/BuyDashboard"><i class="fa fa-shopping-cart fa-fw"></i>Buy</a>
+            <a href="/BuyDashboard/BuyDashboard#/home"><i class="fa fa-shopping-cart fa-fw"></i>Buy</a>
         </li>
         <li>
             <a href="/SellDashboard/SellDashboard"><i class="fa fa-dollar fa-fw"></i>Sell</a>
+        </li>
+        <li>
+            <a href="#test"><i class="fa fa-book fa-fw"></i> Test</a>
         </li>
         <li>
             @if (!string.IsNullOrEmpty(User.Identity.Name))
@@ -24,7 +27,7 @@
             }
         </li>
         <li>
-            <a href="#"><i class="fa fa-newspaper-o fa-fw"></i>News</a>
+            <a href="/News/Index"><i class="fa fa-newspaper-o fa-fw"></i>News</a>
         </li>
     </ul>
 </div>
