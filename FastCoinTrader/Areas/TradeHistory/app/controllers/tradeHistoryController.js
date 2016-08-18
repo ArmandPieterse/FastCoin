@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var app = angular.module('buydashboard');
+    var app = angular.module('tradehistory');
 
     app.controller('tradeHistoryController', [
         '$scope',
