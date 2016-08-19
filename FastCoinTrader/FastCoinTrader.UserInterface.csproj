@@ -252,6 +252,8 @@
     <Content Include="Areas\SellDashboard\app\templates\sellDashboardHomeView.html" />
     <Content Include="Areas\TradeHistory\app\app.js" />
     <Content Include="Areas\TradeHistory\app\controllers\tradeHistoryController.js" />
+    <Content Include="Areas\TradeHistory\app\services\apiService.js" />
+    <Content Include="Areas\TradeHistory\app\services\tradeHistoryService.js" />
     <Content Include="Areas\TradeHistory\app\templates\tradeHistoryView.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -417,7 +419,6 @@
     <Folder Include="Areas\SellDashboard\Models\" />
     <Folder Include="Areas\SellDashboard\Views\Shared\" />
     <Folder Include="Areas\TradeHistory\app\models\" />
-    <Folder Include="Areas\TradeHistory\app\services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
