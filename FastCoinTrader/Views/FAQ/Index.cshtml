@@ -3,6 +3,30 @@
 }
 @using FastCoinTrader.EnitityModels.EntityHelper
 
+<style>
+    .editable {
+        background-color: #fff !important;
+        border: 1px solid #808080;
+        color: #000;
+    }
+
+    h4.panel-title {
+        width: 95%;
+    }
+    h4.panel-title:hover {
+        cursor: pointer;
+    }
+    button.edit {
+        position: relative;
+        bottom: 19px;
+        float: right;
+    }
+
+    iframe {
+        width: 100% !important;
+        height: 300px !important;
+    }
+</style>
 
 <div class="row">
     <div class="col-lg-12">
@@ -35,56 +59,76 @@
         <div class="panel-group" id="accordion">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">1. Test </a>
-                    </h4>
+                    <h4 data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">1. Test </a> 
+                    </h4><button type="button" class="btn btn-xs btn-default editButton edit">Edit</button>
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in">
-                    <div class="panel-body">
+                    <div class="editDiv panel-body">
                         <p>Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test </p>
                     </div>
                 </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 class="panel-title">
+                    <h4 data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">2. Test</a>
-                    </h4>
+                    </h4><button type="button" class="btn btn-xs btn-default editButton edit">Edit</button>
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse">
-                    <div class="panel-body">
+                    <div class="editDiv panel-body">
                         <p>Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test </p>
                     </div>
                 </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 class="panel-title">
+                    <h4 data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">3. Test</a>
-                    </h4>
+                    </h4><button type="button" class="btn btn-xs btn-default editButton edit">Edit</button>
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse">
-                    <div class="panel-body">
+                    <div class="editDiv panel-body">
                         <p>Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test </p>
                     </div>
                 </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 class="panel-title">
+                    <h4 data-toggle="collapse" data-parent="#accordion" href="#collapseFour" class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">4. Test</a>
-                    </h4>
+                    </h4><button type="button" class="btn btn-xs btn-default editButton edit">Edit</button>
                 </div>
                 <div id="collapseFour" class="panel-collapse collapse">
-                    <div class="panel-body">
+                    <div class="editDiv panel-body">
                         <p>Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test </p>
                     </div>
                 </div>
             </div>
-        </div>
-        <p><strong>Note:</strong> Click on the linked heading text to expand or collapse answers.</p>
-        <button style="float:right" type="button" class="btn btn-xs btn-default">Edit Page</button>
+        </div>        
     </div>
 
     <!-- /.row -->
 </div>
+<script>
+                        window.onload = function () {
+                            var toggle = false;
+                            if (typeof document.getElementsByClassName("editButton")[0] !== "undefined")
+                            {
+                                $(".editButton").click(function () {
+                                    if (toggle === false) {
+                                        $(this).html("Save");
+                                        toggle = true;
+                                        $($(this).parent()).find(".panel-title").attr("contenteditable", true).addClass("editable");
+                                        $($($(this).parent()).parent()).find(".editDiv").attr("contenteditable", true).addClass("editable");
+                                    }
+                                    else {
+                                        toggle = false;
+                                        $(this).html("Edit");
+                                        $($(this).parent()).find(".panel-title").attr("contenteditable", false).removeClass("editable");
+                                        $($($(this).parent()).parent()).find(".editDiv").attr("contenteditable", false).removeClass("editable");
+                                    }
+                                });
+                            }
+                        }
+</script>
