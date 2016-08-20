@@ -50,6 +50,7 @@
           <Property Name="tbl_News_Title" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="tbl_News_Paragraph" Type="nvarchar(max)" />
           <Property Name="tbl_News_VideoLink" Type="nvarchar(max)" />
+          <Property Name="tbl_News_DateCreated" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="tbl_Sales">
           <Key>
@@ -318,6 +319,7 @@
           <Property Name="tbl_News_Title" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="tbl_News_Paragraph" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="tbl_News_VideoLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tbl_News_DateCreated" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -420,6 +422,7 @@
           <EntitySetMapping Name="tbl_News">
             <EntityTypeMapping TypeName="FastTraderDBModel.tbl_News">
               <MappingFragment StoreEntitySet="tbl_News">
+                <ScalarProperty Name="tbl_News_DateCreated" ColumnName="tbl_News_DateCreated" />
                 <ScalarProperty Name="tbl_News_VideoLink" ColumnName="tbl_News_VideoLink" />
                 <ScalarProperty Name="tbl_News_Paragraph" ColumnName="tbl_News_Paragraph" />
                 <ScalarProperty Name="tbl_News_Title" ColumnName="tbl_News_Title" />
