@@ -100,6 +100,9 @@
     <Compile Include="tbl_Email.cs">
       <DependentUpon>FastCoinTraderContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="tbl_News.cs">
+      <DependentUpon>FastCoinTraderContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbl_Sales.cs">
       <DependentUpon>FastCoinTraderContext.tt</DependentUpon>
     </Compile>
