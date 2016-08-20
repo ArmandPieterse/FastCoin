@@ -61,3 +61,6 @@ C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModel
 C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.csprojResolveAssemblyReference.cache
 C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.dll
 C:\Users\Louis PC\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.pdb
+C:\Users\Arno\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.csprojResolveAssemblyReference.cache
+C:\Users\Arno\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.dll
+C:\Users\Arno\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.pdb
