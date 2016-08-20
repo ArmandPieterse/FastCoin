@@ -14,9 +14,9 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
             using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
                 var newsEntries = GetNewsEntries();
-                if (newsEntries.Count >= panelNumber)
+                if (newsEntries.Count > panelNumber)
                 {
-                    int index = panelNumber - 1;
+                    int index = panelNumber;
                     newsEntries.ElementAt(index).tbl_News_Paragraph = paragraph;
                     newsEntries.ElementAt(index).tbl_News_Title = title;
                     newsEntries.ElementAt(index).tbl_News_VideoLink = link;
@@ -49,6 +49,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
             using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
                 var newsEntries = (from n in context.tbl_News
+                                   orderby n.tbl_News_DateCreated ascending
                                    select n).ToList();
 
                 return newsEntries;

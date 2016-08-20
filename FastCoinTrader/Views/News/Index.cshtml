@@ -4,47 +4,63 @@
 @using FastCoinTrader.EnitityModels.EntityHelper
 
 <script>
-                        window.onload = function () {
-                            var toggle = false;
-                            $("input").hide();
-                            if (typeof document.getElementsByClassName("editButton")[0] !== "undefined")
-                            {
-                                $(".editButton").click(function () {
-                                    if (toggle === false) {
-                                        $(this).html("Save");
-                                        toggle = true;
-                                        $($(this).parent()).find(".panel-title").attr("contenteditable", true).addClass("editable");
-                                        $($($(this).parent()).parent()).find(".editDiv").attr("contenteditable", true).addClass("editable");
-                                        $($($(this).parent()).parent()).find("input").show();
-                                    }
-                                    else {
-                                        toggle = false;
-                                        $(this).html("Edit");
-                                        $($(this).parent()).find(".panel-title").attr("contenteditable", false).removeClass("editable");
-                                        $($($(this).parent()).parent()).find(".editDiv").attr("contenteditable", false).removeClass("editable");
-                                        $($($(this).parent()).parent()).find("input").hide();
+    window.onload = function () {
+        var toggle = false;
+        $("input").hide();
+        if (typeof document.getElementsByClassName("editButton")[0] !== "undefined")
+        {
+            $(".editButton").click(function () {
+                if (toggle === false) {
+                    $(this).html("Save");
+                    toggle = true;
+                    $($(this).parent()).find(".panel-title").attr("contenteditable", true).addClass("editable");
+                    $($($(this).parent()).parent()).find(".editDiv").attr("contenteditable", true).addClass("editable");
+                    $($($(this).parent()).parent()).find("input").show();
+                }
+                else {
+                    toggle = false;
+                    $(this).html("Edit");
+                    $($(this).parent()).find(".panel-title").attr("contenteditable", false).removeClass("editable");
+                    $($($(this).parent()).parent()).find(".editDiv").attr("contenteditable", false).removeClass("editable");
+                    $($($(this).parent()).parent()).find("input").hide();
 
-                                        var para = $($($(this).parent()).parent()).find(".editDiv").html();
-                                        var link = $($($(this).parent()).parent()).find("input").html();
-                                        var index = $(".editButton").index(this);
-                                        var title = $($(this).parent()).find(".panel-title").html();
+                    var para = $($($(this).parent()).parent()).find(".editDiv").html();
+                    var link = $($($(this).parent()).parent()).find("input").val();
+                    var index = $(".editButton").index(this);
+                    var title = $($(this).parent()).find(".panel-title").html();
+                    if (link.indexOf("embed") == -1)
+                        link = link.replace("watch?v=", "embed/");
+                   
+                    SavePanel(title, para, link, index);
+                    $($($(this).parent()).parent()).find("iframe").setAttribute("src", link);
+                }
+            });
+        }
+    }
 
-                                        SavePanel(title,para,link,index)
-                                    }
-                                });
-                            }
-                        }
-
-function SavePanel(_title,_paragraph,_videoLink,_panelNumber) {
-    $.post("../News/SaveNewsEntry",
-    {
-        title: _title,
-        paragraph: _paragraph,
-        videoLink: _videoLink,
-        panelNumber: _panelNumber
-    },
-    function (data) {
-        alert(data.Message);
+function SavePanel(_title, _paragraph, _videoLink, _panelNumber) {
+    //var values = {
+    //    title: _title,
+    //    paragraph: _paragraph,
+    //    videoLink: _videoLink,
+    //    panelNumber: _panelNumber
+    //};
+    //alert(JSON.stringify(values));
+    $.ajax({
+        url: "../News/SaveNewsEntry",
+        type: "POST",
+        data : JSON.stringify({
+            title: _title,
+            paragraph: _paragraph,
+            videoLink: _videoLink,
+            panelNumber: _panelNumber
+        }),
+        dataType: 'json',
+        contentType: "application/json; charset=utf-8",
+        success: function (result) {
+            alert(result.Message);
+        },
+        error: function(){alert("You failure you!")}
     });
 }
 
@@ -107,7 +123,9 @@ function SavePanel(_title,_paragraph,_videoLink,_panelNumber) {
             <div class="panel-body">
                 <div class="col-xs-12 col-sm-12 col-lg-6"><iframe src="@{if (NewsEntries.Count > 0) { ViewContext.Writer.Write(NewsEntries[0].tbl_News_VideoLink); } }" frameborder="0" allowfullscreen></iframe><br /><input type="text" name="iframeSrc" value="@{if (NewsEntries.Count > 0) { ViewContext.Writer.Write(NewsEntries[0].tbl_News_VideoLink); } }" placeholder="Video URL..."></div>
                 <div class="editDiv col-xs-12 col-sm-12 col-lg-6">
-                    <p>@{if (NewsEntries.Count > 0) { ViewContext.Writer.Write(NewsEntries[0].tbl_News_Paragraph); } }</p>
+                        @{
+                            if (NewsEntries.Count > 0) { ViewContext.Writer.Write(NewsEntries[0].tbl_News_Paragraph); }                        
+                        }
                 </div>
             </div>
         </div>
@@ -119,12 +137,14 @@ function SavePanel(_title,_paragraph,_videoLink,_panelNumber) {
     <div class="col-xs-12 col-sm-12 col-lg-12">
         <div class="panel panel-green">
             <div class="panel-heading">
-                <h3 class="panel-title">@{if (NewsEntries.Count > 0) { ViewContext.Writer.Write(NewsEntries[1].tbl_News_Title); } }</h3><button type="button" class="btn btn-xs btn-default editButton edit">Edit</button>
+                <h3 class="panel-title">@{if (NewsEntries.Count > 1) { ViewContext.Writer.Write(NewsEntries[1].tbl_News_Title); } }</h3><button type="button" class="btn btn-xs btn-default editButton edit">Edit</button>
             </div>
             <div class="panel-body">
-                <div class="col-xs-12 col-sm-12 col-lg-6"><iframe src="@{if (NewsEntries.Count > 0) { ViewContext.Writer.Write(NewsEntries[1].tbl_News_VideoLink); } }" frameborder="0" allowfullscreen></iframe><br /><input type="text" name="iframeSrc" value="@{if (NewsEntries.Count > 0) { ViewContext.Writer.Write(NewsEntries[1].tbl_News_VideoLink); } }" placeholder="Video URL..."></div>
+                <div class="col-xs-12 col-sm-12 col-lg-6"><iframe src="@{if (NewsEntries.Count > 1) { ViewContext.Writer.Write(NewsEntries[1].tbl_News_VideoLink); } }" frameborder="0" allowfullscreen></iframe><br /><input type="text" name="iframeSrc" value="@{if (NewsEntries.Count > 1) { ViewContext.Writer.Write(NewsEntries[1].tbl_News_VideoLink); } }" placeholder="Video URL..."></div>
                 <div class="editDiv col-xs-12 col-sm-12 col-lg-6">
-                    <p>@{if (NewsEntries.Count > 0) { ViewContext.Writer.Write(NewsEntries[0].tbl_News_Paragraph); } }</p>                    
+                        @{
+                            if (NewsEntries.Count > 1) { ViewContext.Writer.Write(NewsEntries[0].tbl_News_Paragraph); }
+                        }
                 </div>
             </div>
         </div>

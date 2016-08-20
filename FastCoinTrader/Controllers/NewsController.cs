@@ -19,10 +19,11 @@ namespace FastCoinTrader.Controllers
         }
 
         [HttpPost]
-        public ActionResult SaveNewsEntry(string title,string paragraph,string videoLink,int panelNumber)
+        public ActionResult SaveNewsEntry(string title,string paragraph,string videoLink,string panelNumber)
         {
-            string message = NewsEntityHelper.CreateNewsEntry(title, paragraph,videoLink,panelNumber);
+            string message = NewsEntityHelper.CreateNewsEntry(title, paragraph,videoLink,int.Parse(panelNumber));
             return Json(new { Message = message});
+            //return Json("");
         }
 
         public List<tbl_News> GetNewsEntries()
