@@ -1,6 +1,6 @@
 ﻿(function () {
     "use strict";
-    angular.module("tradeHistory", ["ngRoute", "ngSanitize", "ngiUI", "ui.bootstrap", "smart-table"])
+    angular.module("tradehistory", ["ngRoute", "ngSanitize", "ngiUI", "ui.bootstrap", "smart-table"])
 
     .config(function ($routeProvider) {
         $routeProvider.when("/home",
