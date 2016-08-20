@@ -28,6 +28,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
                     {
                         pk_tbl_News = Guid.NewGuid(),
                         tbl_News_Paragraph = paragraph,
+                        tbl_News_DateCreated = DateTime.Now,
                         tbl_News_Title = title,
                         tbl_News_VideoLink = link
                     };
