@@ -60,4 +60,3 @@ C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.csprojResolveAssemblyReference.cache
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.dll
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.pdb
-C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\BitcoinLib.dll
