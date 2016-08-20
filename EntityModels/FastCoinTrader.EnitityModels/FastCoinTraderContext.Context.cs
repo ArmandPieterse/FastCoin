@@ -31,5 +31,6 @@ namespace FastCoinTrader.EnitityModels
         public virtual DbSet<tbl_Wallet> tbl_Wallet { get; set; }
         public virtual DbSet<tbl_Buys> tbl_Buys { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<tbl_News> tbl_News { get; set; }
     }
 }

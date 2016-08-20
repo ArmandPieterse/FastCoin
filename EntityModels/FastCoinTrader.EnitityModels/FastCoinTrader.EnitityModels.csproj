@@ -70,6 +70,7 @@
     <Compile Include="API\Models\GetAvailableSaleOffersResponse.cs" />
     <Compile Include="API\Models\GetAvailableBuyOffersResponse.cs" />
     <Compile Include="EntityHelper\BuysEntityHelper.cs" />
+    <Compile Include="EntityHelper\NewsEntityHelper.cs" />
     <Compile Include="EntityHelper\SalesEntityHelper.cs" />
     <Compile Include="EntityHelper\UserAccountEntityHelper.cs" />
     <Compile Include="EntityHelper\WalletEntityHelper.cs" />
