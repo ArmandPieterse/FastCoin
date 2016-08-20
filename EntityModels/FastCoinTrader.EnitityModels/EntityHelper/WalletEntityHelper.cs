@@ -92,7 +92,8 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         public static string GetWalletAddress(string username)
         {
             var userFK = FastCoinTrader.EnitityModels.EntityHelper.UserAccountEntityHelper.GetUserAccountKeyByEmail(username);
-            return BlockChainAPI.BlockChainAPI.GetUserAddress(GetWalletByUserAccount(userFK).tbl_Wallet_BTCAddress);
+             return BlockChainAPI.BlockChainAPI.GetUserAddress(GetWalletByUserAccount(userFK).tbl_Wallet_BTCAddress);
+            //return "";
         }
                
         #endregion

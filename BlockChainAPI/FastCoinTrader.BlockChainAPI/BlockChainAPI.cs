@@ -21,8 +21,13 @@ namespace FastCoinTrader.BlockChainAPI
     {
         //private static readonly ICoinService CoinService = new BitcoinService(useTestnet: true);
         private static NBitcoin.Network networkToUse = NBitcoin.Network.TestNet;
-        //private static IBitcoinService bitcoinService = new BitcoinService(useTestnet: true);
-
+        private static BitcoinLib.Services.CoinService serv = new BitcoinLib.Services.CoinService();
+        //private static readonly ICoinService CoinService = new BitcoinService(useTestnet:true);
+        //    <add key = "Bitcoin_DaemonUrl" value="http://localhost:8332" />
+        //<add key = "Bitcoin_DaemonUrl_Testnet" value="http://localhost:18332" />
+        //<add key = "Bitcoin_WalletPassword" value="MyWalletPassword" />
+        //<add key = "Bitcoin_RpcUsername" value="MyRpcUsername" />
+        //<add key = "Bitcoin_RpcPassword" value="MyRpcPassword" />
         public static ExtKey CreateWalletForUser(string username)
         {
 
