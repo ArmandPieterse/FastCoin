@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FastCoinTrader.EnitityModels.EntityHelper;
+using FastCoinTrader.EnitityModels;
 using Newtonsoft.Json;
 
 
@@ -13,16 +14,22 @@ namespace FastCoinTrader.Controllers
     {
         // GET: News
         public ActionResult Index()
-        {
+        {         
             return View();
         }
 
         [HttpPost]
-        public JsonResult SaveNewsEntry(string title,string paragraph,string videoLink)
+        public JsonResult SaveNewsEntry(string title,string paragraph,string videoLink,int panelNumber)
         {
             string message = NewsEntityHelper.CreateNewsEntry(title, paragraph,videoLink);
-            return Json(new { Message = ""});
-
+            return Json(new { Message = message});
         }
+
+        public List<tbl_News> GetNewsEntries()
+        {
+            return NewsEntityHelper.GetNewsEntries();
+        }
+
+        
     }
 }

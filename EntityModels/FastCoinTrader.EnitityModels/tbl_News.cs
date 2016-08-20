@@ -18,5 +18,6 @@ namespace FastCoinTrader.EnitityModels
         public string tbl_News_Title { get; set; }
         public string tbl_News_Paragraph { get; set; }
         public string tbl_News_VideoLink { get; set; }
+        public System.DateTime tbl_News_DateCreated { get; set; }
     }
 }

@@ -14,7 +14,7 @@
         <EntityTypeShape EntityType="FastTraderDBModel.tbl_Buys" Width="1.5" PointX="5.25" PointY="5.5" />
         <AssociationConnector Association="FastTraderDBModel.FK_tbl_Buys_tbl_Wallet" />
         <EntityTypeShape EntityType="FastTraderDBModel.sysdiagram" Width="1.5" PointX="7.375" PointY="0.75" />
-        <EntityTypeShape EntityType="FastTraderDBModel.tbl_News" Width="1.5" PointX="7.375" PointY="5.5" />
+        <EntityTypeShape EntityType="FastTraderDBModel.tbl_News" Width="2.875" PointX="7.375" PointY="5.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
