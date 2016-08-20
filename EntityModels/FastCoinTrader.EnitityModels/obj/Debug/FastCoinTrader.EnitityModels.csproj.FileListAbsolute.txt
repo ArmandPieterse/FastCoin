@@ -60,7 +60,6 @@ C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.csprojResolveAssemblyReference.cache
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.dll
 C:\Users\Hakujin\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.pdb
-D:\Repos\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.csprojResolveAssemblyReference.cache
 D:\Repos\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.EnitityModels.dll.config
 D:\Repos\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.EnitityModels.dll
 D:\Repos\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.EnitityModels.pdb
@@ -75,5 +74,6 @@ D:\Repos\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.Bloc
 D:\Repos\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\NBitcoin.pdb
 D:\Repos\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\NBitcoin.xml
 D:\Repos\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\Newtonsoft.Json.xml
+D:\Repos\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.csprojResolveAssemblyReference.cache
 D:\Repos\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.dll
 D:\Repos\EntityModels\FastCoinTrader.EnitityModels\obj\Debug\FastCoinTrader.EnitityModels.pdb
