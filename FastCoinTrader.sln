@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastCoinTrader.UserInterface", "FastCoinTrader\FastCoinTrader.UserInterface.csproj", "{F8545994-C956-4C66-83C6-95A216656F00}"
 	ProjectSection(ProjectDependencies) = postProject
