@@ -83,7 +83,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
                                   orderby wallet.tbl_Wallet_DateLastModified
                                   select wallet).FirstOrDefault();
                 
-                string st = BlockChainAPI.BlockChainAPI.DoTransaction(userWallet.tbl_Wallet_BTCAddress, userWallet.tbl_Wallet_CodeFactory,userWallet.tbl_Wallet_BTCAddress,context.tbl_UserAccount.Single(x => x.pk_tbl_UserAccount == fk_UserAccount).tbl_UserAccount_Password);
+                //string st = BlockChainAPI.BlockChainAPI.DoTransaction(userWallet.tbl_Wallet_BTCAddress, userWallet.tbl_Wallet_CodeFactory,userWallet.tbl_Wallet_BTCAddress,context.tbl_UserAccount.Single(x => x.pk_tbl_UserAccount == fk_UserAccount).tbl_UserAccount_Password);
 
                 return userWallet;
             }
