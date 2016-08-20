@@ -16,10 +16,11 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
                 var newsEntries = GetNewsEntries();
                 if (newsEntries.Count >= panelNumber)
                 {
-                    newsEntries.ElementAt(panelNumber).tbl_News_Paragraph = paragraph;
-                    newsEntries.ElementAt(panelNumber).tbl_News_Title = title;
-                    newsEntries.ElementAt(panelNumber).tbl_News_VideoLink = link;
-                    context.Entry(newsEntries.ElementAt(panelNumber)).State = System.Data.Entity.EntityState.Modified;
+                    int index = panelNumber - 1;
+                    newsEntries.ElementAt(index).tbl_News_Paragraph = paragraph;
+                    newsEntries.ElementAt(index).tbl_News_Title = title;
+                    newsEntries.ElementAt(index).tbl_News_VideoLink = link;
+                    context.Entry(newsEntries.ElementAt(index)).State = System.Data.Entity.EntityState.Modified;
                     context.SaveChanges();
                 }
                 else
