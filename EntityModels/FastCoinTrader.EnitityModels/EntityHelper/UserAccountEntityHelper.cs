@@ -93,6 +93,18 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
                 return UserForeignKey;
             }
         }
+
+        public static string GetFullName(string username)
+        {
+            using (FastCoinTraderContext context = new FastCoinTraderContext())
+            {
+                var user = (from us in context.tbl_UserAccount
+                            where us.tbl_UserAccount_EmailAddress == username
+                            select us).FirstOrDefault();
+
+                return String.Format("{0} {1}",user.tbl_UserAccount_Firstname,user.tbl_UserAccount_Surname);
+            }
+        }
         #endregion
 
     }
