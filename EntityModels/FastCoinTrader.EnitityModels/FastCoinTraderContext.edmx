@@ -89,6 +89,7 @@
           <Property Name="tbl_Wallet_DateLastModified" Type="datetime" Nullable="false" />
           <Property Name="tbl_Wallet_ZARPending" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="tbl_Wallet_CodeFactory" Type="varbinary" MaxLength="32" Nullable="false" />
+          <Property Name="tbl_Wallet_BTCPending" Type="decimal" Precision="14" Scale="8" Nullable="false" />
         </EntityType>
         <Association Name="FK_tbl_Buys_tbl_Wallet">
           <End Role="tbl_Wallet" Type="Self.tbl_Wallet" Multiplicity="1" />
@@ -215,6 +216,7 @@
           <NavigationProperty Name="tbl_UserAccount" Relationship="Self.FK_tbl_Wallet_tbl_UserAccount" FromRole="tbl_Wallet" ToRole="tbl_UserAccount" />
           <NavigationProperty Name="tbl_Buys" Relationship="FastTraderDBModel.FK_tbl_Buys_tbl_Wallet" FromRole="tbl_Wallet" ToRole="tbl_Buys" />
           <Property Name="tbl_Wallet_CodeFactory" Type="Binary" Nullable="false" MaxLength="32" FixedLength="false" />
+          <Property Name="tbl_Wallet_BTCPending" Type="Decimal" Nullable="false" Precision="14" Scale="8" />
         </EntityType>
         <Association Name="FK_tbl_Sales_tbl_Wallet">
           <End Role="tbl_Wallet" Type="Self.tbl_Wallet" Multiplicity="1" />
@@ -352,6 +354,7 @@
           <EntitySetMapping Name="tbl_Wallet">
             <EntityTypeMapping TypeName="FastTraderDBModel.tbl_Wallet">
               <MappingFragment StoreEntitySet="tbl_Wallet">
+                <ScalarProperty Name="tbl_Wallet_BTCPending" ColumnName="tbl_Wallet_BTCPending" />
                 <ScalarProperty Name="tbl_Wallet_CodeFactory" ColumnName="tbl_Wallet_CodeFactory" />
                 <ScalarProperty Name="pk_tbl_Wallet" ColumnName="pk_tbl_Wallet" />
                 <ScalarProperty Name="fk_tbl_UserAccount" ColumnName="fk_tbl_UserAccount" />

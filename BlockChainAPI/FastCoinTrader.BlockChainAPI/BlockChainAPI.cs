@@ -21,7 +21,7 @@ namespace FastCoinTrader.BlockChainAPI
     {
         //private static readonly ICoinService CoinService = new BitcoinService(useTestnet: true);
         private static NBitcoin.Network networkToUse = NBitcoin.Network.TestNet;
-        private static IBitcoinService bitcoinService = new BitcoinService(useTestnet: true);
+        //private static IBitcoinService bitcoinService = new BitcoinService(useTestnet: true);
 
         public static ExtKey CreateWalletForUser(string username)
         {
@@ -34,6 +34,11 @@ namespace FastCoinTrader.BlockChainAPI
             return extKey;
         }  
         
+        public static string GetUserAddress(string wif)
+        {
+            BitcoinSecret secret = new BitcoinSecret(wif,networkToUse);
+            return secret.GetAddress().ToString();
+        }
 
         private static BitcoinAddress GetUserAddress(PubKey pubKey)
         {
