@@ -4,9 +4,21 @@
 @using FastCoinTrader.EnitityModels.EntityHelper
 <style>
 .editable {    
-    background-color:white !important;
-    border: solid 1px rgb(245, 245, 240);
-    color:black;
+    background-color:#fff !important;
+    border: 1px solid #808080;
+    color:#000;
+}
+h3.panel-title {
+width:95%;    
+}
+button.edit {
+    position: relative;
+    bottom: 19px; 
+    float:right; 
+}
+iframe {
+    width:100% !important;
+    height:300px !important;    
 }
 </style>
 <div class="row">
@@ -39,23 +51,40 @@
     <div class="col-xs-12 col-sm-12 col-lg-12">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">FastCoinTrader getting started, the basics...</h3><button style="float:right" type="button" class="btn btn-xs btn-default editButton">Edit</button>
+                <h3 class="panel-title">FastCoinTrader getting started, the basics...</h3><button type="button" class="btn btn-xs btn-default editButton edit">Edit</button>
             </div>
             <div class="panel-body">
-                <div class="col-xs-12 col-sm-12 col-lg-6"><iframe width="100%" height="300" src="https://www.youtube.com/embed/QDXkopRynro" frameborder="0" allowfullscreen></iframe></div>
-                <div class="col-xs-12 col-sm-12 col-lg-6">
+                <div class="col-xs-12 col-sm-12 col-lg-6"><iframe src="https://www.youtube.com/embed/QDXkopRynro" frameborder="0" allowfullscreen></iframe></div>
+                <div class="editDiv col-xs-12 col-sm-12 col-lg-6">
                     <p>We have put together a basic video tutorial which will help you to get started with the Altcoin Trader platform.</p>
-                    <p>This video should help you understand how to buy a bitcoin and then how you could send that bitcoin to yourself or someone on the other side of the world!</p>
-                    <p><strong>We cover:</strong></p>
-                    <ul>
-                        <li>How to buy a bitcoin</li>
-                        <li>Basic site featuresres</li>
-                        <li>How to send a Bitcoin</li>
-                    </ul>
-                    <div class="editDiv col-lg-3" contenteditable="false" style="height:100px; background-color:cadetblue;">
-                        Hello there guys;
-                    </div>
-                    <script>
+                    <p>This video should help you understand how to buy a bitcoin and then how you could send that bitcoin to yourself or someone on the other side of the world!</p>                                                           
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-lg-12">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <h3 class="panel-title">FastCoinTrader Launch </h3><button type="button" class="btn btn-xs btn-default editButton edit">Edit</button>
+            </div>
+            <div class="panel-body">
+                <div class="col-xs-12 col-sm-12 col-lg-6"><iframe src="https://www.youtube.com/embed/HnnVxS-J9vA" frameborder="0" allowfullscreen></iframe></div>
+                <div class="editDiv col-xs-12 col-sm-12 col-lg-6">
+                    <p>Today 23rd March 2015 is a big day here at AltCoinTrader as we launch our South African online trading platform...</p>
+                    <p>It all started in late 2013 when the development team at Netspace Internet Solutions (Pty)Ltd began developing an online trading platform. We wanted to create a powerful yet easy to use trading site where South Africans could buy, sell and trade not only bitcoin but other alternative currencies like litecoin and namecoin.</p>
+                    <p>After nearly 18 months of planning, re-planning, development and testing... Here we are!</p>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+
+<script>
                         window.onload = function () {
                             var toggle = false;
                             if (typeof document.getElementsByClassName("editButton")[0] !== "undefined")
@@ -76,33 +105,4 @@
                                 });
                             }
                         }
-                    </script>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- /.row -->
-
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-lg-12">
-        <div class="panel panel-green">
-            <div class="panel-heading">
-                <h3 class="panel-title">AtlCoinTrader Launch </h3><button style="float:right" type="button" class="btn btn-xs btn-default editButton">Edit</button>
-            </div>
-            <div class="panel-body">
-                <div class="col-xs-12 col-sm-12 col-lg-6"><iframe width="100%" height="300" src="https://www.youtube.com/embed/HnnVxS-J9vA" frameborder="0" allowfullscreen></iframe></div>
-                <div class="col-xs-12 col-sm-12 col-lg-6">
-                    <p>Today 23rd March 2015 is a big day here at AltCoinTrader as we launch our South African online trading platform...</p>
-                    <p>It all started in late 2013 when the development team at Netspace Internet Solutions (Pty)Ltd began developing an online trading platform. We wanted to create a powerful yet easy to use trading site where South Africans could buy, sell and trade not only bitcoin but other alternative currencies like litecoin and namecoin.</p>
-                    <p>After nearly 18 months of planning, re-planning, development and testing... Here we are!</p>
-
-                </div>
-                <div class="editDiv col-lg-3" contenteditable="false" style="height:100px; background-color:cadetblue;">
-                    Hello there guys;
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- /.row -->
+</script>
