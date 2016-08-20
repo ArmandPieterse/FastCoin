@@ -32,7 +32,8 @@
                         link = link.replace("watch?v=", "embed/");
                    
                     SavePanel(title, para, link, index);
-                    $($($(this).parent()).parent()).find("iframe").setAttribute("src", link);
+                    $($($(this).parent()).parent()).find("iframe").attr("src", link);
+                    //location.reload();
                 }
             });
         }
