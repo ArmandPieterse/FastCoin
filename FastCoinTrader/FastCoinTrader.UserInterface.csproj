@@ -256,7 +256,6 @@
     <Content Include="Areas\TradeHistory\app\services\apiService.js" />
     <Content Include="Areas\TradeHistory\app\services\tradeHistoryService.js" />
     <Content Include="Areas\TradeHistory\app\templates\tradeHistoryView.html" />
-    <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\datepicker.fixes.css" />
     <Content Include="Content\plugins\morris.css" />
@@ -286,7 +285,6 @@
     <Content Include="Scripts\angular.easypiechart.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -336,7 +334,6 @@
     <Content Include="font-awesome\scss\_stacked.scss" />
     <Content Include="font-awesome\scss\_variables.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\BootstrapScripts\bootstrap.js" />
     <Content Include="Scripts\BootstrapScripts\bootstrap.min.js" />
     <Content Include="Scripts\BootstrapScripts\jquery.js" />
     <Content Include="Scripts\BootstrapScripts\plugins\flot\excanvas.min.js" />

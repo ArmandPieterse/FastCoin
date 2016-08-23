@@ -32,9 +32,7 @@ namespace FastCoinTrader
             bundles.Add(new ScriptBundle("~/bundles/bootstrap")
                 .Include("~/Scripts/bootstrap.js", "~/Scripts/respond.js")
                 .Include("~/Scripts/toastr.min.js")
-                .IncludeDirectory("~/Scripts/BootstrapScripts", "*.js")
-                .IncludeDirectory("~/Scripts/BootstrapScripts/plugins/flot", "*.js")
-                .IncludeDirectory("~/Scripts/BootstrapScripts/plugins/morris", "*.js"));
+                .IncludeDirectory("~/Scripts/BootstrapScripts", "*.js"));
         }
 
         private static void RegisterGlobalStyles(BundleCollection bundles)
@@ -101,7 +99,7 @@ namespace FastCoinTrader
 
         public static void RegisterTradeHistoryBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/angular/selldashboard/scripts")
+            bundles.Add(new ScriptBundle("~/angular/tradehistory/scripts")
                 .Include("~/Scripts/angular.js")
                 .Include("~/Scripts/angular-route.js")
                 .Include("~/Scripts/angular-sanitize.js")
