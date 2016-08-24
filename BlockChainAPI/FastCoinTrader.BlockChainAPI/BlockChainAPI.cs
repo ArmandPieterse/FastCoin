@@ -21,7 +21,7 @@ namespace FastCoinTrader.BlockChainAPI
     {
         //private static readonly ICoinService CoinService = new BitcoinService(useTestnet: true);
         private static NBitcoin.Network networkToUse = NBitcoin.Network.TestNet;
-        private static readonly ICoinService CoinService = new BitcoinService(useTestnet: true);
+       // private static readonly ICoinService CoinService = new BitcoinService(useTestnet: true);
         //private static BitcoinLib.Services.CoinService serv = new BitcoinLib.Services.CoinService();
         //private static readonly ICoinService CoinService = new BitcoinService(useTestnet:true);
         //    <add key = "Bitcoin_DaemonUrl" value="http://localhost:8332" />
