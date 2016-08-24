@@ -111,3 +111,4 @@ C:\Users\ArmandYellow\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityM
 C:\Users\ArmandYellow\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\NBitcoin.pdb
 C:\Users\ArmandYellow\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\NBitcoin.xml
 C:\Users\ArmandYellow\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ArmandYellow\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\BitcoinLib.dll
