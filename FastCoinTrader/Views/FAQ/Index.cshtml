@@ -25,9 +25,9 @@
                     var para = $($($(this).parent()).parent()).find(".editDiv").html();
                     var title = $($(this).parent()).find(".panel-title").html();
                     var index = $(".editButton").index(this);
-
+                    console.log("Title: "+title+" |paragrah: "+para+" |Index: "+index);
                     SavePanel(title, para, index);
-                    //location.reload();
+                   
                 }
             });
         }
@@ -42,11 +42,11 @@ function SavePanel(_title, _paragraph, _panelNumber) {
     //};
     //alert(JSON.stringify(values));
     $.ajax({
-        url: "../News/SaveFAQEntry",
+        url: "../FAQ/SaveFAQEntry",
         type: "POST",
         data : JSON.stringify({
             title: _title,
-            paragraph: _paragraph,
+            content: _paragraph,
             panelNumber: _panelNumber
         }),
         dataType: 'json',
@@ -106,55 +106,56 @@ function SavePanel(_title, _paragraph, _panelNumber) {
     </div>
 </div>
 <!-- /.row -->
+@{var FAQEntries = FAQEntityHelper.GetFAQEntries(); }
 
 <div class="row">
     <div class="bs-example col-lg-12">
         <div class="panel-group" id="accordion">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">1. Test </a> 
+                    <h4 data-toggle="collapse" data-parent="#accordion" href="#collapseOne" >
+                        @{if (FAQEntries.Count > 0) { ViewContext.Writer.Write(FAQEntries[0].tbl_FAQ_Title); } }
                     </h4><button type="button" class="btn btn-xs btn-default editButton edit">Edit</button>
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in">
                     <div class="editDiv panel-body">
-                        <p>Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test </p>
+                        @{if (FAQEntries.Count > 0) { ViewContext.Writer.Write(FAQEntries[0].tbl_FAQ_Content); } }
                     </div>
                 </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">2. Test</a>
+                    <h4 data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" >
+                   @{if (FAQEntries.Count > 1) { ViewContext.Writer.Write(FAQEntries[1].tbl_FAQ_Title); } }
                     </h4><button type="button" class="btn btn-xs btn-default editButton edit">Edit</button>
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse">
                     <div class="editDiv panel-body">
-                        <p>Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test </p>
+                        @{if (FAQEntries.Count > 1) { ViewContext.Writer.Write(FAQEntries[1].tbl_FAQ_Content); } }
                     </div>
                 </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">3. Test</a>
+                    <h4 data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                   @{if (FAQEntries.Count > 2) { ViewContext.Writer.Write(FAQEntries[2].tbl_FAQ_Title); } }
                     </h4><button type="button" class="btn btn-xs btn-default editButton edit">Edit</button>
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse">
                     <div class="editDiv panel-body">
-                        <p>Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test </p>
+                        @{if (FAQEntries.Count > 2) { ViewContext.Writer.Write(FAQEntries[2].tbl_FAQ_Content); } }
                     </div>
                 </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 data-toggle="collapse" data-parent="#accordion" href="#collapseFour" class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">4. Test</a>
+                    <h4 data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                  @{if (FAQEntries.Count > 3) { ViewContext.Writer.Write(FAQEntries[3].tbl_FAQ_Title); } }
                     </h4><button type="button" class="btn btn-xs btn-default editButton edit">Edit</button>
                 </div>
                 <div id="collapseFour" class="panel-collapse collapse">
                     <div class="editDiv panel-body">
-                        <p>Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test </p>
+                        @{if (FAQEntries.Count > 3) { ViewContext.Writer.Write(FAQEntries[3].tbl_FAQ_Content); } }
                     </div>
                 </div>
             </div>
