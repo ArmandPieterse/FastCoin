@@ -371,6 +371,9 @@
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\underscore.js" />
     <Content Include="Scripts\_references.js" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
