@@ -72,7 +72,6 @@ C:\Users\Arno\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bi
 C:\Users\Arno\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.BlockChainAPI.dll
 C:\Users\Arno\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\NBitcoin.dll
 C:\Users\Arno\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Arno\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\BitcoinLib.dll
 C:\Users\Arno\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\EntityFramework.xml
 C:\Users\Arno\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Arno\Source\Repos\FastCoin\EntityModels\FastCoinTrader.EnitityModels\bin\Debug\FastCoinTrader.BlockChainAPI.pdb
