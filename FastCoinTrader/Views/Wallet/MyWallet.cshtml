@@ -18,11 +18,12 @@
                     <div class="panel-heading">Name</div>
                     <div class="panel-body">@UserAccountEntityHelper.GetFullName(User.Identity.Name)</div>
                 </div>
+               
                 <div class="panel panel-primary">
                     <div class="panel-heading">My wallet address</div>
-                    <div class="panel-body"> @WalletEntityHelper.GetWalletAddress(User.Identity.Name)</div>
+                    <div class="panel-body"> @WalletEntityHelper.GetWalletAddress(User.Identity.Name)</div>                
                 </div>
-                <div class=" panel panel-primary">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <label class="col-md-3">BTC Balance</label><label class="col-md-3">Pending BTC</label><label class="col-md-3">ZAR Balance</label><label>Pending ZAR</label>                        
                     </div>

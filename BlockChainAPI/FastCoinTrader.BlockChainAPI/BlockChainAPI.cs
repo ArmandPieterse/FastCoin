@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Info.Blockchain.API.CreateWallet;
-using NBitcoin;
 using BitcoinLib;
 using System.Net;
 using System.IO;
@@ -13,6 +12,7 @@ using BitcoinLib.ExceptionHandling.Rpc;
 using BitcoinLib.Responses;
 using BitcoinLib.Services.Coins.Base;
 using BitcoinLib.Services.Coins.Bitcoin;
+using NBitcoin;
 
 namespace FastCoinTrader.BlockChainAPI
 {
@@ -21,11 +21,16 @@ namespace FastCoinTrader.BlockChainAPI
     {
         //private static readonly ICoinService CoinService = new BitcoinService(useTestnet: true);
         private static NBitcoin.Network networkToUse = NBitcoin.Network.TestNet;
-        //private static IBitcoinService bitcoinService = new BitcoinService(useTestnet: true);
-
+       // private static readonly ICoinService CoinService = new BitcoinService(useTestnet: true);
+        //private static BitcoinLib.Services.CoinService serv = new BitcoinLib.Services.CoinService();
+        //private static readonly ICoinService CoinService = new BitcoinService(useTestnet:true);
+        //    <add key = "Bitcoin_DaemonUrl" value="http://localhost:8332" />
+        //<add key = "Bitcoin_DaemonUrl_Testnet" value="http://localhost:18332" />
+        //<add key = "Bitcoin_WalletPassword" value="MyWalletPassword" />
+        //<add key = "Bitcoin_RpcUsername" value="MyRpcUsername" />
+        //<add key = "Bitcoin_RpcPassword" value="MyRpcPassword" />
         public static ExtKey CreateWalletForUser(string username)
         {
-
             // need to get bitcoinliib working and install bitcoind on pc commandline interface...
             ExtKey extKey = new ExtKey();
             //string result = CoinService.SetAccount(extKey.PrivateKey.GetBitcoinSecret(networkToUse).GetAddress().ToString(), username);
@@ -39,6 +44,13 @@ namespace FastCoinTrader.BlockChainAPI
             BitcoinSecret secret = new BitcoinSecret(wif,networkToUse);
             return secret.GetAddress().ToString();
         }
+
+        private string GetAccountNameForAddress(string address)
+        {
+            string accountName = CoinService.GetAccount(address);
+            return accountName;
+        }
+
 
         private static BitcoinAddress GetUserAddress(PubKey pubKey)
         {

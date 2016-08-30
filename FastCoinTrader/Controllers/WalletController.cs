@@ -18,7 +18,7 @@ namespace FastCoinTrader.Controllers
                 tbl_Wallet wallet = WalletEntityHelper.GetWalletByUserAccount(UserAccountEntityHelper.GetUserAccountKeyByEmail(User.Identity.Name));
                 return View(wallet);
             }
-            return View();
+            return RedirectToAction("../Account/Login");
         }
     }
 }

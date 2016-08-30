@@ -12,12 +12,11 @@ namespace FastCoinTrader.EnitityModels
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class tbl_FAQ
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public System.Guid pk_tbl_FAQ { get; set; }
+        public string tbl_FAQ_Title { get; set; }
+        public string tbl_FAQ_Content { get; set; }
+        public System.DateTime tbl_FAQ_DateCreated { get; set; }
     }
 }

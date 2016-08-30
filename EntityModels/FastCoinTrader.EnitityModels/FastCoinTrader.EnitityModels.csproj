@@ -70,6 +70,8 @@
     <Compile Include="API\Models\GetAvailableSaleOffersResponse.cs" />
     <Compile Include="API\Models\GetAvailableBuyOffersResponse.cs" />
     <Compile Include="EntityHelper\BuysEntityHelper.cs" />
+    <Compile Include="EntityHelper\FAQEntityHelper.cs" />
+    <Compile Include="EntityHelper\NewsEntityHelper.cs" />
     <Compile Include="EntityHelper\SalesEntityHelper.cs" />
     <Compile Include="EntityHelper\UserAccountEntityHelper.cs" />
     <Compile Include="EntityHelper\WalletEntityHelper.cs" />
@@ -91,13 +93,16 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EntityHelper\EmailEntityHelper.cs" />
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>FastCoinTraderContext.tt</DependentUpon>
-    </Compile>
     <Compile Include="tbl_Buys.cs">
       <DependentUpon>FastCoinTraderContext.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_Email.cs">
+      <DependentUpon>FastCoinTraderContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_FAQ.cs">
+      <DependentUpon>FastCoinTraderContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_News.cs">
       <DependentUpon>FastCoinTraderContext.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_Sales.cs">
