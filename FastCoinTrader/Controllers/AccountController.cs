@@ -172,7 +172,7 @@ namespace FastCoinTrader.Controllers
                         model.AddressLine2, model.AddressLine3, model.PostalCode, model.CellphoneNumber, "NormalUser");
                     if (!userCreatedSuccessfully)
                     {
-                        AddErrors(new IdentityResult("Registration was unsuccessful."));
+                        AddErrors(new IdentityResult("Registration was unsuccessful."));                       
                     }
                     else if (userCreatedSuccessfully)
                     {                        

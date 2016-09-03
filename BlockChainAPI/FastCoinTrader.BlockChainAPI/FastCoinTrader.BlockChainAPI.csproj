@@ -38,8 +38,8 @@
       <HintPath>..\..\packages\BlockchainAPI.2.0.0\lib\portable-net45+win+wpa81\Info.Blockchain.API.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NBitcoin, Version=3.0.0.47, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NBitcoin.3.0.0.47\lib\net45\NBitcoin.dll</HintPath>
+    <Reference Include="NBitcoin, Version=3.0.0.48, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NBitcoin.3.0.0.48\lib\net45\NBitcoin.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FastCoinTrader.BlockChainAPI;
 using NBitcoin;
 
+
 namespace FastCoinTrader.EnitityModels.EntityHelper
 {
     public class UserAccountEntityHelper
@@ -36,10 +37,14 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
                         }
                      );
                     context.SaveChanges();                    
-                    ExtKey extKey = BlockChainAPI.BlockChainAPI.CreateWalletForUser(emailAddress);
+                    //TODO: Create proper wallet... probably using BlockChain
+                        ExtKey extKey = BlockChainAPI.BlockChainAPI.CreateWalletForUser(emailAddress);
+
                     if (extKey != null)
                     {
+                        //TODO: secretwif can be replaced with the users address if needed.
                         string secretWif = extKey.PrivateKey.GetBitcoinSecret(Network.TestNet).ToWif();
+
                         EntityHelper.WalletEntityHelper.CreateWalletEntry(emailAddress, 0, 0, 0, secretWif,extKey.ChainCode, "Default", "Default", "Default", "Default");
                         return true;
                     }
