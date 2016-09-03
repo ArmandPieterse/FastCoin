@@ -14,11 +14,20 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         {
             using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
+                var saleOffers = (from sales in context.tbl_Sales
+                                  where sales.tbl_Sales_ZARPrice == ZARPrice
+                                  orderby sales.tbl_Sales_BTCTargetAmount descending
+                                  select sales).ToList();
+               
+                decimal toBuy = 0,totalBought = 0;
+
+              
                 DateTime dateTimeNow = DateTime.Now;
+                Guid pkKey = Guid.NewGuid();
                 context.tbl_Buys.Add(
                     new tbl_Buys
                     {
-                        pk_tbl_Buys = Guid.NewGuid(),
+                        pk_tbl_Buys = pkKey,
                         fk_tbl_Wallet = fkWallet,
                         tbl_Buys_BTCTargetAmount = BTCTargetAmount,
                         tbl_Buys_BTCBought = BTCBoughtAmount,
@@ -29,6 +38,32 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
                         tbl_Buys_ZARTotal = ZARTotal
                     });
                 context.SaveChanges();
+                tbl_Buys currentBuy = context.tbl_Buys.Single(x => x.pk_tbl_Buys == pkKey);
+                if (saleOffers.Count > 0)
+                {
+                    for (int i = 0; i < saleOffers.Count; i++)
+                    {
+                        if (BTCTargetAmount == 0) break;
+
+                        //Get amount to buy after transaction and amount bought within this transaction
+                        toBuy = saleOffers[i].tbl_Sales_BTCTargetAmount >= BTCTargetAmount ? BTCTargetAmount : BTCTargetAmount - saleOffers[i].tbl_Sales_BTCTargetAmount;
+                        BTCTargetAmount -= toBuy;
+
+                        //Update sales offer
+                        saleOffers[i].tbl_Sales_BTCTargetAmount = saleOffers[i].tbl_Sales_BTCTargetAmount - toBuy;
+                        saleOffers[i].tbl_Sales_BTCSold = toBuy;
+                        context.Entry(saleOffers[i]).State = System.Data.Entity.EntityState.Modified;
+                        context.SaveChanges();
+
+                        //Update current buy entry
+                        BTCTargetAmount = BTCTargetAmount - saleOffers[i].tbl_Sales_BTCTargetAmount >= 0 ? BTCTargetAmount - saleOffers[i].tbl_Sales_BTCTargetAmount : 0;
+                        currentBuy.tbl_Buys_BTCBought += toBuy;
+                        currentBuy.tbl_Buys_BTCTargetAmount -= toBuy;
+                        currentBuy.tbl_Buys_DateLastModified = DateTime.Now;
+                        context.Entry(currentBuy).State = System.Data.Entity.EntityState.Modified;
+                        context.SaveChanges();
+                    }
+                }
 
                 //TODO: call buy btc api through blockchain and update tbl_buys accordingly.
 
@@ -57,7 +92,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
         #endregion
 
         #region Get Buys
-        public List<tbl_Buys> GetAllBuysList()
+        public static List<tbl_Buys> GetAllBuysList()
         {
             using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
@@ -91,6 +126,48 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
                                 select buy).ToList();
 
                 return buysList;
+            }
+        }
+
+        public static List<tbl_Buys> GetBuysByStatus(string status)
+        {
+            using (FastCoinTraderContext context = new FastCoinTraderContext())
+            {
+                var buysList = (from buys in context.tbl_Buys
+                                 where buys.tbl_Buys_Status == status
+                                 orderby buys.tbl_Buys_ZARPrice, buys.tbl_Buys_DateLastModified
+                                 select buys).ToList();
+                return buysList;
+            }
+        }
+
+        public static GetAvailableBuyOffersResponse GetPendingBuyOffers()
+        {
+            GetAvailableBuyOffersResponse offersResponse = new GetAvailableBuyOffersResponse();
+            offersResponse.Data = new List<BuyOffer>();
+            try
+            {
+                List<tbl_Buys> availablebuysOffers = GetBuysByStatus(Enums.SaleStatus.Pending.ToString());
+
+                foreach (tbl_Buys buy in availablebuysOffers)
+                {
+                    BuyOffer offer = new BuyOffer
+                    {
+                        BTCAmount = (buy.tbl_Buys_BTCTargetAmount - buy.tbl_Buys_BTCBought), // this is because you can sell only part of what you have offered.
+                        Price = buy.tbl_Buys_ZARPrice,
+                        Total = buy.tbl_Buys_ZARTotal
+                    };
+                    offersResponse.Data.Add(offer);
+                }
+
+                offersResponse.Success = true;
+                return offersResponse;
+            }
+            catch (Exception ex)
+            {
+                offersResponse.Error.Add(ex.Message);
+                offersResponse.Success = false;
+                return offersResponse;
             }
         }
         #endregion

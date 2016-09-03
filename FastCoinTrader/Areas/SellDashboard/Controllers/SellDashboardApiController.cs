@@ -9,28 +9,27 @@ using FastCoinTrader.EnitityModels;
 using FastCoinTrader.EnitityModels.API.Models;
 using FastCoinTrader.EnitityModels.EntityHelper;
 
-namespace FastCoinTrader.Areas.BuyDashboard.Controllers
+namespace FastCoinTrader.Areas.SellDashboard.Controllers
 {
-    public class BuyDashboardApiController : ApiController
+    public class SellDashboardApiController : ApiController
     {
-        public BuyDashboardApiController()
+        public SellDashboardApiController()
         {
-            
+
         }
 
         [System.Web.Http.HttpPost]
-        public CreateBuyResponse BuyBitCoin(CreateBuyRequest request)
-        {            
-            return FastCoinTrader.EnitityModels.EntityHelper.BuysEntityHelper.CreateBuyEntry(request.Amount, request.Price, request.Total, request.Amount, EnitityModels.Enums.BuyStatus.Pending.ToString(),
+        public CreateSaleResponse SellBitCoin(CreateSaleRequest request)
+        {
+            return FastCoinTrader.EnitityModels.EntityHelper.SalesEntityHelper.CreateSaleEntry(request.Amount, request.Price, request.Total, request.Amount, EnitityModels.Enums.BuyStatus.Pending.ToString(),
                 WalletEntityHelper.GetWalletByUserAccount(UserAccountEntityHelper.GetUserAccountKeyByEmail(User.Identity.Name)).pk_tbl_Wallet);
             //throw new NotImplementedException();
-
         }
 
         [System.Web.Http.HttpGet]
-        public GetAvailableSaleOffersResponse GetAvailableSaleOffers()
+        public GetAvailableBuyOffersResponse GetAvailableBuyOffers()
         {
-            return FastCoinTrader.EnitityModels.EntityHelper.SalesEntityHelper.GetPendingSaleOffers();
+            return EnitityModels.EntityHelper.BuysEntityHelper.GetPendingBuyOffers();
         }
 
 

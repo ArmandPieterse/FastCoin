@@ -219,7 +219,9 @@
     <Compile Include="Areas\BuyDashboard\Controllers\BuyDashboardApiController.cs" />
     <Compile Include="Areas\BuyDashboard\Controllers\BuyDashboardController.cs" />
     <Compile Include="Areas\BuyDashboard\Models\BuyBitCoinRequest.cs" />
+    <Compile Include="Areas\SellDashboard\Controllers\SellDashboardApiController.cs" />
     <Compile Include="Areas\SellDashboard\Controllers\SellDashboardController.cs" />
+    <Compile Include="Areas\SellDashboard\Models\SellBitCoinRequest.cs" />
     <Compile Include="Areas\SellDashboard\SellDashboardAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FAQController.cs" />
@@ -420,7 +422,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\BuyDashboard\Views\BuyDashboardApi\" />
     <Folder Include="Areas\SellDashboard\app\models\" />
-    <Folder Include="Areas\SellDashboard\Models\" />
     <Folder Include="Areas\SellDashboard\Views\Shared\" />
     <Folder Include="Areas\TradeHistory\app\models\" />
   </ItemGroup>

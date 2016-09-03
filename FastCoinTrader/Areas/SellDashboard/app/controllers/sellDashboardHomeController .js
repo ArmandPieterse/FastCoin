@@ -82,20 +82,19 @@
                 total: $scope.sellOffer.total,
                 fee: $scope.sellOffer.fee
             };
-            sellDashboardService.submitBuyBitCoin(request, sellBitCoinSuccess, sellBitCoinError);
+            sellDashboardService.submitSellBitCoin(request, sellBitCoinSuccess, sellBitCoinError);
         }
 
         //TODO: Link to production data
         ///Trade history table
-        $scope.sellOffers = [{ 'total': 1, 'pricePerBTC': 5, 'btc': 1.2 },
-            { 'total': 2, 'pricePerBTC': 6, 'btc': 1.2 },
-            { 'total': 3, 'pricePerBTC': 5, 'btc': 1.2 }];
+        $scope.sellOffers = [];
 
         /**
          * Initializes controller-specific data 
          */
         function getAvailableOffersSuccess() {
-            
+            angular.extend($scope.buyOffers, result);
+            console.log(result);
         }
 
         function sellBitCoinSuccess() {
@@ -112,6 +111,7 @@
 
         function init() {
             $scope.sellOffer.init();
+            sellDashboardService.getAvaliableOffers(getAvailableOffersSuccess, getAvailableOffersError);
         }
 
         init();

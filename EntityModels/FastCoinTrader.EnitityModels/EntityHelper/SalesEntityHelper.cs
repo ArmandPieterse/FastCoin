@@ -10,14 +10,16 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
     public class SalesEntityHelper
     {
         #region Create Sale
-        public void CreateSaleEntry(decimal BTCTargetAmount,decimal ZARPrice, decimal ZARTotal, decimal BTCSoldAmount,string status,Guid fkWallet)
+        public static CreateSaleResponse CreateSaleEntry(decimal BTCTargetAmount,decimal ZARPrice, decimal ZARTotal, decimal BTCSoldAmount,string status,Guid fkWallet)
         {
             using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
 
                 DateTime dateTimeNow = DateTime.Now;
+                Guid pkKey = Guid.NewGuid();
                 context.tbl_Sales.Add(
-                    new tbl_Sales {                        
+                    new tbl_Sales {       
+                            pk_tbl_Sales = pkKey,                 
                             fk_tbl_Wallet = fkWallet,
                             tbl_Sales_BTCTargetAmount = BTCTargetAmount,
                             tbl_Sales_BTCSold = BTCSoldAmount,
@@ -30,6 +32,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
                     );
                 context.SaveChanges();
             }
+            return new CreateSaleResponse { Data = 0, Success = true, Error = new List<string>(), Warnings = new List<string>() };
         }
         #endregion
 
