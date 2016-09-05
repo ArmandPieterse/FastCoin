@@ -54,6 +54,7 @@
         };
 
         var post = function (data, url, success, error) {
+            alert(data);
             $http({
                 method: service.methods.post,
                 url: url,

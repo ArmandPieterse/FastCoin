@@ -40,13 +40,6 @@
     }
 
 function SavePanel(_title, _paragraph, _videoLink, _panelNumber) {
-    //var values = {
-    //    title: _title,
-    //    paragraph: _paragraph,
-    //    videoLink: _videoLink,
-    //    panelNumber: _panelNumber
-    //};
-    //alert(JSON.stringify(values));
     $.ajax({
         url: "../News/SaveNewsEntry",
         type: "POST",
@@ -91,11 +84,11 @@ function SavePanel(_title, _paragraph, _videoLink, _panelNumber) {
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            Trade Dashboard <small>News</small>
+           <small>Trader News</small>
         </h1>
         <ol class="breadcrumb">
             <li>
-                <i class="fa fa-dashboard"></i>  <a href="#">Dashboard</a>
+                <i class="fa fa-dashboard"></i>  <a href="/Home/Index">Home</a>
             </li>
             <li class="active">
                 <i class="fa fa-newspaper-o"></i> News
@@ -106,9 +99,9 @@ function SavePanel(_title, _paragraph, _videoLink, _panelNumber) {
 <!-- /.row -->
 <div class="row">
     <div class="col-lg-12">
-        <div class="alert alert-info alert-dismissable">
+        <div class="center-text alert alert-info alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <i class="fa fa-info-circle"></i>  <strong>Like SB Admin?</strong> Try out <a href="http://startbootstrap.com/template-overviews/sb-admin-2" class="alert-link">SB Admin 2</a> for additional features!
+            <i class="fa fa-info-circle"></i>  We provide the most affordable exchange service in the world with a fee of only 0.5% 
         </div>
     </div>
 </div>

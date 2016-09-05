@@ -26,6 +26,9 @@ textarea {
 .remove-left-padding {
     padding-left: 0px;
 }
+.center-text {
+    text-align:center;
+}
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 

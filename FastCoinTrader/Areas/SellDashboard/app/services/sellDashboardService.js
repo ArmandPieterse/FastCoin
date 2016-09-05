@@ -14,7 +14,7 @@
         service.submitSellBitCoin = function(request, success, error) {
             apiService.submitSellBitCoin(request, function (result) {
                 notificationService.addNotification("Bit Coin successfully sold.", true);
-
+                
                 if (success) {
                     success(result);
                 }

@@ -129,14 +129,15 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
             }
         }
 
-        public static List<tbl_Buys> GetBuysByStatus(string status)
+        public static List<tbl_Buys> GetBuysByStatus(string status,int? amount)
         {
             using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
                 var buysList = (from buys in context.tbl_Buys
                                  where buys.tbl_Buys_Status == status
                                  orderby buys.tbl_Buys_ZARPrice, buys.tbl_Buys_DateLastModified
-                                 select buys).ToList();
+                                 
+                                 select buys).Take(amount.HasValue ? amount.Value : 1000).ToList();
                 return buysList;
             }
         }
@@ -147,7 +148,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
             offersResponse.Data = new List<BuyOffer>();
             try
             {
-                List<tbl_Buys> availablebuysOffers = GetBuysByStatus(Enums.SaleStatus.Pending.ToString());
+                List<tbl_Buys> availablebuysOffers = GetBuysByStatus(Enums.SaleStatus.Pending.ToString(),null);
 
                 foreach (tbl_Buys buy in availablebuysOffers)
                 {

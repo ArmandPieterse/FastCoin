@@ -13,7 +13,7 @@
           <Property Name="fk_tbl_Wallet" Type="uniqueidentifier" Nullable="false" />
           <Property Name="tbl_Buys_BTCTargetAmount" Type="decimal" Precision="14" Scale="8" Nullable="false" />
           <Property Name="tbl_Buys_ZARPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="tbl_Buys_BTCBought" Type="decimal" Precision="14" Scale="2" Nullable="false" />
+          <Property Name="tbl_Buys_BTCBought" Type="decimal" Precision="14" Scale="8" Nullable="false" />
           <Property Name="tbl_Buys_Status" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="tbl_Buys_DateCreated" Type="datetime" Nullable="false" />
           <Property Name="tbl_Buys_DateLastModified" Type="datetime" Nullable="false" />
@@ -57,13 +57,13 @@
           </Key>
           <Property Name="pk_tbl_Sales" Type="uniqueidentifier" Nullable="false" />
           <Property Name="fk_tbl_Wallet" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="tbl_Sales_BTCTargetAmount" Type="decimal" Precision="14" Scale="8" Nullable="false" />
           <Property Name="tbl_Sales_ZARPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="tbl_Sales_ZARTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="tbl_Sales_BTCSold" Type="decimal" Precision="14" Scale="8" Nullable="false" />
           <Property Name="tbl_Sales_Status" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="tbl_Sales_DateCreated" Type="datetime" Nullable="false" />
           <Property Name="tbl_Sales_DateLastModified" Type="datetime" Nullable="false" />
+          <Property Name="tbl_Sales_ZARTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="tbl_Sales_BTCTargetAmount" Type="decimal" Precision="14" Scale="8" Nullable="false" />
         </EntityType>
         <EntityType Name="tbl_UserAccount">
           <Key>
@@ -281,7 +281,7 @@
           <Property Name="fk_tbl_Wallet" Type="Guid" Nullable="false" />
           <Property Name="tbl_Buys_BTCTargetAmount" Type="Decimal" Nullable="false" Precision="14" Scale="8" />
           <Property Name="tbl_Buys_ZARPrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="tbl_Buys_BTCBought" Type="Decimal" Nullable="false" Precision="14" Scale="2" />
+          <Property Name="tbl_Buys_BTCBought" Type="Decimal" Nullable="false" Precision="14" Scale="8" />
           <Property Name="tbl_Buys_Status" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="tbl_Buys_DateCreated" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="tbl_Buys_DateLastModified" Type="DateTime" Nullable="false" Precision="3" />

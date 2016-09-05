@@ -1,0 +1,176 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using FastCoinTrader.EnitityModels.EntityHelper
+<style>
+    .textRight {
+        text-align: right;
+    }
+
+    .textCenter {
+        text-align: center;
+    }
+    .blue-header{
+        background-color:#57cdf2 !important;
+    }
+    .header-background {
+        background-color:#d8feff !important;
+    }
+</style>
+
+<div>
+        <form role="form" id="sellDashboardHomeForm" name="sellDashboardHomeForm" novalidate class="form-horizontal">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>
+                        <i class="fa fa-dollar fa-fw" style="color: green;"></i> Sell Bitcoin
+                    </h1>
+                    <hr />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 style="color: grey">
+                        Make An Offer
+                    </h3>
+                    <hr />
+                </div>
+
+                <div class="form-body">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" placeholder="Amount of BTC"/>
+                        </div>
+                        <label class="col-md-4 remove-left-padding">BTC</label>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" placeholder="Price per BTC"/>
+                        </div>
+                        <label class="col-md-4 remove-left-padding">ZAR</label>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" placeholder="Fee"/>
+                        </div>
+                        <label class="col-md-4 remove-left-padding">BTC</label>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" placeholder="Total Price" />
+                        </div>
+                        <label class="col-md-4 remove-left-padding">ZAR</label>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary" >
+                <i class="fa fa-dollar fa-fw"></i>
+                Sell
+            </button>
+            <hr />
+
+            <!--DATA TABLE SELL OFFERS START-->
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 style="color: grey">
+                        Available Offers
+                    </h3>
+                    <hr />
+                </div>
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> <strong>Top 10 buy offers</strong></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th class="textCenter">#</th>
+                                            <th class="textCenter">Bitoin To Buy</th>
+                                            <th class="textCenter">Bitcoin Bought</th>
+                                            <th class="textCenter">Price (ZAR)</th>
+                                            <th class="textCenter">Total (ZAR)</th>
+                                            <th class="textCenter">Date</th>
+                                            <th class="textCenter">Options</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @Html.Partial("_BuyOffers")                                                                          
+                                    </tbody>
+                                </table>
+                            </div>
+                           
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+
+            <!-- CONFIRMATION MODAL START-->
+            <div class="modal fade" id="myModal" role="dialog">
+
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Please confirm your order</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="form-group col-md-6 text-muted">
+                                        <label class="control-label col-md-6">Amount</label>
+                                        <div class="col-md-6">
+                                            <p class="form-control-static remove-margin">{{sellOffer.amount | number: 4}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6 text-muted">
+                                        <label class="control-label col-md-6">Price per BTC</label>
+                                        <div class="col-md-6">
+                                            <p class="form-control-static remove-margin">{{sellOffer.pricePerBTC | number: 4}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6 text-muted">
+                                        <label class="control-label col-md-6">Fee</label>
+                                        <div class="col-md-6">
+                                            <p class="form-control-static remove-margin">{{sellOffer.fee | number: 4}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6 text-muted">
+                                        <label class="control-label col-md-6">Total</label>
+                                        <div class="col-md-6">
+                                            <p class="form-control-static remove-margin">{{sellOffer.total | number: 4}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" ng-click="submitsellBitCoin()" data-dismiss="modal">Confirm</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- CONFIRMATION MODAL END-->
+        </form>
+</div>
+
+
+
+
+
+
+
+
+
+
