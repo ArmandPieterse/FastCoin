@@ -29,6 +29,9 @@ textarea {
 .center-text {
     text-align:center;
 }
-
+.gray-label
+{
+    color:#726c6b;
+}
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 

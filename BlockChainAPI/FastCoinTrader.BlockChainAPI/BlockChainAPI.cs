@@ -4,14 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Info.Blockchain.API.CreateWallet;
-using BitcoinLib;
 using System.Net;
 using System.IO;
-using BitcoinLib.Auxiliary;
-using BitcoinLib.ExceptionHandling.Rpc;
-using BitcoinLib.Responses;
-using BitcoinLib.Services.Coins.Base;
-using BitcoinLib.Services.Coins.Bitcoin;
 using NBitcoin;
 
 namespace FastCoinTrader.BlockChainAPI
