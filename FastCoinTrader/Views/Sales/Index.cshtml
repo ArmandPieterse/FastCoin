@@ -19,7 +19,7 @@
 </style>
 
 <div>
-        <form role="form" id="sellDashboardHomeForm" name="sellDashboardHomeForm" novalidate class="form-horizontal">
+        <form method="POST" action="CreateSale" role="form" id="sellDashboardHomeForm" name="sellDashboardHomeForm" novalidate class="form-horizontal">
             <div class="row">
                 <div class="col-md-12">
                     <h1>
@@ -56,7 +56,7 @@
                     <div class="form-group col-md-6">
                         <div class="col-md-8">
                             <label class="gray-label">Transaction Fee</label> 
-                            <input id="fee" type="text" class="form-control" placeholder="Fee"/>
+                            <input id="fee" type="text" class="form-control" placeholder="Fee" disabled/>
                         </div>                        
                     </div>
                     <div class="form-group col-md-6">
@@ -67,7 +67,7 @@
                     </div>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary" >
+            <button type="button" class="selling-button btn btn-primary" disabled>
                 <i class="fa fa-dollar fa-fw"></i>
                 Sell
             </button>
@@ -100,7 +100,7 @@
                                             <th class="textCenter">Options</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="buy-offers-table">
                                         @Html.Partial("_BuyOffers")                                                                          
                                     </tbody>
                                 </table>
@@ -125,7 +125,7 @@
                         <div class="modal-body">
                             <div class="form-body">
                                 <div class="row">
-                                    <h4 class="center-text">Are you sure you want to place this offer.</h4>
+                                    <h4 class="center-text">Are you sure you want to place this sales offer.</h4>
                                 </div>
                             </div>
                         </div>

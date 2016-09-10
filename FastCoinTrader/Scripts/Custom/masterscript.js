@@ -5,8 +5,7 @@ $(document).ready(function () {
 
     $("#total").on("focusout", function () { $(this).val(addCurrency(getTotal())); });
 
-    $("#total").change(function () {
-        
+    $("#total").change(function () {        
         if (getPrice() > 0)
         {                  
             $("#amount").val(addBTC(getTotal() / getPrice()));
@@ -16,6 +15,7 @@ $(document).ready(function () {
             $("#price").val(addCurrency(getTotal() / getAmount()));
         }
         setFee();
+        checkAll();
     });
     //===========================TOTAL EVENTS END==================================
 
@@ -28,8 +28,8 @@ $(document).ready(function () {
             $("#total").val(addCurrency(total));
         }
         setFee();
+        checkAll();
     });
-
     //===========================PRICE EVENTS END==================================
 
     //===========================AMOUNT EVENTS START==================================
@@ -42,26 +42,38 @@ $(document).ready(function () {
             $("#total").val(addCurrency(total));
         }
         setFee();
+        checkAll();
     });
     //===========================PRICE EVENTS END==================================
 
-    $(".btn-primary").click(function () {
-        if ($(this).html().indexOf("Sell") !== -1)
-        {           
-            $('#myModal').modal('show');
-            //$('#myModal').modal('hide');
-        }
-        else if ($(this).html().indexOf("Buy") !== -1)
-        {
-            alert();
-        }
+    $(".selling-button").click(function () {
+        $('#myModal').modal('show');   
     });
+    
+    $(".buying-button").click(function () {
+        $('#myModal').modal('show');
+    });
+
+    if (window.location.href.indexOf('Sales') != -1 || window.location.href.indexOf('Buy') != -1) 
+    {
+        setInterval(function () {
+            if (window.location.href.indexOf('Sales') != -1)
+            {
+                refreshBuyOffers();
+            }
+            else if (window.location.href.indexOf('Buy') != -1)
+            {
+                refreshSalesOffers();
+            }
+        }, 5000);
+    }   
     
 });
 //===============================SELL && BUY SCREEN FUNCTIONS START====================================
+
 function setFee()
 {
-    $("#fee").val(addBTC(getAmount() * 0.05));
+    $("#fee").val(addBTC(getAmount() * 0.005));
 }
 
 function getTotal()
@@ -101,20 +113,118 @@ function addBTC(value)
 
 function submitForm()
 {
+    salesValues =
+        {
+            amount : getAmount().toString(),
+            price : getPrice().toString(),
+            total : getTotal().toString(),
+        };
+
     $('#myModal').modal('hide');
+    $.ajax({
+        method: 'POST',
+        url: '../Sales/CreateSale',
+        data:  JSON.stringify(salesValues),
+        dataType: 'json',
+        contentType: "application/json; charset=utf-8",
+        success: function (result) {
+            refreshBuyOffers();
+            if (typeof result.message != 'undefined')
+            {
+                if (result.message.indexOf('success') != -1)
+                {
+                    showToastr('success', result.message, 5000); 
+                }
+                else if (result.message.indexOf('Error') != -1)
+                {
+                    showToastr('error', result.message, 5000); 
+                }
+
+
+            }
+                       
+        },
+        error: function (result) {
+            console.log(result);
+        }
+    });
 }
 
 function closeModal()
 {
     $('#myModal').modal('hide');
 }
-function checkAll ()
+
+function checkAll()
 {
     if (getAmount() > 0 && getPrice() > 0 && getTotal() > 0)
     {
-        $('.btn-primary').close
+        $('.selling-button').attr('disabled', false);
+        return true;
+    }
+    else
+    {
+        $('.selling-button').attr('disabled', true);
+        return false;
     }
 }
 
+function refreshBuyOffers()
+{
+    $.ajax({
+        url: '../Sales/_BuyOffers',
+        success: function (result) {
+            $(".buy-offers-table").html(result);
+        },
+        error: function (result) {
+            console.log(result);
+        }
+    });
+    
+}
+
+function sellButtons(number) {
+    var row = $('.row' + number);
+    var columns = $(row).find('td');
+    var BTCtoBuy = columns[1].innerHTML;
+    var Price = columns[3].innerHTML;
+    var Total = columns[4].innerHTML;
+
+    $("#amount").val(addBTC(BTCtoBuy));
+    $("#price").val(Price);
+    $("#amount").trigger('change');
+    setFee();
+    if (checkAll())
+    {
+        $("#myModal").modal('show');
+    }
+
+   
+
+}
 //===============================SELL && BUY SCREEN FUNCTIONS END====================================
 
+//===============================GENERAL FUNCTIONS START====================================
+function showToastr(type,message,time)
+{
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-center",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": time,
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+    toastr[type](message);
+}
+
+//===============================GENERAL FUNCTIONS END====================================

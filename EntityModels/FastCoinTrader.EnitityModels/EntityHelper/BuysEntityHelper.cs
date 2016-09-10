@@ -10,64 +10,87 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
     public class BuysEntityHelper
     {
         #region Create Buy Entry
-        public static CreateBuyResponse CreateBuyEntry(decimal BTCTargetAmount, decimal ZARPrice, decimal ZARTotal, decimal BTCBoughtAmount, string status, Guid fkWallet)
+        public static string CreateBuyEntry(decimal BTCTargetAmount, decimal ZARPrice, decimal ZARTotal, decimal BTCBoughtAmount, string status, Guid fkWallet)
         {
             using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
-                var saleOffers = (from sales in context.tbl_Sales
-                                  where sales.tbl_Sales_ZARPrice == ZARPrice
-                                  orderby sales.tbl_Sales_BTCTargetAmount descending
-                                  select sales).ToList();
-               
-                decimal toBuy = 0,totalBought = 0;
-
-              
-                DateTime dateTimeNow = DateTime.Now;
-                Guid pkKey = Guid.NewGuid();
-                context.tbl_Buys.Add(
-                    new tbl_Buys
-                    {
-                        pk_tbl_Buys = pkKey,
-                        fk_tbl_Wallet = fkWallet,
-                        tbl_Buys_BTCTargetAmount = BTCTargetAmount,
-                        tbl_Buys_BTCBought = BTCBoughtAmount,
-                        tbl_Buys_Status = status,
-                        tbl_Buys_ZARPrice = ZARPrice,
-                        tbl_Buys_DateCreated = dateTimeNow,
-                        tbl_Buys_DateLastModified = dateTimeNow,
-                        tbl_Buys_ZARTotal = ZARTotal
-                    });
-                context.SaveChanges();
-                tbl_Buys currentBuy = context.tbl_Buys.Single(x => x.pk_tbl_Buys == pkKey);
-                if (saleOffers.Count > 0)
+                tbl_Wallet wallet = context.tbl_Wallet.Single(x => x.pk_tbl_Wallet == fkWallet);
+                if (ZARTotal > wallet.tbl_Wallet_ZARBalance)
                 {
-                    for (int i = 0; i < saleOffers.Count; i++)
+                    return String.Format("Error: You don't have R {0} in your wallet!", ZARTotal);
+                }
+                else
+                {
+                    wallet.tbl_Wallet_BTCPending += BTCTargetAmount;
+                    wallet.tbl_Wallet_ZARBalance -= ZARTotal;
+                    DateTime dateTimeNow = DateTime.Now;
+                    Guid pkKey = Guid.NewGuid();
+                    context.tbl_Buys.Add(
+                        new tbl_Buys
+                        {
+                            pk_tbl_Buys = pkKey,
+                            fk_tbl_Wallet = fkWallet,
+                            tbl_Buys_BTCTargetAmount = BTCTargetAmount,
+                            tbl_Buys_BTCBought = BTCBoughtAmount,
+                            tbl_Buys_Status = status,
+                            tbl_Buys_ZARPrice = ZARPrice,
+                            tbl_Buys_DateCreated = dateTimeNow,
+                            tbl_Buys_DateLastModified = dateTimeNow,
+                            tbl_Buys_ZARTotal = ZARTotal
+                        }
+                        );
+                    context.SaveChanges();
+
+                    var saleOffers = (from sales in context.tbl_Sales
+                                     where sales.tbl_Sales_ZARPrice == ZARPrice
+                                     orderby sales.tbl_Sales_BTCTargetAmount descending
+                                     select sales).ToList();
+
+                    decimal toBuy = 0;
+
+                    tbl_Buys currentBuy = context.tbl_Buys.Single(x => x.pk_tbl_Buys == pkKey);
+                    if (saleOffers.Count > 0)
                     {
-                        if (BTCTargetAmount == 0) break;
+                        for (int i = 0; i < saleOffers.Count; i++)
+                        {
+                            if (BTCTargetAmount == 0) break;
 
-                        //Get amount to buy after transaction and amount bought within this transaction
-                        toBuy = saleOffers[i].tbl_Sales_BTCTargetAmount >= BTCTargetAmount ? BTCTargetAmount : BTCTargetAmount - saleOffers[i].tbl_Sales_BTCTargetAmount;
-                        BTCTargetAmount -= toBuy;
+                            //Get amount to buy after transaction and amount bought within this transaction
+                            toBuy = saleOffers[i].tbl_Sales_BTCTargetAmount >= BTCTargetAmount ? BTCTargetAmount : saleOffers[i].tbl_Sales_BTCTargetAmount;
+                            BTCTargetAmount -= toBuy;
 
-                        //Update sales offer
-                        saleOffers[i].tbl_Sales_BTCTargetAmount = saleOffers[i].tbl_Sales_BTCTargetAmount - toBuy;
-                        saleOffers[i].tbl_Sales_BTCSold = toBuy;
-                        context.Entry(saleOffers[i]).State = System.Data.Entity.EntityState.Modified;
-                        context.SaveChanges();
+                            //Update sales offer
+                            saleOffers[i].tbl_Sales_BTCTargetAmount -= toBuy;
+                            saleOffers[i].tbl_Sales_BTCSold += toBuy;
+                            Guid fkBuyerWallet = saleOffers[i].fk_tbl_Wallet;
+                            tbl_Wallet sellerWallet = context.tbl_Wallet.Single(x => x.pk_tbl_Wallet == fkBuyerWallet);
+                            sellerWallet.tbl_Wallet_ZARBalance += (toBuy * ZARPrice);
+                            sellerWallet.tbl_Wallet_ZARPending -= (toBuy * ZARPrice);
+                            context.Entry(saleOffers[i]).State = System.Data.Entity.EntityState.Modified;
+                            if (saleOffers[i].tbl_Sales_BTCTargetAmount == 0)
+                                saleOffers[i].tbl_Sales_Status = Enums.BuyStatus.Successful.ToString();
 
-                        //Update current buy entry
-                        BTCTargetAmount = BTCTargetAmount - saleOffers[i].tbl_Sales_BTCTargetAmount >= 0 ? BTCTargetAmount - saleOffers[i].tbl_Sales_BTCTargetAmount : 0;
-                        currentBuy.tbl_Buys_BTCBought += toBuy;
-                        currentBuy.tbl_Buys_BTCTargetAmount -= toBuy;
-                        currentBuy.tbl_Buys_DateLastModified = DateTime.Now;
-                        context.Entry(currentBuy).State = System.Data.Entity.EntityState.Modified;
-                        context.SaveChanges();
+                            context.SaveChanges();
+
+                            //Update current buy entry                            
+                            currentBuy.tbl_Buys_BTCBought += toBuy;
+                            currentBuy.tbl_Buys_BTCTargetAmount -= toBuy;
+                            currentBuy.tbl_Buys_DateLastModified = DateTime.Now;
+                            context.Entry(currentBuy).State = System.Data.Entity.EntityState.Modified;
+                            context.SaveChanges();
+
+                            //Update sellers wallet
+                            {
+                                wallet.tbl_Wallet_ZARBalance += (toBuy * ZARPrice);
+                                wallet.tbl_Wallet_ZARPending -= (toBuy * ZARPrice);
+                            }
+                        }
                     }
                 }
 
                 //TODO: call buy btc api through blockchain and update tbl_buys accordingly.
 
-                return new CreateBuyResponse { Data = 0, Success = true, Error = new List<string>(),Warnings = new List<string>() };
+                return string.Format("");
             }
         }
         #endregion

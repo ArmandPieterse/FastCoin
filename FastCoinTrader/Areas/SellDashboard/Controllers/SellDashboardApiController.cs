@@ -18,19 +18,19 @@ namespace FastCoinTrader.Areas.SellDashboard.Controllers
 
         }
 
-        [System.Web.Http.HttpPost]
-        public CreateSaleResponse SellBitCoin(CreateSaleRequest request)
-        {
-            return FastCoinTrader.EnitityModels.EntityHelper.SalesEntityHelper.CreateSaleEntry(request.Amount, request.Price, request.Total, request.Amount, EnitityModels.Enums.BuyStatus.Pending.ToString(),
-                WalletEntityHelper.GetWalletByUserAccount(UserAccountEntityHelper.GetUserAccountKeyByEmail(User.Identity.Name)).pk_tbl_Wallet);
-            //throw new NotImplementedException();
-        }
+        //[System.Web.Http.HttpPost]
+        //public CreateSaleResponse SellBitCoin(CreateSaleRequest request)
+        //{
+        //    return FastCoinTrader.EnitityModels.EntityHelper.SalesEntityHelper.CreateSaleEntry(request.Amount, request.Price, request.Total, request.Amount, EnitityModels.Enums.BuyStatus.Pending.ToString(),
+        //        WalletEntityHelper.GetWalletByUserAccount(UserAccountEntityHelper.GetUserAccountKeyByEmail(User.Identity.Name)).pk_tbl_Wallet);
+        //    //throw new NotImplementedException();
+        //}
 
-        [System.Web.Http.HttpGet]
-        public GetAvailableBuyOffersResponse GetAvailableBuyOffers()
-        {
-            return EnitityModels.EntityHelper.BuysEntityHelper.GetPendingBuyOffers();
-        }
+        //[System.Web.Http.HttpGet]
+        //public GetAvailableBuyOffersResponse GetAvailableBuyOffers()
+        //{
+        //    return EnitityModels.EntityHelper.BuysEntityHelper.GetPendingBuyOffers();
+        //}
 
 
 
