@@ -110,7 +110,14 @@ function addBTC(value)
 {
     return "BTC " + Number(value).toFixed(8);
 }
-
+function isSalesScreen()
+{
+    return (window.location.href.indexOf("Sales") != -1);
+}
+function isBuysScreen()
+{
+    return (window.location.href.indexOf("Buys") != -1);
+}
 function submitForm()
 {
     salesValues =
@@ -121,9 +128,14 @@ function submitForm()
         };
 
     $('#myModal').modal('hide');
+    if (isSalesScreen())
+        url = '../Sales/CreateSale';
+    else if (isBuysScreen())
+        url = '../Buys/CreateBuy';
+
     $.ajax({
         method: 'POST',
-        url: '../Sales/CreateSale',
+        url: url,
         data:  JSON.stringify(salesValues),
         dataType: 'json',
         contentType: "application/json; charset=utf-8",
@@ -139,8 +151,6 @@ function submitForm()
                 {
                     showToastr('error', result.message, 5000); 
                 }
-
-
             }
                        
         },
@@ -159,12 +169,20 @@ function checkAll()
 {
     if (getAmount() > 0 && getPrice() > 0 && getTotal() > 0)
     {
-        $('.selling-button').attr('disabled', false);
+        if (window.location.href.indexOf('Sales') != -1)
+            $('.selling-button').attr('disabled', false);
+        else
+            $('.buying-button').attr('disabled', false);
+
         return true;
     }
     else
     {
-        $('.selling-button').attr('disabled', true);
+        if (window.location.href.indexOf('Sales') != -1)
+            $('.selling-button').attr('disabled', true);
+        else
+            $('.buying-button').attr('disabled', true);
+
         return false;
     }
 }
@@ -179,8 +197,20 @@ function refreshBuyOffers()
         error: function (result) {
             console.log(result);
         }
+    });    
+}
+
+function refreshSalesOffers()
+{
+    $.ajax({
+        url: '../Buys/_SaleOffers',
+        success: function (result) {
+            $(".sale-offers-table").html(result);
+        },
+        error: function (result) {
+            console.log(result);
+        }
     });
-    
 }
 
 function sellButtons(number) {
@@ -198,9 +228,23 @@ function sellButtons(number) {
     {
         $("#myModal").modal('show');
     }
+}
 
-   
+function buyButtons(number)
+{
+    var row = $('.row' + number);
+    var columns = $(row).find('td');
+    var BTCtoBuy = columns[1].innerHTML;
+    var Price = columns[3].innerHTML;
+    var Total = columns[4].innerHTML;
 
+    $("#amount").val(addBTC(BTCtoBuy));
+    $("#price").val(Price);
+    $("#amount").trigger('change');
+    setFee();
+    if (checkAll()) {
+        $("#myModal").modal('show');
+    }
 }
 //===============================SELL && BUY SCREEN FUNCTIONS END====================================
 

@@ -61,19 +61,19 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
 
                             //Update buy offer
                             buyOffers[i].tbl_Buys_BTCTargetAmount -= toSell;
+                            if (buyOffers[i].tbl_Buys_BTCTargetAmount == 0) { buyOffers[i].tbl_Buys_Status = Enums.BuyStatus.Successful.ToString(); };
                             buyOffers[i].tbl_Buys_BTCBought += toSell;
                             Guid fkBuyerWallet = buyOffers[i].fk_tbl_Wallet;
                             tbl_Wallet buyerWallet = context.tbl_Wallet.Single(x => x.pk_tbl_Wallet == fkBuyerWallet);
                             buyerWallet.tbl_Wallet_ZARBalance -= (toSell * ZARPrice);
-                            context.Entry(buyOffers[i]).State = System.Data.Entity.EntityState.Modified;
-                            if (buyOffers[i].tbl_Buys_BTCTargetAmount == 0)
-                                buyOffers[i].tbl_Buys_Status = Enums.SaleStatus.Successful.ToString(); 
+                            context.Entry(buyOffers[i]).State = System.Data.Entity.EntityState.Modified;                           
                             
                             context.SaveChanges();
 
                             //Update current sales entry                            
                             currentSale.tbl_Sales_BTCSold += toSell;
                             currentSale.tbl_Sales_BTCTargetAmount -= toSell;
+                            if (currentSale.tbl_Sales_BTCTargetAmount == 0) { currentSale.tbl_Sales_Status = Enums.SaleStatus.Successful.ToString(); };
                             currentSale.tbl_Sales_DateLastModified = DateTime.Now;
                             context.Entry(currentSale).State = System.Data.Entity.EntityState.Modified;
                             context.SaveChanges();
@@ -146,14 +146,14 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
             }
         }
 
-        public static List<tbl_Sales> GetSalesByStatus(string status)
+        public static List<tbl_Sales> GetSalesByStatus(string status,int? amount)
         {
             using (FastCoinTraderContext context = new FastCoinTraderContext())
             {
                 var salesList = (from sales in context.tbl_Sales
                                  where sales.tbl_Sales_Status == status
                                  orderby sales.tbl_Sales_ZARPrice, sales.tbl_Sales_DateCreated
-                                 select sales).ToList();
+                                 select sales).Take(amount.HasValue ? amount.Value : 1000).ToList();
                 return salesList;
             }
         }
@@ -166,7 +166,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
             offersResponse.Data = new List<SaleOffer>();
             try
             {
-                List<tbl_Sales> availableSaleOffers = GetSalesByStatus(Enums.SaleStatus.Pending.ToString());
+                List<tbl_Sales> availableSaleOffers = GetSalesByStatus(Enums.SaleStatus.Pending.ToString(),10);
 
                 foreach (tbl_Sales sale in availableSaleOffers)
                 {

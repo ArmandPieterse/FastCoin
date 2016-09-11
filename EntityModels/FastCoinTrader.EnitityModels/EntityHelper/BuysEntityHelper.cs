@@ -61,20 +61,20 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
 
                             //Update sales offer
                             saleOffers[i].tbl_Sales_BTCTargetAmount -= toBuy;
+                            if (saleOffers[i].tbl_Sales_BTCTargetAmount == 0) { saleOffers[i].tbl_Sales_Status = Enums.SaleStatus.Successful.ToString(); };
                             saleOffers[i].tbl_Sales_BTCSold += toBuy;
                             Guid fkBuyerWallet = saleOffers[i].fk_tbl_Wallet;
                             tbl_Wallet sellerWallet = context.tbl_Wallet.Single(x => x.pk_tbl_Wallet == fkBuyerWallet);
                             sellerWallet.tbl_Wallet_ZARBalance += (toBuy * ZARPrice);
                             sellerWallet.tbl_Wallet_ZARPending -= (toBuy * ZARPrice);
-                            context.Entry(saleOffers[i]).State = System.Data.Entity.EntityState.Modified;
-                            if (saleOffers[i].tbl_Sales_BTCTargetAmount == 0)
-                                saleOffers[i].tbl_Sales_Status = Enums.BuyStatus.Successful.ToString();
+                            context.Entry(saleOffers[i]).State = System.Data.Entity.EntityState.Modified;                           
 
                             context.SaveChanges();
 
                             //Update current buy entry                            
                             currentBuy.tbl_Buys_BTCBought += toBuy;
                             currentBuy.tbl_Buys_BTCTargetAmount -= toBuy;
+                            if (currentBuy.tbl_Buys_BTCTargetAmount == 0) { currentBuy.tbl_Buys_Status = Enums.BuyStatus.Successful.ToString(); };
                             currentBuy.tbl_Buys_DateLastModified = DateTime.Now;
                             context.Entry(currentBuy).State = System.Data.Entity.EntityState.Modified;
                             context.SaveChanges();
@@ -90,7 +90,7 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
 
                 //TODO: call buy btc api through blockchain and update tbl_buys accordingly.
 
-                return string.Format("");
+                return string.Format("The buy offer has been placed successfully.");
             }
         }
         #endregion
@@ -158,10 +158,20 @@ namespace FastCoinTrader.EnitityModels.EntityHelper
             {
                 var buysList = (from buys in context.tbl_Buys
                                  where buys.tbl_Buys_Status == status
-                                 orderby buys.tbl_Buys_ZARPrice, buys.tbl_Buys_DateLastModified
-                                 
+                                 orderby buys.tbl_Buys_ZARPrice, buys.tbl_Buys_DateLastModified                                 
                                  select buys).Take(amount.HasValue ? amount.Value : 1000).ToList();
                 return buysList;
+            }
+        }
+
+        public static List<tbl_Buys> GetTopNTrades(int amount)
+        {
+            using (FastCoinTraderContext context = new FastCoinTraderContext())
+            {
+                return (from trade in context.tbl_Buys
+                        where trade.tbl_Buys_Status == Enums.BuyStatus.Successful.ToString()
+                        orderby trade.tbl_Buys_ZARTotal descending, trade.tbl_Buys_DateLastModified
+                        select trade).ToList();
             }
         }
 

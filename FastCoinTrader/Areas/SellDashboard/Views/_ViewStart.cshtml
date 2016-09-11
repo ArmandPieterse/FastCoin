@@ -1,7 +1,0 @@
-﻿@{
-    if (string.IsNullOrEmpty(User.Identity.Name))
-    {
-        Response.Redirect("/Account/Login",true);
-    }
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}

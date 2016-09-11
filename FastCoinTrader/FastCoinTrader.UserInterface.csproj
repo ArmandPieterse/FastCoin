@@ -215,15 +215,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Areas\BuyDashboard\BuyDashboardAreaRegistration.cs" />
-    <Compile Include="Areas\BuyDashboard\Controllers\BuyDashboardApiController.cs" />
-    <Compile Include="Areas\BuyDashboard\Controllers\BuyDashboardController.cs" />
-    <Compile Include="Areas\BuyDashboard\Models\BuyBitCoinRequest.cs" />
-    <Compile Include="Areas\SellDashboard\Controllers\SellDashboardApiController.cs" />
-    <Compile Include="Areas\SellDashboard\Controllers\SellDashboardController.cs" />
-    <Compile Include="Areas\SellDashboard\Models\SellBitCoinRequest.cs" />
-    <Compile Include="Areas\SellDashboard\SellDashboardAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BuysController.cs" />
     <Compile Include="Controllers\FAQController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -241,24 +234,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\BuyDashboard\app\app.js" />
-    <Content Include="Areas\BuyDashboard\app\templates\myTest.html" />
-    <Content Include="Areas\Routing\root.js" />
-    <Content Include="Areas\SellDashboard\app\app.js" />
-    <Content Include="Areas\SellDashboard\app\controllers\sellDashboardHomeController .js" />
-    <Content Include="Areas\BuyDashboard\app\controllers\buyDashboardHomeController.js" />
-    <Content Include="Areas\BuyDashboard\app\models\buyDashboardModel.js" />
-    <Content Include="Areas\BuyDashboard\app\services\apiService.js" />
-    <Content Include="Areas\BuyDashboard\app\services\buyDashboardService.js" />
-    <Content Include="Areas\BuyDashboard\app\templates\buyDashboardHomeView.html" />
-    <Content Include="Areas\SellDashboard\app\services\apiService.js" />
-    <Content Include="Areas\SellDashboard\app\services\sellDashboardService.js" />
-    <Content Include="Areas\SellDashboard\app\templates\sellDashboardHomeView.html" />
-    <Content Include="Areas\TradeHistory\app\app.js" />
-    <Content Include="Areas\TradeHistory\app\controllers\tradeHistoryController.js" />
-    <Content Include="Areas\TradeHistory\app\services\apiService.js" />
-    <Content Include="Areas\TradeHistory\app\services\tradeHistoryService.js" />
-    <Content Include="Areas\TradeHistory\app\templates\tradeHistoryView.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\datepicker.fixes.css" />
@@ -294,16 +269,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Areas\BuyDashboard\Views\web.config" />
-    <Content Include="Areas\SellDashboard\Views\web.config" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Scripts\angular-sanitize.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
-    <Content Include="Areas\BuyDashboard\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\BuyDashboard\Views\BuyDashboard\Index.cshtml" />
-    <Content Include="Areas\SellDashboard\Views\SellDashboard\Index.cshtml" />
-    <Content Include="Areas\SellDashboard\Views\_ViewStart.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -421,13 +390,12 @@
     <Content Include="Views\Wallet\MyWallet.cshtml" />
     <Content Include="Views\Sales\Index.cshtml" />
     <Content Include="Views\Sales\_BuyOffers.cshtml" />
+    <Content Include="Views\Buys\Index.cshtml" />
+    <Content Include="Views\Buys\_SaleOffers.cshtml" />
+    <Content Include="Views\Home\_TopTrades.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\BuyDashboard\Views\BuyDashboardApi\" />
-    <Folder Include="Areas\SellDashboard\app\models\" />
-    <Folder Include="Areas\SellDashboard\Views\Shared\" />
-    <Folder Include="Areas\TradeHistory\app\models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -26,5 +26,10 @@ namespace FastCoinTrader.Controllers
 
             return View();
         }
+
+        public ActionResult _TopTrades()
+        {
+            return PartialView();
+        }
     }
 }

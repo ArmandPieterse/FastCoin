@@ -9,10 +9,7 @@ namespace FastCoinTrader
         public static void RegisterBundles(BundleCollection bundles)
         {
             RegisterGlobalStyles(bundles);
-            RegisterGlobalScripts(bundles);
-            RegisterBuyDashboardBundles(bundles);
-            RegisterSellDashboardBundles(bundles);
-            RegisterTradeHistoryBundles(bundles);
+            RegisterGlobalScripts(bundles);          
         }
 
         private static void RegisterGlobalScripts(BundleCollection bundles)
@@ -41,85 +38,6 @@ namespace FastCoinTrader
                 .IncludeDirectory("~/Content/plugins", "*.css"));
         }
 
-        private static void RegisterBuyDashboardBundles(BundleCollection bundles)
-        {
-            
-            bundles.Add(new ScriptBundle("~/angular/buydashboard/scripts")
-                .Include("~/Scripts/angular.js")
-                .Include("~/Scripts/angular-route.js")
-                .Include("~/Scripts/angular-sanitize.js")
-                .Include("~/Scripts/angular-animate.js")
-
-                // 3rd party plugins
-                .Include("~/Scripts/angular-spinners.min.js")
-                //.Include("~/Scripts/confirm/angular-acknowledge.js")
-                //.Include("~/Scripts/confirm/angular-confirm.js")
-                .Include("~/Scripts/smart-table.min.js")
-                .Include("~/Scripts/moment.js")
-                .Include("~/Scripts/underscore.js")
-                .IncludeDirectory("~/Scripts/Custom", "*.js")
-                .IncludeDirectory("~/Scripts/Custom/angular-ui", "*.js")
-                .IncludeDirectory("~/Scripts/Custom/notificationService", "*.js")
-                //Start local custodian scripts
-                .IncludeDirectory("~/Areas/BuyDashboard/app", "*.js")
-                //.IncludeDirectory("~/Areas/BuyDashboard/app/services", "*.js")
-                //.IncludeDirectory("~/Areas/BuyDashboard/app/models", "*.js")
-                .IncludeDirectory("~/Areas/BuyDashboard/app/controllers", "*.js")
-                .IncludeDirectory("~/Areas/BuyDashboard/app/services", "*.js")
-                .IncludeDirectory("~/Areas/BuyDashboard/app/models", "*.js")
-                );
-        }
-
-        private static void RegisterSellDashboardBundles(BundleCollection bundles)
-        {
-
-            bundles.Add(new ScriptBundle("~/angular/selldashboard/scripts")
-                .Include("~/Scripts/angular.js")
-                .Include("~/Scripts/angular-route.js")
-                .Include("~/Scripts/angular-sanitize.js")
-                .Include("~/Scripts/angular-animate.js")
-
-                // 3rd party plugins
-                .Include("~/Scripts/angular-spinners.min.js")
-                //.Include("~/Scripts/confirm/angular-acknowledge.js")
-                //.Include("~/Scripts/confirm/angular-confirm.js")
-                .Include("~/Scripts/smart-table.min.js")
-                .Include("~/Scripts/moment.js")
-                .Include("~/Scripts/underscore.js")
-                .IncludeDirectory("~/Scripts/Custom", "*.js")
-                .IncludeDirectory("~/Scripts/Custom/angular-ui", "*.js")
-                .IncludeDirectory("~/Scripts/Custom/notificationService", "*.js")
-                //Start local custodian scripts
-                .IncludeDirectory("~/Areas/SellDashboard/app", "*.js")
-                .IncludeDirectory("~/Areas/SellDashboard/app/services", "*.js")
-                //.IncludeDirectory("~/Areas/BuyDashboard/app/models", "*.js")
-                .IncludeDirectory("~/Areas/SellDashboard/app/controllers", "*.js")
-                );
-        }
-
-        public static void RegisterTradeHistoryBundles(BundleCollection bundles)
-        {
-            bundles.Add(new ScriptBundle("~/angular/tradehistory/scripts")
-                .Include("~/Scripts/angular.js")
-                .Include("~/Scripts/angular-route.js")
-                .Include("~/Scripts/angular-sanitize.js")
-                .Include("~/Scripts/angular-animate.js")
-
-                // 3rd party plugins
-                .Include("~/Scripts/angular-spinners.min.js")
-                //.Include("~/Scripts/confirm/angular-acknowledge.js")
-                //.Include("~/Scripts/confirm/angular-confirm.js")
-                .Include("~/Scripts/smart-table.min.js")
-                .Include("~/Scripts/moment.js")
-                .Include("~/Scripts/underscore.js")
-                .IncludeDirectory("~/Scripts/Custom", "*.js")
-                .IncludeDirectory("~/Scripts/Custom/angular-ui", "*.js")
-                .IncludeDirectory("~/Scripts/Custom/notificationService", "*.js")
-                //Start local custodian scripts
-                .IncludeDirectory("~/Areas/TradeHistory/app", "*.js")
-                //.IncludeDirectory("~/Areas/SellDashboard/app/services", "*.js")
-                //.IncludeDirectory("~/Areas/BuyDashboard/app/models", "*.js")
-                .IncludeDirectory("~/Areas/TradeHistory/app/controllers", "*.js"));
-        }
+       
     }
 }

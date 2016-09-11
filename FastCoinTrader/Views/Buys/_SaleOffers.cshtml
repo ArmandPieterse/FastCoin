@@ -1,0 +1,21 @@
+﻿@using FastCoinTrader.EnitityModels.EntityHelper
+@using FastCoinTrader.EnitityModels
+<div>
+    
+@{
+    var saleOffers = SalesEntityHelper.GetSalesByStatus(FastCoinTrader.EnitityModels.Enums.BuyStatus.Pending.ToString(),10);
+    var counter = 0;
+    foreach (tbl_Sales salesOffer in saleOffers)
+    {
+        ViewContext.Writer.Write("<tr class='row"+ ++counter + "'>");
+        ViewContext.Writer.Write("<td class='textCenter'>" + counter + "</td>");
+        ViewContext.Writer.Write("<td class='textRight'>"+ salesOffer.tbl_Sales_BTCTargetAmount +"</td>");
+        ViewContext.Writer.Write("<td class='textRight'>" + salesOffer.tbl_Sales_BTCSold + "</td>");
+        ViewContext.Writer.Write("<td class='textRight'>R " + salesOffer.tbl_Sales_ZARPrice + "</td>");
+        ViewContext.Writer.Write("<td class='textRight'>R " + salesOffer.tbl_Sales_ZARTotal + "</td>");
+        ViewContext.Writer.Write("<td class='textRight'>" + salesOffer.tbl_Sales_DateLastModified + "</td>");
+        ViewContext.Writer.Write("<td class='textCenter'><button type='button' class='btn btn-primary buy-buttons' onclick = \"buyButtons('" + counter+"')\" value='"+counter+"' >Buy From</button> </td>");
+        ViewContext.Writer.Write("</tr>");
+    }
+}
+</div>
