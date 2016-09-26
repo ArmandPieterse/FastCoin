@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Fast Coin Trader";
 }
+
 @using FastCoinTrader.EnitityModels.EntityHelper
 
 <script>
@@ -13,13 +14,13 @@
                 if (toggle === false) {
                     $(this).html("Save");
                     toggle = true;
-                    $($(this).parent()).find(".panel-title").attr("contenteditable", true).addClass("editable");
+                    $($(this).parent()).find(".panel-title").attr("contenteditable", true).addClass("editable").css('background-color','white').focus();
                     $($($(this).parent()).parent()).find(".editDiv").attr("contenteditable", true).addClass("editable");
                 }
                 else {
                     toggle = false;
                     $(this).html("Edit");
-                    $($(this).parent()).find(".panel-title").attr("contenteditable", false).removeClass("editable");
+                    $($(this).parent()).find(".panel-title").attr("contenteditable", false).removeClass("editable").css('background-color', '#f5f5f5');;
                     $($($(this).parent()).parent()).find(".editDiv").attr("contenteditable", false).removeClass("editable");
 
                     var para = $($($(this).parent()).parent()).find(".editDiv").html();
@@ -34,13 +35,7 @@
     }
 
 function SavePanel(_title, _paragraph, _panelNumber) {
-    //var values = {
-    //    title: _title,
-    //    paragraph: _paragraph,
-    //    videoLink: _videoLink,
-    //    panelNumber: _panelNumber
-    //};
-    //alert(JSON.stringify(values));
+
     $.ajax({
         url: "../FAQ/SaveFAQEntry",
         type: "POST",
@@ -54,7 +49,7 @@ function SavePanel(_title, _paragraph, _panelNumber) {
         success: function (result) {
             alert(result.Message);
         },
-        error: function(){alert("You failure you!")}
+        error: function () { showToastr('error', "Something went wrong, please contact a system administrator.", 5000); }
     });
 }
 
@@ -62,14 +57,18 @@ function SavePanel(_title, _paragraph, _panelNumber) {
 <style>
     .editable {
         background-color: #fff !important;
-        border: 1px solid #808080;
+        /*border: 1px solid #808080;*/
         color: #000;
     }
-
+    .editDiv {
+        min-height:30px;
+    }
     h3.panel-title {
         width: 95%;
     }
-
+    .panel-heading:hover{
+        cursor:pointer;
+    }
     button.edit {
         position: relative;
         bottom: 19px;
@@ -79,6 +78,11 @@ function SavePanel(_title, _paragraph, _panelNumber) {
     iframe {
         width: 100% !important;
         height: 300px !important;
+    }
+    .panel-title {
+        min-height:25px;
+        width:80%;
+        line-height:25px;
     }
 </style>
 <div class="row">
@@ -113,9 +117,9 @@ function SavePanel(_title, _paragraph, _panelNumber) {
         <div class="panel-group" id="accordion">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 data-toggle="collapse" data-parent="#accordion" href="#collapseOne" >
+                    <div class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" >
                         @{if (FAQEntries.Count > 0) { ViewContext.Writer.Write(FAQEntries[0].tbl_FAQ_Title); } }
-                    </h4><button type="button" class="btn btn-xs btn-default editButton edit">Edit</button>
+                    </div><button type="button" class="btn btn-xs btn-default editButton edit">Edit</button>
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in">
                     <div class="editDiv panel-body">
@@ -125,9 +129,9 @@ function SavePanel(_title, _paragraph, _panelNumber) {
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" >
-                   @{if (FAQEntries.Count > 1) { ViewContext.Writer.Write(FAQEntries[1].tbl_FAQ_Title); } }
-                    </h4><button type="button" class="btn btn-xs btn-default editButton edit">Edit</button>
+                    <div class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" >
+                     @{if (FAQEntries.Count > 1) { ViewContext.Writer.Write(FAQEntries[1].tbl_FAQ_Title); } }
+                    </div><button type="button" class="btn btn-xs btn-default editButton edit">Edit</button>
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse">
                     <div class="editDiv panel-body">
@@ -137,9 +141,9 @@ function SavePanel(_title, _paragraph, _panelNumber) {
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                    <div class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
                    @{if (FAQEntries.Count > 2) { ViewContext.Writer.Write(FAQEntries[2].tbl_FAQ_Title); } }
-                    </h4><button type="button" class="btn btn-xs btn-default editButton edit">Edit</button>
+                    </div><button type="button" class="btn btn-xs btn-default editButton edit">Edit</button>
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse">
                     <div class="editDiv panel-body">
@@ -149,9 +153,9 @@ function SavePanel(_title, _paragraph, _panelNumber) {
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                    <div class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
                   @{if (FAQEntries.Count > 3) { ViewContext.Writer.Write(FAQEntries[3].tbl_FAQ_Title); } }
-                    </h4><button type="button" class="btn btn-xs btn-default editButton edit">Edit</button>
+                    </div><button type="button" class="btn btn-xs btn-default editButton edit">Edit</button>
                 </div>
                 <div id="collapseFour" class="panel-collapse collapse">
                     <div class="editDiv panel-body">
